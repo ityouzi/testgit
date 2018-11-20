@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+aaaa
+
+<form action="activity/add.do" method="post" enctype="multipart/form-data">
+	  <label>上传头像1：</label><input type="file" name="file"><br>
+	  <label>上传头像2：</label><input type="file" name="file"><br>
+	  <label>上传头像3：</label><input type="file" name="file"><br>
+	  <input type="submit">
+  	</form>
+</body>
+</html>

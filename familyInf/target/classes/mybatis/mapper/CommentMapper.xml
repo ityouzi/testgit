@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nn.dao.CommentMapper">
+  <resultMap id="BaseResultMap" type="com.nn.bean.Comment">
+    <id column="COMMENTID" jdbcType="VARCHAR" property="commentid" />
+    <result column="CREATE_TIME" jdbcType="VARCHAR" property="createTime" />
+    <result column="CREATOR" jdbcType="VARCHAR" property="creator" />
+    <result column="COMMENT_CONTENT" jdbcType="VARCHAR" property="commentContent" />
+    <result column="PCOMMENTID" jdbcType="VARCHAR" property="pcommentid" />
+    <result column="PSAIDID" jdbcType="VARCHAR" property="psaidid" />
+    <result column="yl1" jdbcType="VARCHAR" property="yl1" />
+    <result column="yl2" jdbcType="VARCHAR" property="yl2" />
+    <result column="yl3" jdbcType="VARCHAR" property="yl3" />
+    <result column="yl4" jdbcType="VARCHAR" property="yl4" />
+    <result column="yl5" jdbcType="VARCHAR" property="yl5" />
+    <result column="yl6" jdbcType="VARCHAR" property="yl6" />
+    <result column="yl7" jdbcType="VARCHAR" property="yl7" />
+    <result column="yl8" jdbcType="VARCHAR" property="yl8" />
+    <result column="yl9" jdbcType="VARCHAR" property="yl9" />
+    <result column="yl10" jdbcType="VARCHAR" property="yl10" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    COMMENTID, CREATE_TIME, CREATOR, COMMENT_CONTENT, PCOMMENTID, PSAIDID, yl1, yl2, 
+    yl3, yl4, yl5, yl6, yl7, yl8, yl9, yl10
+  </sql>
+  <select id="selectByExample" parameterType="com.nn.bean.CommentExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_comment
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+      
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_comment
+    where COMMENTID = #{commentid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from tb_comment
+    where COMMENTID = #{commentid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.nn.bean.CommentExample">
+    delete from tb_comment
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.nn.bean.Comment">
+    insert into tb_comment (COMMENTID, CREATE_TIME, CREATOR, 
+      COMMENT_CONTENT, PCOMMENTID, PSAIDID, 
+      yl1, yl2, yl3, yl4, 
+      yl5, yl6, yl7, yl8, 
+      yl9, yl10)
+    values (#{commentid,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, 
+      #{commentContent,jdbcType=VARCHAR}, #{pcommentid,jdbcType=VARCHAR}, #{psaidid,jdbcType=VARCHAR}, 
+      #{yl1,jdbcType=VARCHAR}, #{yl2,jdbcType=VARCHAR}, #{yl3,jdbcType=VARCHAR}, #{yl4,jdbcType=VARCHAR}, 
+      #{yl5,jdbcType=VARCHAR}, #{yl6,jdbcType=VARCHAR}, #{yl7,jdbcType=VARCHAR}, #{yl8,jdbcType=VARCHAR}, 
+      #{yl9,jdbcType=VARCHAR}, #{yl10,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.nn.bean.Comment">
+    insert into tb_comment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="commentid != null">
+        COMMENTID,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="creator != null">
+        CREATOR,
+      </if>
+      <if test="commentContent != null">
+        COMMENT_CONTENT,
+      </if>
+      <if test="pcommentid != null">
+        PCOMMENTID,
+      </if>
+      <if test="psaidid != null">
+        PSAIDID,
+      </if>
+      <if test="yl1 != null">
+        yl1,
+      </if>
+      <if test="yl2 != null">
+        yl2,
+      </if>
+      <if test="yl3 != null">
+        yl3,
+      </if>
+      <if test="yl4 != null">
+        yl4,
+      </if>
+      <if test="yl5 != null">
+        yl5,
+      </if>
+      <if test="yl6 != null">
+        yl6,
+      </if>
+      <if test="yl7 != null">
+        yl7,
+      </if>
+      <if test="yl8 != null">
+        yl8,
+      </if>
+      <if test="yl9 != null">
+        yl9,
+      </if>
+      <if test="yl10 != null">
+        yl10,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="commentid != null">
+        #{commentid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="commentContent != null">
+        #{commentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="pcommentid != null">
+        #{pcommentid,jdbcType=VARCHAR},
+      </if>
+      <if test="psaidid != null">
+        #{psaidid,jdbcType=VARCHAR},
+      </if>
+      <if test="yl1 != null">
+        #{yl1,jdbcType=VARCHAR},
+      </if>
+      <if test="yl2 != null">
+        #{yl2,jdbcType=VARCHAR},
+      </if>
+      <if test="yl3 != null">
+        #{yl3,jdbcType=VARCHAR},
+      </if>
+      <if test="yl4 != null">
+        #{yl4,jdbcType=VARCHAR},
+      </if>
+      <if test="yl5 != null">
+        #{yl5,jdbcType=VARCHAR},
+      </if>
+      <if test="yl6 != null">
+        #{yl6,jdbcType=VARCHAR},
+      </if>
+      <if test="yl7 != null">
+        #{yl7,jdbcType=VARCHAR},
+      </if>
+      <if test="yl8 != null">
+        #{yl8,jdbcType=VARCHAR},
+      </if>
+      <if test="yl9 != null">
+        #{yl9,jdbcType=VARCHAR},
+      </if>
+      <if test="yl10 != null">
+        #{yl10,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.nn.bean.CommentExample" resultType="java.lang.Long">
+    select count(*) from tb_comment
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tb_comment
+    <set>
+      <if test="record.commentid != null">
+        COMMENTID = #{record.commentid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null">
+        CREATE_TIME = #{record.createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creator != null">
+        CREATOR = #{record.creator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commentContent != null">
+        COMMENT_CONTENT = #{record.commentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcommentid != null">
+        PCOMMENTID = #{record.pcommentid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.psaidid != null">
+        PSAIDID = #{record.psaidid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl1 != null">
+        yl1 = #{record.yl1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl2 != null">
+        yl2 = #{record.yl2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl3 != null">
+        yl3 = #{record.yl3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl4 != null">
+        yl4 = #{record.yl4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl5 != null">
+        yl5 = #{record.yl5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl6 != null">
+        yl6 = #{record.yl6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl7 != null">
+        yl7 = #{record.yl7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl8 != null">
+        yl8 = #{record.yl8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl9 != null">
+        yl9 = #{record.yl9,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl10 != null">
+        yl10 = #{record.yl10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tb_comment
+    set COMMENTID = #{record.commentid,jdbcType=VARCHAR},
+      CREATE_TIME = #{record.createTime,jdbcType=VARCHAR},
+      CREATOR = #{record.creator,jdbcType=VARCHAR},
+      COMMENT_CONTENT = #{record.commentContent,jdbcType=VARCHAR},
+      PCOMMENTID = #{record.pcommentid,jdbcType=VARCHAR},
+      PSAIDID = #{record.psaidid,jdbcType=VARCHAR},
+      yl1 = #{record.yl1,jdbcType=VARCHAR},
+      yl2 = #{record.yl2,jdbcType=VARCHAR},
+      yl3 = #{record.yl3,jdbcType=VARCHAR},
+      yl4 = #{record.yl4,jdbcType=VARCHAR},
+      yl5 = #{record.yl5,jdbcType=VARCHAR},
+      yl6 = #{record.yl6,jdbcType=VARCHAR},
+      yl7 = #{record.yl7,jdbcType=VARCHAR},
+      yl8 = #{record.yl8,jdbcType=VARCHAR},
+      yl9 = #{record.yl9,jdbcType=VARCHAR},
+      yl10 = #{record.yl10,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nn.bean.Comment">
+    update tb_comment
+    <set>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        CREATOR = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="commentContent != null">
+        COMMENT_CONTENT = #{commentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="pcommentid != null">
+        PCOMMENTID = #{pcommentid,jdbcType=VARCHAR},
+      </if>
+      <if test="psaidid != null">
+        PSAIDID = #{psaidid,jdbcType=VARCHAR},
+      </if>
+      <if test="yl1 != null">
+        yl1 = #{yl1,jdbcType=VARCHAR},
+      </if>
+      <if test="yl2 != null">
+        yl2 = #{yl2,jdbcType=VARCHAR},
+      </if>
+      <if test="yl3 != null">
+        yl3 = #{yl3,jdbcType=VARCHAR},
+      </if>
+      <if test="yl4 != null">
+        yl4 = #{yl4,jdbcType=VARCHAR},
+      </if>
+      <if test="yl5 != null">
+        yl5 = #{yl5,jdbcType=VARCHAR},
+      </if>
+      <if test="yl6 != null">
+        yl6 = #{yl6,jdbcType=VARCHAR},
+      </if>
+      <if test="yl7 != null">
+        yl7 = #{yl7,jdbcType=VARCHAR},
+      </if>
+      <if test="yl8 != null">
+        yl8 = #{yl8,jdbcType=VARCHAR},
+      </if>
+      <if test="yl9 != null">
+        yl9 = #{yl9,jdbcType=VARCHAR},
+      </if>
+      <if test="yl10 != null">
+        yl10 = #{yl10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where COMMENTID = #{commentid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nn.bean.Comment">
+    update tb_comment
+    set CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      CREATOR = #{creator,jdbcType=VARCHAR},
+      COMMENT_CONTENT = #{commentContent,jdbcType=VARCHAR},
+      PCOMMENTID = #{pcommentid,jdbcType=VARCHAR},
+      PSAIDID = #{psaidid,jdbcType=VARCHAR},
+      yl1 = #{yl1,jdbcType=VARCHAR},
+      yl2 = #{yl2,jdbcType=VARCHAR},
+      yl3 = #{yl3,jdbcType=VARCHAR},
+      yl4 = #{yl4,jdbcType=VARCHAR},
+      yl5 = #{yl5,jdbcType=VARCHAR},
+      yl6 = #{yl6,jdbcType=VARCHAR},
+      yl7 = #{yl7,jdbcType=VARCHAR},
+      yl8 = #{yl8,jdbcType=VARCHAR},
+      yl9 = #{yl9,jdbcType=VARCHAR},
+      yl10 = #{yl10,jdbcType=VARCHAR}
+    where COMMENTID = #{commentid,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+  <context id="DB2Tables" targetRuntime="MyBatis3">
+  
+    <commentGenerator>
+	  <property name="suppressAllComments" value="true" />
+	</commentGenerator>
+  
+  	<!-- 配置数据库连接信息 -->
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://127.0.0.1:3306/fh_family"
+        userId="root"
+        password="root">
+    </jdbcConnection>
+
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+
+	<!-- 指定javabean生成的位置 -->
+    <javaModelGenerator targetPackage="com.nn.bean" 
+    					targetProject=".\src\main\java">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+
+	<!-- 指定sql映射文件生成的位置 -->
+    <sqlMapGenerator targetPackage="mapper"  
+    				 targetProject=".\src\main\resources\mybatis">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+
+	<!-- 指定dao接口文件生成的位置 -->
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.nn.dao"  
+    									  targetProject=".\src\main\java">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+	
+	<!-- <table tableName="sys_user" domainObjectName="SysUser"></table> -->
+	
+	<!-- 
+	<table tableName="user_info" domainObjectName="UserInfo"></table>
+	<table tableName="tb_sm" domainObjectName="SM"></table>
+	<table tableName="tb_ir" domainObjectName="IR"></table>
+	<table tableName="tb_sciask" domainObjectName="SCIask"></table>
+	<table tableName="tb_bookkeeping" domainObjectName="BookKeeping"></table>
+	<table tableName="tb_br" domainObjectName="BR"></table>
+	<table tableName="tb_cabininfo" domainObjectName="Cabininfo"></table>
+	<table tableName="tb_cabininfomx" domainObjectName="Cabininfomx"></table>
+	<table tableName="tb_cs" domainObjectName="CS"></table>
+	<table tableName="tb_pictures" domainObjectName="Pictures"></table>
+	<table tableName="tb_query" domainObjectName="Query"></table>
+	<table tableName="tb_rrcarinfo" domainObjectName="Rrcarinfo"></table>
+	<table tableName="tb_scirelay" domainObjectName="Scirelay"></table>
+	<table tableName="tb_test" domainObjectName="Test"></table>
+	
+	<table tableName="tb_project_progress" domainObjectName="ProjectProgress"></table>
+	<table tableName="tb_work_report" domainObjectName="WorkReport"></table>
+	 
+	  -->
+
+	<!--   <table tableName="tb_chengwei" domainObjectName="Chengwei"></table>
+	  <table tableName="tb_cwgs" domainObjectName="Cwgs"></table>
+	  <table tableName="tb_relation" domainObjectName="Relation"></table> -->
+	  <!-- <table tableName="tb_cwdy" domainObjectName="Cwdy"></table> -->
+	  <!-- <table tableName="tb_reply" domainObjectName="Reply"></table>
+	  <table tableName="tb_activity" domainObjectName="Activity"></table> -->
+	 <!--  <table tableName="tb_message" domainObjectName="Message"></table> -->
+	<!--  <table tableName="tb_test" domainObjectName="Test"></table> -->
+<!-- 	<table tableName="sys_user" domainObjectName="SysUser"></table> -->
+	
+  </context>
+</generatorConfiguration>

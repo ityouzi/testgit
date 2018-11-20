@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<!-- 展示图片来个循环，以便显示多张图片 -->
+	<c:forEach items="${imagesPathList}" var="image">
+		<img src="${basePath}${image}"><br/>
+	</c:forEach>
+
+
+	<img src="http://192.168.0.103:8080/familyInf/img/1534990677871.png">
+</body>
+</html>

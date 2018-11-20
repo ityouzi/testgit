@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nn.dao.FestivalMapper">
+  <resultMap id="BaseResultMap" type="com.nn.bean.Festival">
+    <id column="festival_id" jdbcType="INTEGER" property="festivalId" />
+    <result column="date" jdbcType="VARCHAR" property="date" />
+    <result column="festivalname" jdbcType="VARCHAR" property="festivalname" />
+    <result column="leixing" jdbcType="VARCHAR" property="leixing" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="yl1" jdbcType="VARCHAR" property="yl1" />
+    <result column="yl2" jdbcType="VARCHAR" property="yl2" />
+    <result column="yl3" jdbcType="VARCHAR" property="yl3" />
+    <result column="yl4" jdbcType="VARCHAR" property="yl4" />
+    <result column="yl5" jdbcType="VARCHAR" property="yl5" />
+    <result column="yl6" jdbcType="VARCHAR" property="yl6" />
+    <result column="yl7" jdbcType="VARCHAR" property="yl7" />
+    <result column="yl8" jdbcType="VARCHAR" property="yl8" />
+    <result column="yl9" jdbcType="VARCHAR" property="yl9" />
+    <result column="yl10" jdbcType="VARCHAR" property="yl10" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    festival_id, date, festivalname, leixing, state, yl1, yl2, yl3, yl4, yl5, yl6, yl7, 
+    yl8, yl9, yl10
+  </sql>
+  <select id="selectByExample" parameterType="com.nn.bean.FestivalExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_festival
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_festival
+    where festival_id = #{festivalId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_festival
+    where festival_id = #{festivalId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.nn.bean.FestivalExample">
+    delete from tb_festival
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.nn.bean.Festival">
+    insert into tb_festival (festival_id, date, festivalname, 
+      leixing, state, yl1, 
+      yl2, yl3, yl4, yl5, 
+      yl6, yl7, yl8, yl9, 
+      yl10)
+    values (#{festivalId,jdbcType=INTEGER}, #{date,jdbcType=VARCHAR}, #{festivalname,jdbcType=VARCHAR}, 
+      #{leixing,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, #{yl1,jdbcType=VARCHAR}, 
+      #{yl2,jdbcType=VARCHAR}, #{yl3,jdbcType=VARCHAR}, #{yl4,jdbcType=VARCHAR}, #{yl5,jdbcType=VARCHAR}, 
+      #{yl6,jdbcType=VARCHAR}, #{yl7,jdbcType=VARCHAR}, #{yl8,jdbcType=VARCHAR}, #{yl9,jdbcType=VARCHAR}, 
+      #{yl10,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.nn.bean.Festival">
+    insert into tb_festival
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="festivalId != null">
+        festival_id,
+      </if>
+      <if test="date != null">
+        date,
+      </if>
+      <if test="festivalname != null">
+        festivalname,
+      </if>
+      <if test="leixing != null">
+        leixing,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="yl1 != null">
+        yl1,
+      </if>
+      <if test="yl2 != null">
+        yl2,
+      </if>
+      <if test="yl3 != null">
+        yl3,
+      </if>
+      <if test="yl4 != null">
+        yl4,
+      </if>
+      <if test="yl5 != null">
+        yl5,
+      </if>
+      <if test="yl6 != null">
+        yl6,
+      </if>
+      <if test="yl7 != null">
+        yl7,
+      </if>
+      <if test="yl8 != null">
+        yl8,
+      </if>
+      <if test="yl9 != null">
+        yl9,
+      </if>
+      <if test="yl10 != null">
+        yl10,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="festivalId != null">
+        #{festivalId,jdbcType=INTEGER},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="festivalname != null">
+        #{festivalname,jdbcType=VARCHAR},
+      </if>
+      <if test="leixing != null">
+        #{leixing,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="yl1 != null">
+        #{yl1,jdbcType=VARCHAR},
+      </if>
+      <if test="yl2 != null">
+        #{yl2,jdbcType=VARCHAR},
+      </if>
+      <if test="yl3 != null">
+        #{yl3,jdbcType=VARCHAR},
+      </if>
+      <if test="yl4 != null">
+        #{yl4,jdbcType=VARCHAR},
+      </if>
+      <if test="yl5 != null">
+        #{yl5,jdbcType=VARCHAR},
+      </if>
+      <if test="yl6 != null">
+        #{yl6,jdbcType=VARCHAR},
+      </if>
+      <if test="yl7 != null">
+        #{yl7,jdbcType=VARCHAR},
+      </if>
+      <if test="yl8 != null">
+        #{yl8,jdbcType=VARCHAR},
+      </if>
+      <if test="yl9 != null">
+        #{yl9,jdbcType=VARCHAR},
+      </if>
+      <if test="yl10 != null">
+        #{yl10,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.nn.bean.FestivalExample" resultType="java.lang.Long">
+    select count(*) from tb_festival
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tb_festival
+    <set>
+      <if test="record.festivalId != null">
+        festival_id = #{record.festivalId,jdbcType=INTEGER},
+      </if>
+      <if test="record.date != null">
+        date = #{record.date,jdbcType=VARCHAR},
+      </if>
+      <if test="record.festivalname != null">
+        festivalname = #{record.festivalname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.leixing != null">
+        leixing = #{record.leixing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.state != null">
+        state = #{record.state,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl1 != null">
+        yl1 = #{record.yl1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl2 != null">
+        yl2 = #{record.yl2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl3 != null">
+        yl3 = #{record.yl3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl4 != null">
+        yl4 = #{record.yl4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl5 != null">
+        yl5 = #{record.yl5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl6 != null">
+        yl6 = #{record.yl6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl7 != null">
+        yl7 = #{record.yl7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl8 != null">
+        yl8 = #{record.yl8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl9 != null">
+        yl9 = #{record.yl9,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl10 != null">
+        yl10 = #{record.yl10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tb_festival
+    set festival_id = #{record.festivalId,jdbcType=INTEGER},
+      date = #{record.date,jdbcType=VARCHAR},
+      festivalname = #{record.festivalname,jdbcType=VARCHAR},
+      leixing = #{record.leixing,jdbcType=VARCHAR},
+      state = #{record.state,jdbcType=VARCHAR},
+      yl1 = #{record.yl1,jdbcType=VARCHAR},
+      yl2 = #{record.yl2,jdbcType=VARCHAR},
+      yl3 = #{record.yl3,jdbcType=VARCHAR},
+      yl4 = #{record.yl4,jdbcType=VARCHAR},
+      yl5 = #{record.yl5,jdbcType=VARCHAR},
+      yl6 = #{record.yl6,jdbcType=VARCHAR},
+      yl7 = #{record.yl7,jdbcType=VARCHAR},
+      yl8 = #{record.yl8,jdbcType=VARCHAR},
+      yl9 = #{record.yl9,jdbcType=VARCHAR},
+      yl10 = #{record.yl10,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nn.bean.Festival">
+    update tb_festival
+    <set>
+      <if test="date != null">
+        date = #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="festivalname != null">
+        festivalname = #{festivalname,jdbcType=VARCHAR},
+      </if>
+      <if test="leixing != null">
+        leixing = #{leixing,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="yl1 != null">
+        yl1 = #{yl1,jdbcType=VARCHAR},
+      </if>
+      <if test="yl2 != null">
+        yl2 = #{yl2,jdbcType=VARCHAR},
+      </if>
+      <if test="yl3 != null">
+        yl3 = #{yl3,jdbcType=VARCHAR},
+      </if>
+      <if test="yl4 != null">
+        yl4 = #{yl4,jdbcType=VARCHAR},
+      </if>
+      <if test="yl5 != null">
+        yl5 = #{yl5,jdbcType=VARCHAR},
+      </if>
+      <if test="yl6 != null">
+        yl6 = #{yl6,jdbcType=VARCHAR},
+      </if>
+      <if test="yl7 != null">
+        yl7 = #{yl7,jdbcType=VARCHAR},
+      </if>
+      <if test="yl8 != null">
+        yl8 = #{yl8,jdbcType=VARCHAR},
+      </if>
+      <if test="yl9 != null">
+        yl9 = #{yl9,jdbcType=VARCHAR},
+      </if>
+      <if test="yl10 != null">
+        yl10 = #{yl10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where festival_id = #{festivalId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nn.bean.Festival">
+    update tb_festival
+    set date = #{date,jdbcType=VARCHAR},
+      festivalname = #{festivalname,jdbcType=VARCHAR},
+      leixing = #{leixing,jdbcType=VARCHAR},
+      state = #{state,jdbcType=VARCHAR},
+      yl1 = #{yl1,jdbcType=VARCHAR},
+      yl2 = #{yl2,jdbcType=VARCHAR},
+      yl3 = #{yl3,jdbcType=VARCHAR},
+      yl4 = #{yl4,jdbcType=VARCHAR},
+      yl5 = #{yl5,jdbcType=VARCHAR},
+      yl6 = #{yl6,jdbcType=VARCHAR},
+      yl7 = #{yl7,jdbcType=VARCHAR},
+      yl8 = #{yl8,jdbcType=VARCHAR},
+      yl9 = #{yl9,jdbcType=VARCHAR},
+      yl10 = #{yl10,jdbcType=VARCHAR}
+    where festival_id = #{festivalId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nn.dao.ChengweiMapper">
+  <resultMap id="BaseResultMap" type="com.nn.bean.Chengwei">
+    <id column="CHENGWEI_ID" jdbcType="INTEGER" property="chengweiId" />
+    <result column="CHENGWEI" jdbcType="VARCHAR" property="chengwei" />
+    <result column="CHENGWEIDEC" jdbcType="VARCHAR" property="chengweidec" />
+    <result column="YL1" jdbcType="VARCHAR" property="yl1" />
+    <result column="YL2" jdbcType="VARCHAR" property="yl2" />
+    <result column="YL3" jdbcType="VARCHAR" property="yl3" />
+    <result column="YL4" jdbcType="VARCHAR" property="yl4" />
+    <result column="YL5" jdbcType="VARCHAR" property="yl5" />
+    <result column="YL6" jdbcType="VARCHAR" property="yl6" />
+    <result column="YL7" jdbcType="VARCHAR" property="yl7" />
+    <result column="YL9" jdbcType="VARCHAR" property="yl9" />
+    <result column="YL8" jdbcType="VARCHAR" property="yl8" />
+    <result column="YL10" jdbcType="VARCHAR" property="yl10" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    CHENGWEI_ID, CHENGWEI, CHENGWEIDEC, YL1, YL2, YL3, YL4, YL5, YL6, YL7, YL9, YL8, 
+    YL10
+  </sql>
+  <select id="selectByExample" parameterType="com.nn.bean.ChengweiExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_chengwei
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_chengwei
+    where CHENGWEI_ID = #{chengweiId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_chengwei
+    where CHENGWEI_ID = #{chengweiId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.nn.bean.ChengweiExample">
+    delete from tb_chengwei
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.nn.bean.Chengwei">
+    insert into tb_chengwei (CHENGWEI_ID, CHENGWEI, CHENGWEIDEC, 
+      YL1, YL2, YL3, YL4, 
+      YL5, YL6, YL7, YL9, 
+      YL8, YL10)
+    values (#{chengweiId,jdbcType=INTEGER}, #{chengwei,jdbcType=VARCHAR}, #{chengweidec,jdbcType=VARCHAR}, 
+      #{yl1,jdbcType=VARCHAR}, #{yl2,jdbcType=VARCHAR}, #{yl3,jdbcType=VARCHAR}, #{yl4,jdbcType=VARCHAR}, 
+      #{yl5,jdbcType=VARCHAR}, #{yl6,jdbcType=VARCHAR}, #{yl7,jdbcType=VARCHAR}, #{yl9,jdbcType=VARCHAR}, 
+      #{yl8,jdbcType=VARCHAR}, #{yl10,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.nn.bean.Chengwei">
+    insert into tb_chengwei
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="chengweiId != null">
+        CHENGWEI_ID,
+      </if>
+      <if test="chengwei != null">
+        CHENGWEI,
+      </if>
+      <if test="chengweidec != null">
+        CHENGWEIDEC,
+      </if>
+      <if test="yl1 != null">
+        YL1,
+      </if>
+      <if test="yl2 != null">
+        YL2,
+      </if>
+      <if test="yl3 != null">
+        YL3,
+      </if>
+      <if test="yl4 != null">
+        YL4,
+      </if>
+      <if test="yl5 != null">
+        YL5,
+      </if>
+      <if test="yl6 != null">
+        YL6,
+      </if>
+      <if test="yl7 != null">
+        YL7,
+      </if>
+      <if test="yl9 != null">
+        YL9,
+      </if>
+      <if test="yl8 != null">
+        YL8,
+      </if>
+      <if test="yl10 != null">
+        YL10,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="chengweiId != null">
+        #{chengweiId,jdbcType=INTEGER},
+      </if>
+      <if test="chengwei != null">
+        #{chengwei,jdbcType=VARCHAR},
+      </if>
+      <if test="chengweidec != null">
+        #{chengweidec,jdbcType=VARCHAR},
+      </if>
+      <if test="yl1 != null">
+        #{yl1,jdbcType=VARCHAR},
+      </if>
+      <if test="yl2 != null">
+        #{yl2,jdbcType=VARCHAR},
+      </if>
+      <if test="yl3 != null">
+        #{yl3,jdbcType=VARCHAR},
+      </if>
+      <if test="yl4 != null">
+        #{yl4,jdbcType=VARCHAR},
+      </if>
+      <if test="yl5 != null">
+        #{yl5,jdbcType=VARCHAR},
+      </if>
+      <if test="yl6 != null">
+        #{yl6,jdbcType=VARCHAR},
+      </if>
+      <if test="yl7 != null">
+        #{yl7,jdbcType=VARCHAR},
+      </if>
+      <if test="yl9 != null">
+        #{yl9,jdbcType=VARCHAR},
+      </if>
+      <if test="yl8 != null">
+        #{yl8,jdbcType=VARCHAR},
+      </if>
+      <if test="yl10 != null">
+        #{yl10,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.nn.bean.ChengweiExample" resultType="java.lang.Long">
+    select count(*) from tb_chengwei
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tb_chengwei
+    <set>
+      <if test="record.chengweiId != null">
+        CHENGWEI_ID = #{record.chengweiId,jdbcType=INTEGER},
+      </if>
+      <if test="record.chengwei != null">
+        CHENGWEI = #{record.chengwei,jdbcType=VARCHAR},
+      </if>
+      <if test="record.chengweidec != null">
+        CHENGWEIDEC = #{record.chengweidec,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl1 != null">
+        YL1 = #{record.yl1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl2 != null">
+        YL2 = #{record.yl2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl3 != null">
+        YL3 = #{record.yl3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl4 != null">
+        YL4 = #{record.yl4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl5 != null">
+        YL5 = #{record.yl5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl6 != null">
+        YL6 = #{record.yl6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl7 != null">
+        YL7 = #{record.yl7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl9 != null">
+        YL9 = #{record.yl9,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl8 != null">
+        YL8 = #{record.yl8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yl10 != null">
+        YL10 = #{record.yl10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tb_chengwei
+    set CHENGWEI_ID = #{record.chengweiId,jdbcType=INTEGER},
+      CHENGWEI = #{record.chengwei,jdbcType=VARCHAR},
+      CHENGWEIDEC = #{record.chengweidec,jdbcType=VARCHAR},
+      YL1 = #{record.yl1,jdbcType=VARCHAR},
+      YL2 = #{record.yl2,jdbcType=VARCHAR},
+      YL3 = #{record.yl3,jdbcType=VARCHAR},
+      YL4 = #{record.yl4,jdbcType=VARCHAR},
+      YL5 = #{record.yl5,jdbcType=VARCHAR},
+      YL6 = #{record.yl6,jdbcType=VARCHAR},
+      YL7 = #{record.yl7,jdbcType=VARCHAR},
+      YL9 = #{record.yl9,jdbcType=VARCHAR},
+      YL8 = #{record.yl8,jdbcType=VARCHAR},
+      YL10 = #{record.yl10,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nn.bean.Chengwei">
+    update tb_chengwei
+    <set>
+      <if test="chengwei != null">
+        CHENGWEI = #{chengwei,jdbcType=VARCHAR},
+      </if>
+      <if test="chengweidec != null">
+        CHENGWEIDEC = #{chengweidec,jdbcType=VARCHAR},
+      </if>
+      <if test="yl1 != null">
+        YL1 = #{yl1,jdbcType=VARCHAR},
+      </if>
+      <if test="yl2 != null">
+        YL2 = #{yl2,jdbcType=VARCHAR},
+      </if>
+      <if test="yl3 != null">
+        YL3 = #{yl3,jdbcType=VARCHAR},
+      </if>
+      <if test="yl4 != null">
+        YL4 = #{yl4,jdbcType=VARCHAR},
+      </if>
+      <if test="yl5 != null">
+        YL5 = #{yl5,jdbcType=VARCHAR},
+      </if>
+      <if test="yl6 != null">
+        YL6 = #{yl6,jdbcType=VARCHAR},
+      </if>
+      <if test="yl7 != null">
+        YL7 = #{yl7,jdbcType=VARCHAR},
+      </if>
+      <if test="yl9 != null">
+        YL9 = #{yl9,jdbcType=VARCHAR},
+      </if>
+      <if test="yl8 != null">
+        YL8 = #{yl8,jdbcType=VARCHAR},
+      </if>
+      <if test="yl10 != null">
+        YL10 = #{yl10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CHENGWEI_ID = #{chengweiId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nn.bean.Chengwei">
+    update tb_chengwei
+    set CHENGWEI = #{chengwei,jdbcType=VARCHAR},
+      CHENGWEIDEC = #{chengweidec,jdbcType=VARCHAR},
+      YL1 = #{yl1,jdbcType=VARCHAR},
+      YL2 = #{yl2,jdbcType=VARCHAR},
+      YL3 = #{yl3,jdbcType=VARCHAR},
+      YL4 = #{yl4,jdbcType=VARCHAR},
+      YL5 = #{yl5,jdbcType=VARCHAR},
+      YL6 = #{yl6,jdbcType=VARCHAR},
+      YL7 = #{yl7,jdbcType=VARCHAR},
+      YL9 = #{yl9,jdbcType=VARCHAR},
+      YL8 = #{yl8,jdbcType=VARCHAR},
+      YL10 = #{yl10,jdbcType=VARCHAR}
+    where CHENGWEI_ID = #{chengweiId,jdbcType=INTEGER}
+  </update>
+</mapper>
