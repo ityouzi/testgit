@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>个人信息</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="../js/public.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/hebing.css"/>
+	</head>
+
+	<body>
+		<div class="head">
+			<a href="touch-index.html"><img src="../img/back.png"></a>
+			<div>合并信息</div>
+		</div>
+		<!--底部-->
+		<div class="dibu-box">
+			<a href="touch-index.html">
+				<div class="dibu-one">
+					<img src="../img/index@1.png" />
+					<span id="">
+					首页
+					</span>
+				</div>
+			</a>
+			<a href="activity-add.html">
+				<div class="dibu-one">
+					<img src="../img/fabu@1.png" />
+					<span id="">
+					消息
+					</span>
+				</div>
+			</a>
+			<a href="hebing.html">
+				<div class="dibu-one">
+					<img src="../img/news@2.png" />
+					<span id="" class="active" style="color: #cac196;">
+					合并
+					</span>
+				</div>
+			</a>
+			<a href="mine.html">
+				<div class="dibu-one">
+					<img src="../img/mine@1.png" />
+					<span id="">
+					我的
+					</span>
+				</div>
+			</a>
+		</div>
+		<div class="tips">
+			喜结连理，宗族合并
+		</div>
+		<div class="fabu-content">
+			<!--<input name="phone"></input>-->
+			<div onclick="getuser()" class="chaxun">查询</div>
+			
+		</div>
+		<div id="hebing">		
+				<div class="relation-list">
+                     <!--<div class="relation-one">
+                     	<div class="name">
+                     		创建人：
+                     	</div>
+                     	<div class="phone">
+                     		手机号：
+                     	</div>
+                     	<div class="birthday">
+                     		手机号：
+                     	</div>
+                     	<div class="stutas">
+                     		合并状态：
+                     	</div>
+                     	<div class="address">
+                     		地址：
+                     	</div>
+                     </div>-->
+				</div>
+			
+		</div>
+		<!--加载中-->
+        <div class="loader">
+		  <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		     width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+		  <path fill="#000" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z">
+		    <animateTransform attributeType="xml"
+		      attributeName="transform"
+		      type="rotate"
+		      from="0 25 25"
+		      to="360 25 25"
+		      dur="0.6s"
+		      repeatCount="indefinite"/>
+		    </path>
+		  </svg>
+		</div> 
+	</body>
+   
+
+	<script type="text/javascript">
+		mui('body').on('tap', 'a', function() {
+			document.location.href = this.href;
+		});
+		//查询自己
+		function getuser() {
+			//显示加载中
+			$(".loader").css("display","block");
+			$('.relation-list').empty();
+			var phone = localStorage.getItem("loginName");
+//			alert(phone);
+			$.ajax({
+				type: "get",
+				timeout:5000,
+				url: baseUrl + "/familyInf/usermsg/getuser?token=" + localStorage.token,
+				success: function(result) {
+					//隐藏加载中
+					$(".loader").css("display","none");
+					if(result.code == 200) {
+						mui.toast(JSON.stringify(result));
+					} else {
+						var data = result.extend.result;
+						console.log(data);
+						if(data != null &&data != ""){
+							$.each(data, function(index, item) {
+								var useritem = $("<div class='relation-two'><span>创建人：</span></div>").append("<div>"+item.user.name+"</div>");
+								var phone = $("<div class='relation-two'><span>手机号：</span></div>").append("<div>"+item.user.phone+"</div>");
+								var birthday = $("<div class='relation-two'><span>生日：</span></div>").append("<div>"+item.user.birthday+"</div>");
+								var address = $("<div class='relation-two'><span>地址：</span></div>").append("<div>"+item.user.address+"</div>");			
+								var userbtn1 = $("<div class='roywl' onclick='hebing1(this)'>亲族合并</div>").attr('userid', item.userid).attr('zzbs', item.yl1);
+								var userbtn2 = $("<div class='roywl' onclick='hebing2(this)'>喜结连理</div>").attr('userid', item.userid);
+								var box=$("<div class='roywl-box'></div>").append(userbtn1,userbtn2);
+	                            var one=$("<div class='relation-one'></div>").append(useritem,phone,birthday,address,box);
+								$('.relation-list').append(one);
+								
+							})
+						}else{
+							
+							mui.toast("您还没有可以合并的人");
+						}
+					}
+				},
+				error: function(e) {
+				//隐藏加载中
+					$(".loader").css("display","none");	
+					mui.toast(JSON.stringify(e));
+				}
+			})
+
+		}
+
+		//			//宗族合并
+		function hebing1(obj) {
+			//显示加载中
+			$(".loader").css("display","block");
+			var userid = obj.getAttribute('userid');
+			var zzbs = obj.getAttribute('zzbs');
+			$.ajax({
+				type: "get",
+				timeout:5000,
+				url: baseUrl + "/familyInf/usermsg/addrelation1?token=" + localStorage.token + "&userid=" + userid + "&yl1=" + zzbs,
+				success: function(result) {
+					//隐藏加载中
+					$(".loader").css("display","none");
+					if(result.code == 200) {
+						mui.toast(JSON.stringify(result));
+					}else{
+
+						setTimeout(function(){
+							location.href = "touch-login.html";
+						},1000);
+						
+					}
+				},
+				error: function(e) {
+					//隐藏加载中
+					$(".loader").css("display","none");	
+					mui.toast(JSON.stringify(e));
+				}
+			})
+		}
+
+		//喜结连理
+		function hebing2(obj) {
+			//显示加载中
+			$(".loader").css("display","block");
+			var userid = obj.getAttribute('userid');
+//			alert(userid);
+			$.ajax({
+				type: "get",
+				timeout:5000,
+				url: baseUrl + "/familyInf/usermsg/addrelation2?token=" + localStorage.token + "&userid=" + userid,			
+				success: function(result) {
+					//隐藏加载中
+					$(".loader").css("display","none");	
+					if(result.code==200){
+						mui.toast(JSON.stringify(result));
+					}else{
+						
+						mui.toast("成功");
+						setTimeout(function(){
+							location.href = "Genealogy.html";
+						},1000);
+						
+					}
+					
+				},
+				error: function(e) {
+					//隐藏加载中
+					$(".loader").css("display","none");	
+					mui.toast(JSON.stringify(e));
+				}
+			})
+		}
+
+		//			1.查询出自己可以申请加入哪些宗族
+		//			2.点击申请加入,传过去自己的id 和要加入人的id (类型,内容,此时的状态是未批准的)
+		//			3.当对方批准(修改申请状态后),然后再执行 合并 或者 喜结连理 的方法.
+		function hebing3(obj) {
+			//显示加载中
+			$(".loader").css("display","block");
+			var userid = obj.getAttribute("userid");
+//			alert(userid);
+			$.ajax({
+				type: "get",
+				timeout:5000,
+				url: baseUrl + "/familyInf/shenqing/add?token=" + localStorage.token + "&userid=" + userid,
+				success: function(result) {
+					//隐藏加载中
+					$(".loader").css("display","none");	
+					if(result.code==200){
+						mui.toast(JSON.stringify(result));
+					}else{
+						
+						mui.toast("成功");
+						setTimeout(function(){
+							location.href = "shenqing-list.html";
+						})
+						
+					}
+				},
+				error: function(e) {
+					//隐藏加载中
+					$(".loader").css("display","none");	
+					mui.toast(JSON.stringify(e));
+				}
+			})
+		}
+
+	</script>
+
+</html>

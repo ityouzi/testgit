@@ -1,0 +1,163 @@
+body{
+    font-size: 1em;
+    font-family: "Microsoft YaHei";
+    color: #535353;
+    box-sizing: border-box;
+}
+html,body{
+	/*width:7.5rem;*/
+	width: 100%;
+	/*height:100%;*/
+	position: relative;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color:#374782;
+}
+em{
+	font-style: normal;
+}
+input{
+    outline: none;
+}
+.clear:after{
+    display: block;
+    content: "";
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+#content{
+    width: 7.5rem;
+	margin-bottom: 1.2rem;
+	margin-top: 1.07rem;
+    width: 7.5rem;
+    height: 100%;
+    z-index: 100;
+}
+.head{
+	width: 100%;
+	height:1.07rem;
+	background-color: #4c4a8e;
+	text-align: center;
+	color: #f6f6f9;
+	position: fixed;
+	top: 0;
+	left: 0;
+	-webkit-box-shadow: 0 1px 6px #222;
+    box-shadow: 0 1px 6px #222;
+    z-index: 99;
+    
+}
+
+.head>a>img{
+	height:0.4rem;
+	vertical-align: middle;
+	
+}
+.head>a{
+	height:100%;
+	width:0.8rem;
+	position: absolute;
+	left:0.15rem;
+	top:0;
+	text-align: left;
+	line-height: 1.07rem;
+	display: flex;
+	align-items: center;
+}
+.head>div{
+	height: 1.07rem;
+	font-size:0.34rem;
+	line-height:1.07rem;
+	color: #f6f6f9;
+}
+
+.dibu-box{
+	width: 100%;
+	height: 1.15rem;
+	background-color: #4c4a8e;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	z-index: 999;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	border-top: 1px solid #EEEEEE;	
+}
+.dibu-one{
+	width: 0.7rem;
+	height: 0.75rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+.dibu-one img{
+	height: 0.40rem;
+	width: auto;
+}
+.dibu-one span{
+	font-size: 0.18rem;
+	color: #f6f6f9;
+}
+.mui-toast-container {
+	line-height: 17px;
+	position: fixed;
+	z-index: 9999;
+	bottom: 50px;
+	left: 50%;
+	-webkit-transition: opacity .3s;
+	transition: opacity .3s;
+	-webkit-transform: translate(-50%, 0);
+	transform: translate(-50%, 0);
+	opacity: 0
+}
+
+.mui-toast-container.mui-active {
+	opacity: .9
+}
+
+.mui-toast-message {
+	font-size: 14px;
+	padding: 10px 25px;
+	text-align: center;
+	color: #fff;
+	border-radius: 6px;
+	background-color: #323232
+}
+/*加载中*/
+.loader {
+  margin: 0 0 2em;
+  height: 100px;
+  width: 20%;
+  padding: 1em;
+  margin: 0 auto 1em;
+  display: none;
+  vertical-align: top;
+  position: fixed;
+  top: 2.5rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  z-index: 999;
+}
+/*
+  Set the color of the icon
+*/
+svg path,
+svg rect {
+  fill: #4C4A8E;
+}
+#loader-1{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%,-50%);
+}

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>发布</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<script type="text/javascript" src="../js/common.js"></script>
+		<link rel="stylesheet" href="../css/dmaku.css" />
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="../js/public.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/activity-add.css" />
+		<script src="http://www.deitui.com/plugin/lrz/lrz.bundle.js"></script>
+		<script src="../js/skyeditor.js"></script>
+		<!--<script src="../js/code.js"></script>-->
+		<script>
+			skyeditor.root="../";
+			skyeditor.tools.push("code");
+			skyeditor.init();
+		</script>
+	</head>
+
+	<body>
+		<div class="head">
+			<a href="touch-index.html"><img src="../img/back.png"></a>
+			<div>发布</div>
+		</div>
+		<!--底部-->
+		<div class="dibu-box" style="border-top: none;">
+			<a href="touch-index.html">
+				<div class="dibu-one">
+					<img src="../img/index@1.png" />
+					<span id="">
+					首页
+					</span>
+				</div>
+			</a>
+			<a href="activity-add.html">
+				<div class="dibu-one">
+					<img src="../img/fabu@2.png" />
+					<span id="" class="active" style="color: #cac196;">
+					消息
+					</span>
+				</div>
+			</a>
+			<a href="hebing.html">
+				<div class="dibu-one">
+					<img src="../img/news@1.png" />
+					<span id="">
+					合并
+					</span>
+				</div>
+			</a>
+			<a href="mine.html">
+				<div class="dibu-one">
+					<img src="../img/mine@1.png" />
+					<span id="">
+					我的
+					</span>
+				</div>
+			</a>
+		</div>
+		<form class="fabu" action="get" method="get" id="formData">
+			<div class="fabu-title">
+				<span id="">
+					活动标题：
+				</span>
+				<input type="text" style="color: #222222;" name="title" id="title" value="" placeholder="必填" />
+			</div>
+			<div class="fabu-time">
+
+				<span id="">
+					活动时间：
+				</span>
+				<input type="datetime-local"  value="" name="time" id="time" />
+			</div>
+			<div class="fabu-content">
+				<span style="margin-top: 0.3rem;">
+					活动内容：
+				</span>
+				<!--<textarea name="content"></textarea>-->
+				<div class="sky-editor-content" contenteditable="true"></div>
+			</div>
+			<div class="fabu-content">
+				<span style="margin-top: 0.3rem;">
+					活动图片：
+				</span>
+				<div class="imgbox clear">
+					<div class="img-one">
+						<div>
+							+
+						</div>
+						<input type="file" id="file1" name="mFile" multiple="multiple" accept="image/*">
+					</div>
+
+				</div>
+			</div>
+
+		</form>
+         <div class="qurenbox">
+         	<div class="quren" onclick="quren()"> 确认发布</div>
+         </div>
+		
+		<!--加载中-->
+        <div class="loader">
+		  <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		     width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+		  <path fill="#000" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z">
+		    <animateTransform attributeType="xml"
+		      attributeName="transform"
+		      type="rotate"
+		      from="0 25 25"
+		      to="360 25 25"
+		      dur="0.6s"
+		      repeatCount="indefinite"/>
+		    </path>
+		  </svg>
+		</div> 
+	</body>
+	<script type="text/javascript" src="../js/mileageCamera.js"></script>
+	<script>
+		mui('body').on('tap', 'a', function() {
+			document.location.href = this.href;
+		});
+		//从相册发送照片  
+		fileStack = []; //存放图片文件的数组
+		function quren() {
+			
+			var formDataEl = document.getElementById("formData");
+			var formdata = new FormData(formDataEl);
+	        	for(var i = 0;i<imgArr.length;i++){
+	         	formdata.append("mFile",imgArr[i]);
+	        }
+			console.log(formdata);
+			
+
+//			var formdata = new FormData();
+//			$.each(fileStack, function(i, file) { //所有文件都要放到同一个名字下面：如files
+//				formdata.append("mFile", file);
+//			});
+			
+			
+			var title = $('input[name="title"]').val();
+			var content=$(".sky-editor-content").html().replace(/&nbsp;/g, '  ');;
+			var time = $('input[name="time"]').val();
+            if(title && content && time){
+				//显示加载中
+			    $(".loader").css("display","block");
+				$.ajax({
+					url: baseUrl + "/familyInf/activity/add?token=" + localStorage.token + "&title=" + title + "&content=" + content + "&time=" + time,
+					dataType: "json",
+					type: "post",
+					data: formdata,
+					cache: false,
+					processData: false,
+					contentType: false,
+					timeout: 5000, //超时时间设置，单位毫秒
+					success: function(result) {
+						$(".loader").css("display","none");
+						var fanhui = result.extend.result;
+						if(result.code == 200) {
+							mui.toast(JSON.stringify(fanhui));
+						} else if(result.code == 205) {
+							mui.toast("登录过期，请重新登录！");
+							setTimeout(function() {
+								location.href = "touch-login.html";
+							}, 1000);
+						} else {					
+							mui.toast('发布成功');
+							setTimeout(function() {
+								location.href = "activity-list.html";
+							}, 1000)
+						}
+					},
+					error: function(e) {
+						$(".loader").css("display","none");
+						mui.toast(JSON.stringify(e));
+					}
+				})
+            	
+            }else{
+            	mui.toast("参数不能为空")
+            }
+		}
+		
+		
+		//选择图片
+			$("#file1").change(function(e){
+				addFiles(e);
+			})
+		var imgArr = [];
+		function addFiles(e) {
+			var sy = 9 - $(".img-two").length;
+			var files = document.querySelector("input[type=file]");
+			var filelist = files.files; 			//选择图片列表
+			if(filelist.length > 0 && filelist.length <= sy) {
+				upImgCompression(e).then(res=>{   	//res是一个数组，里面是压缩成功的base64
+					imgArr = res;
+					console.log(imgArr);
+					for (var i = 0;i<res.length;i++) {
+						var imge = $("<img class='fileimg' />").attr("src", res[i]);
+						var shanchu = $("<div class='shanchu' index="+ i +" onclick='sc(this)'><img src='../img/shanchu.png'></div>");
+						var imgtwo = $("<div class='img-two'></div>").append(imge, shanchu);
+						$(".imgbox").append(imgtwo);
+					}
+				})
+				
+//				$.each(filelist, function(i, file) {
+//					fileStack.push(file);
+//					var reader = new FileReader();
+//					reader.onload = function(e) {
+//						var result = this.result;
+//						var img = document.createElement("img");
+//						img.src = result;
+//						var imge = $("<img class='fileimg' />").attr("src", result);
+//						var shanchu = $("<div class='shanchu' index="+ i +" onclick='sc(this)'><img src='../img/shanchu.png'></div>");
+//						var imgtwo = $("<div class='img-two'></div>").append(imge, shanchu);
+//						$(".imgbox").append(imgtwo);
+//					};
+//					reader.readAsDataURL(file);
+//				});
+			} else {
+				mui.toast("最多上传9张");
+			}
+		}
+
+		function sc(obj) {
+			$(obj).parents(".img-two").remove();
+			var index = obj.getAttribute("index");
+			fileStack.splice(index, 1);
+		}
+		
+		
+		//图片压缩
+		function upImgCompression(event) {
+		    // event：必传change的event
+		    // 压缩图片需要的一些元素和对象
+
+		    var imgArr = [];
+		    // 缩放图片需要的canvas
+		    var canvas = document.createElement('canvas');
+		    var context = canvas.getContext('2d');
+		    // 选择的文件对象
+		    var file = event.target.files;
+
+		    var _loop = function _loop(i) {
+		        reader = new FileReader();
+		        imgFile = file[i];
+		        // 选择的文件是图片
+
+		        if (imgFile.type.indexOf("image") == 0) {
+		            reader.readAsDataURL(imgFile);
+		        } else {
+		            return 'continue';
+		        }
+		        var img = new Image();
+		        // 文件base64化，以便获知图片原始尺寸
+		        reader.onload = function (e) {
+		            img.src = e.target.result;
+		        };
+		        imgP = new Promise(function (resolve, reject) {
+		            // base64地址图片加载完毕后
+		            img.onload = function () {
+		                // 图片原始尺寸
+		                var originWidth = this.width;
+//		                alert(originWidth);
+		                var originHeight = this.height;
+//		                alert(originHeight);
+		                // 最大尺寸限制
+		                var maxWidth = 400,
+		                    maxHeight = 400;
+		                // 目标尺寸
+		                var targetWidth = originWidth,
+		                    targetHeight = originHeight;
+		                // 图片尺寸超过400x400的限制
+		                if (originWidth > maxWidth || originHeight > maxHeight) {
+		                    if (originWidth / originHeight > maxWidth / maxHeight) {
+		                        // 更宽，按照宽度限定尺寸
+		                        targetWidth = maxWidth;
+		                        targetHeight = Math.round(maxWidth * (originHeight / originWidth));
+		                    } else {
+		                        targetHeight = maxHeight;
+		                        targetWidth = Math.round(maxHeight * (originWidth / originHeight));
+		                    }
+		                }
+		                // canvas对图片进行缩放
+		                canvas.width = targetWidth;
+		                canvas.height = targetHeight;
+		                // 清除画布
+		                context.clearRect(0, 0, targetWidth, targetHeight);
+		                // 图片压缩
+		                context.drawImage(img, 0, 0, targetWidth, targetHeight);
+		                var base64 = canvas.toDataURL("image/png", 0.8);
+
+		                resolve(base64);
+		            };
+		        });
+		        imgArr.push(imgP);
+		    };
+
+		    for (var i = 0; i < file.length; i++) {
+		        var reader, imgFile;
+		        var imgP;
+
+		        var _ret = _loop(i);
+
+		        if (_ret === 'continue') continue;
+		    }
+//		    canvas = null;
+		    return Promise.all(imgArr);
+		}
+		
+		
+		
+	</script>
+
+</html>

@@ -1,0 +1,60 @@
+
+@font-face {font-family: "skyeditor-iconfont";
+  src: url('//at.alicdn.com/t/font_739936_cyuqbmohn2s.eot?t=1531618231066'); /* IE9*/
+  src: url('//at.alicdn.com/t/font_739936_cyuqbmohn2s.eot?t=1531618231066#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAiYAAsAAAAADRAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADMAAABCsP6z7U9TLzIAAAE8AAAARAAAAFZW8EoLY21hcAAAAYAAAACdAAACEGuY2UNnbHlmAAACIAAABDAAAAWYUq53rWhlYWQAAAZQAAAALwAAADYSAM0BaGhlYQAABoAAAAAcAAAAJAfeA4tobXR4AAAGnAAAABQAAAAoJ+kAAGxvY2EAAAawAAAAFgAAABYIYgbQbWF4cAAABsgAAAAdAAAAIAEZAF1uYW1lAAAG6AAAAVoAAALlJMpmJnBvc3QAAAhEAAAAUwAAAGy/awRXeJxjYGRgYOBikGPQYWB0cfMJYeBgYGGAAJAMY05meiJQDMoDyrGAaQ4gZoOIAgCKIwNPAHicY2Bk/sc4gYGVgYOpk+kMAwNDP4RmfM1gxMjBwMDEwMrMgBUEpLmmMDgwVLyQZm7438AQw9zA0AQUZgTJAQAniQyReJzFkcENgzAMRX9ISkLVA6p6Y4VOA0duTMGBGXrqIExl2IJ+xznQCfjWi+SvxLFsADcAnrxJANwXDqoPXZd9j3v2AybmLUPvzxIkySDjtu7dcRQnSn9yznL5ZYsnXjnU8axZI6FhFxEVrRqXyV339b8e+VxK1pC5wBYlGLoDiYbuTZLBeUJ6A+oNhtaR0dCdb6vBuWPvDFQ/fUAp/gAAAHicbVRNbBtFFJ434/1x7Hiy3r/Yrh3vOt5N7MRR/LMWVLHdKkVxQqCoIFpBD1wr/i5QgdoqSkFCAokeEAe4pUhIcIg4cAlVaJA4NCJpxQERVaKFRuLCoQeO9oa33jQUCWvnzZvZ781+37z3TARCDn5nN9goUckEmSXz5DQhIJbBTtAsWG69QsugW4JuagnmFlxLKtgVNgemLWpG1as7piiJHBKQg5pV9dwKdaFRb9HjUDWyAKlM+kyyeCzJrsHQqJt731+ka6CPFY7x1rTfnWpr1bwqX4wnk6lk8iNZFASZ0ghPwGumERWiQ6L/hcDT+o2xSToG8ZSbfvrccD6TfOWD+uvZohkFWFkBNZNPfNlW0go+l9KGmkxJI8PyaHq4MK7Bxf3YqBrPOg8I/hhqXWVb9BeSJHlSR52OzUHUxiBQMgNNr+42HVFiYg68puo5LtizrmMHCCmQ2wZEwItD6aH70ej9obQa3d6ORv9O6PRDyjMDOwyvwr3DN+oARwsDLLq4vnULvW8Q1nuY0AU+zEYSOvPfOHqnDqDINcjLFXab+iROUmSGzJEl3KyA24JmDswESAoO9HCNu6rtuE4LDDMHVa/ZwmxICSiwCsxB3asapo5g69EqC5ooUb7ZF4T+5mZPEHqb1/cikb3ra4Fdg/m3SjLT07L10oWX89GUweTS2/PX9ExmMgOQ0SA/cDPa6lE4HsXaGHp0TP/SE41YSmGxyanpUowpqZj3JATBHYzVO1rmPz7qpYMEfUzfIzFSJaTYKOgFpabXGjXFFB23huVVbYFThkat6jUqYItSIbwK1DK4EPhqd3l5d7nXPhfpshlrvAKlcjzuOlA6McG6kTOtk8+BnbMcoGev/nYP+nt7fkSAU4sTxalnpzuT486Ea59cAFjuTDZ44vhMdzGgFBnw+p5uYfVIyI0Tolq6peBoHs4n2OXe1WCs0Cv91cG42fG32gdoOod1FxxE/8QeKxAX6w4FuFaQQ2RuoYyGoECYIVfBpYXbUGwU6Q5d8Pya1wXoerDjLVCo+Z/BVN6vWWWAsgU7+SmA2gEBQjNLTWS/0PTr4bz0JjV8foj7KZz9s+e3zweaDv5i+0wjMklgLxjIqAX1oNANyWW6FQXFUhiKY3K+VGqXSn/c/YQ+8O/2d9nNp3q32Sz8AOUTZXy+fejvPwMivNv7lU30s/Tzf++sTU8PatchNcyn7TSUoPZ0RRPduhdI1MSChWVraNiDtlPH5qoy0Z4BB3HYkhp9J8a5yfkdHoMX0I35X8e4Icsbsj4SGCbr8ro8EpjveByej3MeDyA/xjgANzj/GQEbAWBD9i/ICMM4NP/HD/+tTGyokKUZMgtZmiGzkKUaMgtZwuVHH7oTcAs+H/DUA4YGlzaiyNCQ1yXkvC7TUyG5QEs8oIhxGPwYRfj0MYr/ACakCnN4nGNgZGBgAOKiZ3ePxPPbfGXgZmEAgesFR7Yj6P91LAzMEkAuBwMTSBQAZ3oL1AB4nGNgZGBgbvjfwBDDwgACQJKRARVwAQBHEAJzeJxjYWBgYH7JwMDCgB8DACNPAREAAAAAAHYAzAFEAZABsgH6AioCegLMAAB4nGNgZGBg4GIIZGBlAAEmMI8LSP4H8xkAEbQBdwAAAHicjZK9bsIwFIVP+KsAqUMrOntArdSK8DMyVUKCuQxsHSA4EAgxcgwSz9A36Dv0ebpV6nN06SFcFrKQyFefz7nHsSMDuMMPPJyeBseJPeoN4QJu8CRcpO4Ll8ivwmXUMRauUH8XruEFRriOe3xyBa9U5ewZX8IemvgWLuAWf8JFNL2qcIncEi7jwXsTrlBfCNcw8T6E63j0fmsDq6dOz9XsoKLAJKFJXC1dH/Q8csa2ztJYL3bx1OaNvDLRNo1Morp+J2+OdKLt+XvpftFzLlShNRs1pKvj2KitNSsdOH/p3Lbfboei+4HZcPsDWGhM4VjnUJjhwBoh4C9MEGbVsS/Fms6xJ+LcMNXKdY3pL7BDzPXsVYlreib0j6tF2Vyhy8vQuSo5op9k6cvzpdhzpz2qjt2KwzKzIQ0lq3mKmKywzbwVlYC6j2WW2qKPNt/wot/P9rD5B09qkB8AAHicbcZbCoAgEAXQuT5KbS0tqnQko5oQiZZf0G/n65CiT6B/AQoaBhYdejh4BAyE20RJbHmXtWDpIh9Nqr1KYtFniZ63ceYsld27KTeuRA/m/xF6AA==') format('woff'),
+  url('//at.alicdn.com/t/font_739936_cyuqbmohn2s.ttf?t=1531618231066') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('//at.alicdn.com/t/font_739936_cyuqbmohn2s.svg?t=1531618231066#skyeditor-iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.skyeditor-iconfont {
+  font-family:"skyeditor-iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+/****editor****/
+.sky-editor{
+		position: fixed;
+		bottom: 0px;
+		left: 0;
+		right: 0;
+		background-color: #fff;
+		
+	}
+	*{
+		box-sizing: border-box;
+	}
+
+	.sky-editor-content {
+		resize:vertical;
+		overflow:auto;
+		/*border:1px solid #eee;*/
+		border-radius:5px;
+		min-height:3rem;
+	   -webkit-user-select:text;
+	   height: 3rem;
+	   line-height: 2; 
+	   width: 100%;
+	   box-sizing: border-box;
+	   background-color: #fff;
+	   padding: 0.1rem;
+	   color: #222222;
+	   
+               
+  }
+
+.sky-editor-content>div{
+	/*margin-bottom: 0.05rem;*/
+	/*border-bottom:1px solid #eae4da;*/
+	-webkit-user-select:text;
+	    word-wrap: break-word;
+    word-break: normal;
+}
+.sky-editor-content div{
+	-webkit-user-select:text;
+}

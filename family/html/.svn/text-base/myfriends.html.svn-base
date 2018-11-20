@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>添加朋友</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<script type="text/javascript" src="../js/common.js"></script>
+		<link rel="stylesheet" href="../css/dmaku.css" />
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="../js/public.js"></script>	
+		
+		<style type="text/css">
+         	html,
+			body {
+				width: 7.5rem;
+			    height: 100%;
+			    background: url(../img/mine/pengyou-bg.png) no-repeat;
+			    -webkit-background-size: 100%;
+			    background-size: 100% 100%;
+			    overflow-y: auto;
+			}
+			
+			.jklla{
+				width: 100%;
+				height: 1.1rem;
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				margin-top: 1.07rem;
+				background-color: rgba(225, 222, 255, 0.3);
+			    color: #FFFFFF;
+			    filter: Alpha(opacity=30);
+			    margin-bottom: 0.8rem;
+			}
+			.jklla>input{
+				width: 4.3rem;
+				height: 0.7rem;
+				background-color: #FFFFFF;
+				border-radius: 0.2rem;
+				border: none;
+				margin: 0rem 0.3rem;
+				color: #222222;
+				text-indent: 0.1rem;
+			}
+			.jklla>button{
+				width: 1.15rem;
+				height: 0.7rem;
+				background-color: transparent;
+				border-radius: 0.2rem;
+				border: 1px solid #FFFFFF;				
+				color: #FFFFFF;
+				
+			}
+			.fabu-content{
+	     		width: 100%;
+	     		height: 1rem;
+	     		display: flex;
+	     		justify-content: flex-start;
+	     		align-items: center;
+	     		font-size: 0.28rem;
+	     		padding:0rem 0.3rem;
+	     		margin-bottom: 0.1rem;
+	     		box-sizing: border-box;	     	
+	     		background-color: rgba(225, 222, 255, 0.3);
+			    color: #FFFFFF;
+			    filter: Alpha(opacity=30);
+         	}
+         	.fdongtai {
+			    height: 100%;
+			    width: 0.8rem;
+			    position: absolute;
+			    right: 0.15rem;
+			    top: 0;
+			    text-align: left;
+			    line-height: 1.07rem;
+			    display: flex;
+			    align-items: center;
+			    font-size: 0.24rem;
+			}
+			.quciao{
+				width: 2.35rem;
+			    height: 0.7rem;
+			    border-radius: 0.33rem;
+			    box-sizing: border-box;
+			    background-color: #4C4A8E;
+			    border: 2px solid #b4b4dc;
+			    text-align: center;
+			    line-height: 0.65rem;
+			    color: #FFFFFF;
+			    font-size: 0.26rem;
+			    position: fixed;
+			    left: 50%;
+			    bottom: 3.7rem;
+			    transform: translateX(-50%);
+			   -webkit-transform: translateX(-50%);
+			}
+		</style>
+		
+	</head>
+	<body>
+		
+		<div class="head">
+			<a href="friends-list.html"><img src="../img/back.png"></a>
+			<div>添加朋友</div>
+			<!--<em class="fdongtai" onclick="add(this)">添加</em>-->
+		</div>
+		<!--底部-->
+		<div class="dibu-box">
+			<a href="touch-index.html">
+				<div class="dibu-one">
+					<img src="../img/index@1.png" />
+					<span id="">
+					首页
+					</span>
+				</div>
+			</a>
+			<a href="activity-add.html">
+				<div class="dibu-one">
+					<img src="../img/fabu@1.png" />
+					<span id="" >
+					消息
+					</span>
+				</div>
+			</a>
+			<a href="hebing.html">
+				<div class="dibu-one">
+					<img src="../img/news@1.png" />
+					<span id="">
+					合并
+					</span>
+				</div>
+			</a>
+			<a href="mine.html">
+				<div class="dibu-one">
+					<img src="../img/mine@1.png" />
+					<span id="" >
+					我的
+					</span>
+				</div>
+			</a>
+		</div>
+		<div class="jklla">			
+			<input type="text" name="phone"/>
+			<button onclick="search()">查询</button>			
+		</div>
+	
+		<form id="info">			
+				<div class="fabu-content">
+					<span id="name">
+					姓名：
+					</span>
+					<div class="namete"></div>
+				</div>
+		
+				<div class="fabu-content">
+					<span id="phone">
+					电话：
+					</span>
+					<div class="phone"></div>
+				</div>
+				<div class="fabu-content">
+					<span id="address">
+					地址：
+					</span>
+					<div class="address"></div>
+				</div>
+		</form>
+        <div class="quciao" onclick="add(this)">添加</div>
+	    <!--加载中-->
+        <div class="loader">
+		  <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		     width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+		  <path fill="#000" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z">
+		    <animateTransform attributeType="xml"
+		      attributeName="transform"
+		      type="rotate"
+		      from="0 25 25"
+		      to="360 25 25"
+		      dur="0.6s"
+		      repeatCount="indefinite"/>
+		    </path>
+		  </svg>
+		</div> 
+	</body>
+	
+    <script type="text/javascript"> 
+    	mui('body').on('tap', 'a', function() {
+				document.location.href = this.href;
+		});
+    	//添加朋友
+    	function add(obj){    	
+    		    //显示加载中
+				$(".loader").css("display","block");
+    			var userid = sessionStorage.getItem("userid");
+//  			alert(userid);
+    			$.ajax({
+					type:"get",
+					timeout:5000,
+					url:baseUrl+"/familyInf/shenqing/add?token=" + localStorage.token + "&user2id=" + userid,
+//					data:$('#info').serialize(),
+					success: function(result){	
+						//隐藏加载中
+						$(".loader").css("display","none");
+						var code = result.code;
+						if(code == "200"){
+							mui.toast("已经添加过或等待好友审核");
+							setTimeout(function(){
+								location.href="friends-list.html";
+							},1000);
+						}else{
+							mui.toast("消息发送成功");
+							setTimeout(function(){
+								location.href="mine.html";
+							},1000);
+						}
+					},
+					error:function(e){
+						//隐藏加载中
+						$(".loader").css("display","none");
+						mui.toast(JSON.stringify(e));
+					}
+				})
+    	}
+    	//取消
+//  	function quxiao(){
+//  		location.href="friends-list.html";
+//  	}   	
+    	
+    	//查询好友
+    	function search(){
+    		//显示加载中
+			$(".loader").css("display","block");
+    		var phone = $("input[name='phone']").val();
+//  		alert(phone);    
+		
+    			$.ajax({
+					type:"get",
+					timeout:5000,
+					url:baseUrl+"/familyInf/usermsg/addfriend?token=" + localStorage.token + "&phone=" + phone,
+					success: function(result) {
+						//隐藏加载中
+						$(".loader").css("display","none");
+						if(result.code==200){
+							mui.toast(JSON.stringify(result));
+						}else{ 
+							var data = result.extend.result;
+							if(data == ''){
+								$('.namete').html("");
+								$('.phone').html("");	
+								$(".address").html("");
+								mui.toast("搜索用户不存在")
+							}else{
+								console.log(result);
+								
+								$('.namete').html(data[0].name);
+								$('.phone').html(data[0].phone);	
+								$('.address').html(data[0].address);
+								sessionStorage.setItem("userid",data[0].userid);
+							}
+						}
+					},
+					error:function(e){
+						//隐藏加载中
+						$(".loader").css("display","none");
+						mui.toast(JSON.stringify(e));
+					}
+				})
+    	}
+    </script>
+</html>

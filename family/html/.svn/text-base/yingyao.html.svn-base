@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>我的应邀</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<script type="text/javascript" src="../js/common.js"></script>
+		<link rel="stylesheet" href="../css/dmaku.css" />
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="../js/public.js"></script>	
+		<style type="text/css">
+         	html,
+			body {
+				width: 100%;
+				height: 100%;
+				background-color: #FFFFFF;
+			}
+			
+         	.fabu-content{
+         		width: 100%;
+         		height: 2.1rem;
+         		display: flex;
+         		flex-direction: column;
+         		justify-content: space-around;
+         		align-items: flex-start;        		
+         		font-size: 16px;
+         		padding: 10px;
+         		box-sizing: border-box;
+         		color: #4C4A8E;
+         	}
+             .csaasd{
+             	display: flex;
+             	justify-content: flex-start;
+             	align-items: center;
+             	font-size: 0.28rem;
+             }
+             .csaasd>img{
+             	width: 0.5rem;
+             }
+         </style>  
+	</head>
+	<body>
+		<div class="head">
+			<a href="mine.html"><img src="../img/back.png"></a>
+			<div>我的应邀</div>
+		</div>
+				    <!--底部-->
+		<div class="dibu-box">
+			<a href="touch-index.html">
+				<div class="dibu-one">
+					<img src="../img/index@1.png" />
+					<span id="">
+					首页
+					</span>
+				</div>
+			</a>
+			<a href="activity-add.html">
+				<div class="dibu-one">
+					<img src="../img/fabu@1.png" />
+					<span id="" >
+					消息
+					</span>
+				</div>
+			</a>
+			<a href="hebing.html">
+				<div class="dibu-one">
+					<img src="../img/news@1.png" />
+					<span id="">
+					合并
+					</span>
+				</div>
+			</a>
+			<a href="mine.html">
+				<div class="dibu-one">
+					<img src="../img/mine@1.png" />
+					<span id="" >
+					我的
+					</span>
+				</div>
+			</a>
+		</div>
+		<!--
+        	作者：2504480136@qq.com
+        	时间：2018-11-15
+        	描述：内容
+        -->
+		<div class="infobox" style="margin-top: 1.07rem; margin-bottom: 1.2rem;">
+			
+		</div>	
+		<!--加载中-->
+        <div class="loader">
+		  <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		     width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+		  <path fill="#000" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z">
+		    <animateTransform attributeType="xml"
+		      attributeName="transform"
+		      type="rotate"
+		      from="0 25 25"
+		      to="360 25 25"
+		      dur="0.6s"
+		      repeatCount="indefinite"/>
+		    </path>
+		  </svg>
+		</div> 
+	</body>
+
+    <script type="text/javascript">	
+    		mui('body').on('tap', 'a', function() {
+				document.location.href = this.href;
+			});
+			$(function() {
+				//显示加载中
+				$(".loader").css("display","block");
+				var creator =  localStorage.getItem("userId");								
+				$.ajax({
+					url: baseUrl + "/familyInf/reply/list?token=" + localStorage.token + "&creator=" + creator,
+					type: "get",
+					timeout:5000,
+					success: function(result) {
+						//隐藏加载中
+						$(".loader").css("display","none");
+						if(result.code==200){
+							mui.toast(JSON.stringify(result));
+						}else{
+							var data = result.extend.result;
+							if(data==null || data==""){
+								mui.toast("您还没有活动应邀");
+							}else{
+								$.each(data, function(index, item) {
+									var title=$("<div class='csaasd'><img src='../img/mine/ren.png'>活动主题：</div>").append(item.title);							   
+								    var ti=$("<div class='csaasd' ><img  src='../img/mine/dengpao.png'>活动时间：</div>").append(item.time);							    
+								    var peo=$("<div class='csaasd'><img  src='../img/mine/jiaoying.png'>活动发起人：</div>").append(item.creator);							   
+							  
+									if(index %2 == 0){
+									var fabu=$("<div class='fabu-content' onclick='dianji2(this)'></div>").append(title,ti,peo).attr("name",item.activityId).css("background-color","#dfdfe0");		
+									}else{
+									var fabu=$("<div class='fabu-content' onclick='dianji2(this)'></div>").append(title,ti,peo).attr("name",item.activityId);	
+									}
+								   	$(".infobox").append(fabu);					    
+								})
+							}
+							
+						}
+					},
+					error: function(e) {
+						$(".loader").css("display","none");
+						mui.toast(JSON.stringify(e));
+					}
+				})
+			})
+			
+			
+			function dianji2(obj){				
+				var activityId = obj.getAttribute("name");
+//				alert(activityId);
+				sessionStorage.setItem("activityId",activityId);
+				location.href="activity-msg.html?str=yingyao";
+			}
+	</script>
+	
+	
+</html>

@@ -1,0 +1,130 @@
+.draw-listbox{
+	width: 100%;
+	padding: 0.2rem;
+	box-sizing: border-box;
+	
+}
+html,body{
+	width: 7.5rem;
+	height: 100%;
+	background: url("../img/zc-bg.jpg") no-repeat;
+	-webkit-background-size: 100%;
+	background-size: 100% 100%;
+	overflow-y: auto;
+}
+
+.draw-tips{
+	width: 65%;
+	height: 0.7rem;
+	font-size: 0.26rem;
+	background-color: rgba(225, 222, 255, 0.45);
+	color: #f0a086;
+	filter: Alpha(opacity=30);
+	box-sizing: border-box;
+	text-align: center;
+	line-height: 0.7rem;
+	border-radius: 0.1rem;
+	margin: 0.35rem auto 0.3rem;
+}
+.Birth-box{
+	width: 65%;
+	height:3.75rem;
+	margin: 1.5rem auto 0.45rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	border-radius: 0.2rem;
+	box-sizing: border-box;
+}
+.Birth-date{
+	border-radius: 0.05rem;
+	width: 100%;
+	height: 0.7rem;
+	background-color: rgba(225, 222, 255, 0.45);
+	color: #FFFFFF;
+	filter: Alpha(opacity=54);
+	font-size: 0.26rem;
+	padding: 0 0.1rem;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+.Birth-date>span{
+	width: 40%;
+	text-align: center;
+}
+.Birth-date>input{
+	width: 68%;
+	height: 100%;
+	border: none;
+	background: none;
+	font-size: 1em;
+	font-family: "Microsoft YaHei";
+	color: #FFFFFF;
+	letter-spacing: 1px;
+	padding-left: 2px;
+	
+}
+
+.Birth-date>select{
+	width: 68%;
+	height: 100%;
+	border: none;
+	background: none;
+	font-size: 1em;
+	font-family: "Microsoft YaHei";
+	color: #FFFFFF;
+	letter-spacing: 1px;
+	padding-left: 2px;
+}
+#draw{
+	width: 2.35rem;
+	text-align: center;
+	padding: 0.2rem;
+	margin:0 auto;
+	font-size: 0.26rem;
+	box-sizing: border-box;
+    border:2px solid #acaed5;
+	color: #FFFFFF;
+	border-radius: 0.4rem;
+}
+.result {
+	width: 65%;
+	height: 3.45rem;
+	margin: 0 auto;
+	background-color: rgba(225, 222, 255, 0.54);
+	color: #FFFFFF;
+	filter: Alpha(opacity=54);
+	border-radius: 0.2rem;
+	padding: 0.3rem;
+	margin-bottom: 1.2rem;
+	font-size: 0.26rem;
+	box-sizing: border-box;
+}
+.xs {
+	width: 33%;
+	float: left;
+	margin-bottom: 0.3rem;
+	text-align: center;
+}
+.head>div {
+	font-size: 0.34rem;
+	line-height: 1.07rem;
+	color: #f6f6f9;
+}
+.but{
+	width: 100%;
+	height: 0.75rem;
+	background: url("../img/dl-an.png") no-repeat;
+    -webkit-background-size: 100%;
+    background-size: 100% 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 0.34rem;
+	color: #FFFFFF;
+	margin-top: 0.5rem;
+	border-radius: 0.05rem;
+}
