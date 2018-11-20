@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="../css/common.css" />
+		<link rel="stylesheet" href="../css/login.css" />
+        <script type="text/javascript" src="../js/common.js" ></script>
+        <script type="text/javascript" src="../js/mui.min.js" ></script>
+	</head>
+
+	<body>
+
+		<div id="login"></div>
+		<div class="login_bg">
+			<!--<div id="logo">
+				<img src="../img/zupu.jpg" alt="" />
+			</div>-->
+
+			<form action="">
+				<div class="userName">
+					<lable>用户名：</lable>
+					<input type="text" class="input_account"  />
+				</div>
+				<div class="passWord">
+					<lable>密码：</lable>
+					<input type="password" class="input_password" />
+				</div>
+				<div class="choose_box">
+					 <div class="login_btn"  onclick="register()">注册新用户</div>
+					 <div class="login_btn" onclick="newPassword()">忘记密码</div>
+					
+				</div>
+				<div class="but" onclick="login()">
+					登录
+				   
+				</div>
+				
+			</form>
+
+			<!--加载中-->
+	        <div class="loader">
+			  <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+			     width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+			  <path fill="#000" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z">
+			    <animateTransform attributeType="xml"
+			      attributeName="transform"
+			      type="rotate"
+			      from="0 25 25"
+			      to="360 25 25"
+			      dur="0.6s"
+			      repeatCount="indefinite"/>
+			    </path>
+			  </svg>
+			</div> 
+		</div>
+
+		<script src="../js/jquery-1.11.1.min.js"></script>		
+		<script src="../js/public.js"></script>
+		<script>
+			var admin = localStorage.getItem('loginName');
+			var pass = localStorage.getItem('loginPwd');
+			var info;
+			$(function() {
+				//  	    alert(admin);
+				//  	    alert(pass); 
+				$(".input_account").attr("value", admin);
+				$(".input_password").attr("value", pass);
+			})
+
+			function login() {
+
+				var loginName = $(".input_account").val();
+				var loginPwd = $(".input_password").val();
+
+				if(loginName && loginPwd) {
+//					alert(loginName+"***"+loginPwd);
+					//显示加载中
+					$(".loader").css("display","block");
+					$.ajax({
+						type: "get",
+						url: baseUrl + "/familyInf/usermsg/login",
+						timeout: 5000,
+						data: "username=" + loginName + "&password=" + loginPwd,
+						success: function(result) {
+							//隐藏加载中
+							$(".loader").css("display","none");
+							if(result.code == 200) {
+//															alert(JSON.stringify(result))
+								mui.toast(JSON.stringify(result));
+							}
+							if(result.code == 100) {
+								
+//								alert(JSON.stringify(result));
+								localStorage.setItem("userinfo",JSON.stringify(result));
+//								info = plus.push.getClientInfo();
+//								alert(JSON.stringify(info));
+								localStorage.setItem("token", result.extend.token);
+								localStorage.setItem("loginName", loginName);
+								localStorage.setItem("loginPwd", loginPwd);
+								localStorage.setItem("userId", result.extend.result.userid);
+								localStorage.setItem("username", result.extend.result.name);
+								localStorage.setItem("birthday", result.extend.result.birthday);
+						
+//														    alert(localStorage.token);
+//								                          alert(localStorage.username);
+//                              cid();
+								 location.href = "touch-index.html";
+							}
+
+						},
+						error: function(e) {
+							//隐藏加载中
+							$(".loader").css("display","none");
+							mui.toast(JSON.stringify(e));
+						}
+					});
+				} else {
+					alert("请输入用户名和密码");
+				}
+			}
+
+			function cid() {
+				//显示加载中
+				$(".loader").css("display","block");
+					$.ajax({
+						type: "get",
+						url: baseUrl + "/familyInf/usermsg/save?token"+localStorage.token+"&userid="+localStorage.userId,
+						timeout: 5000,
+						data: "cid=" + info,
+						success: function(result) {
+							//隐藏加载中
+							$(".loader").css("display","none");
+							if(result.code==200){
+								mui.toast(JSON.stringify(result));
+							}else{
+								
+								location.href = "touch-index.html";
+							}
+	                        
+						},
+						error: function(e) {
+							//隐藏加载中
+							$(".loader").css("display","none");
+							mui.toast(JSON.stringify(e));
+						}
+					})
+			}
+			
+			
+			//注册
+			function register(){
+				location.href="reg.html";
+			}
+			//忘记密码
+			function newPassword(){
+				location.href="newPassword.html";
+			}
+		</script>
+	</body>
+
+</html>

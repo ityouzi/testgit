@@ -1,0 +1,744 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>html5 canvas动态的饼状图插件 - 代码库 </title>
+		<link href="../css/dmaku.css" rel="stylesheet" />
+		<script src="../js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+		
+		<script type="text/javascript" src="../js/mui.min.js" ></script>	
+			
+		<script type="text/javascript" src="../js/public.js"></script>
+		<style type="text/css">
+			
+			
+			.head {
+				height: 140px;
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				border-bottom: 1px solid #999999;
+				color: #FFFFFF;
+				padding-right: 20px;
+				padding-left: 20px;
+				border-bottom: 0;
+				background-color: #4C4A8E;
+				box-shadow: 0 1px 6px #ccc;
+				font-size: 50px;
+				width: 100%;
+				position: fixed;
+				top: 0;
+				left: 0;
+			}
+			
+			.head img {
+				height: 50px;
+			}
+			
+			.ertong {
+				width: 40%;
+				height: 100px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				border: 2px solid #b4b4dc;
+				background-color: #6C64B2;
+				border-radius: 20px;
+				margin: 180px auto 0px;
+				font-size: 35px;
+				color: #FFFFFF;
+			}
+			/*加载中*/
+			.loader {
+			  margin: 0 0 2em;
+			  height: 100px;
+			  width: 20%;
+			  padding: 1em;
+			  margin: 0 auto 1em;
+			  display: none;
+			  vertical-align: top;
+			  position: fixed;
+			  top: 200px;
+			  left: 50%;
+			  -webkit-transform: translateX(-50%);
+			  z-index: 999;
+			}
+			/*
+			  Set the color of the icon
+			*/
+			svg path,
+			svg rect {
+			  fill: #4C4A8E;
+			}
+			#loader-1{
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				-webkit-transform: translate(-50%,-50%);
+			}
+			.mui-toast-container {
+				line-height: 17px;
+				position: fixed;
+				z-index: 9999;
+				bottom: 50px;
+				left: 50%;
+				-webkit-transition: opacity .3s;
+				transition: opacity .3s;
+				-webkit-transform: translate(-50%, 0);
+				transform: translate(-50%, 0);
+				opacity: 0
+			}
+			
+			.mui-toast-container.mui-active {
+				opacity: .9
+			}
+			
+			.mui-toast-message {
+				font-size: 14px;
+				padding: 10px 25px;
+				text-align: center;
+				color: #fff;
+				border-radius: 6px;
+				background-color: #323232
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="head">
+			<a href="touch-index.html"><img src="../img/back.png"></a>
+			<div style="margin-left: 35%;">亲族称谓</div>
+
+		</div>
+		
+		
+		<div class="ertong" onclick="er()">
+			亲族图谱
+		</div>
+		<!--饼形图-->
+		<div class="container">
+			
+		
+			<div id="container" style="height: 100%">
+	
+		        
+			</div>
+	         <div class="zhoubox">
+					<div class="xuanzhe">
+		
+					</div>
+		
+			</div>
+		</div>
+		<!--加载中-->
+        <div class="loader">
+		  <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		     width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+		  <path fill="#000" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z">
+		    <animateTransform attributeType="xml"
+		      attributeName="transform"
+		      type="rotate"
+		      from="0 25 25"
+		      to="360 25 25"
+		      dur="0.6s"
+		      repeatCount="indefinite"/>
+		    </path>
+		  </svg>
+		</div> 
+		<script>
+			
+			function er() {
+				location.href = "Genealogy.html"
+			}
+            var dom = document.getElementById("container");
+				var myChart = echarts.init(dom);
+				var app = {};
+				option = null;
+				app.title = '嵌套环形图';
+
+				option = {
+
+//					tooltip: {
+//						trigger: 'item',
+//						formatter: "{a} <br/>{b}: {c} ({d}%)"
+//					},
+
+					legend: {
+						//						orient: 'vertical',
+						//						x: 'left',
+						//                      top:"50",
+						//                      left:"50",
+						//                      itemHeight:"30",
+						//						"textStyle": {
+						//							"fontSize": 30
+						//						},
+						//						data: ['爸爸', '妈妈', '哥哥', '弟弟', '姐姐', '妹妹', '配偶', '儿子', '女儿']
+					},
+
+					series: [{
+							name: '亲友',
+							type: 'pie',
+							yAxisIndex: 1,
+							selectedMode: 'single',
+							radius: [0, 150],
+							label: {
+
+								normal: {
+
+									position: 'inner',
+									"textStyle": {
+										"fontSize": 30
+									}
+								},
+
+							},
+							labelLine: {
+								normal: {
+									show: false
+								}
+							},
+
+							data: [{
+								value: 335,
+								name: '我',
+
+							}]
+						},
+						{
+							name: '亲友',
+							type: 'pie',
+							radius: [160, 400],
+							labelLine: {
+								normal: {
+									show: false
+								}
+							},
+
+							label: {
+								normal: {
+									position: 'inner',
+									"textStyle": {
+										"fontSize": 30
+									}
+								}
+							},
+							data: [
+								//								    {
+								//										value: 500,
+								//										name: '爸爸'
+								//									},
+								//									{
+								//										value: 500,
+								//										name: '妈妈'
+								//									}
+						
+							]
+						}
+					]
+				};;
+				if(option && typeof option === "object") {
+					myChart.setOption(option, true);
+				}
+
+				myChart.on('click', function(handler, context) {
+					$(".xuanzhe").empty();
+					//					console.dir(handler);
+					//					console.dir(context);
+					var va = handler.data.id;
+//					var va2 = handler.data.title;
+
+					//获取节点点击的数组序号  
+					var arrayIndex = handler.dataIndex;
+					$('.zhoubox').css("display", "block");
+					
+					var son = localStorage.getItem(va);
+					if(JSON.parse(son) == null || JSON.parse(son) == ""){
+						
+					}
+					else{
+						
+						$.each(JSON.parse(son), function(index, item) {
+						
+							var usid = $("<span onclick='ss(this)' id="+item.name+"></span>").html(item.name+"："+item.age+"岁").attr("name",item.userid);
+							$(".xuanzhe").append(usid);
+							//$('.name').val(JSON.stringify(va));
+						})
+					}
+				});
+
+				function quxiao() {
+					$('.zhoubox').css("display", "none");
+				}
+
+				//给节点添加click事件  
+				/* 
+				 * 事件处理函数。格式为:(event: Object) 
+				 * 可选。回调函数内部的context，即this的指向。 
+				 * */                                              
+			$(function() {
+				
+				//显示加载中
+				$(".loader").css("display","block");
+				$.ajax({
+					url: baseUrl + "/familyInf/relation/listone?token=" + localStorage.token + "&user1=" + localStorage.userId,
+					type: "get",
+					success: function(result) {
+						//隐藏加载中
+						$(".loader").css("display","none");	
+						if(result.code == 200) {
+						 mui.toast(JSON.stringify(result))
+						} else {
+							var data = result.extend.result;
+//							console.log(data);
+
+                            var names = []; //类别数组（用于存放饼图的类别）
+							var brower = [];
+							
+							var son = data.ez;
+							if(son != null || son != ""){
+								
+							    var nameson = "";
+								$.each(son, function(index, item) {
+								nameson = nameson + item.name+":"+item.age+"岁" + "\n";
+								})
+								names.push("儿子"); //挨个取出类别并填入类别数组 
+								brower.push({
+									value: 500,
+									id:"ez",
+									name:"儿子："+"\n"+ nameson
+								});
+								localStorage.setItem("ez",JSON.stringify(son));
+							}
+							
+							
+							var dd = data.dd;
+							if( dd != null || dd != ""){
+								
+								var namedd = "";
+								$.each(dd, function(index, item) {
+									namedd = namedd + item.name+":"+item.age+"岁" + "\n";
+								})
+								names.push("弟弟"); //挨个取出类别并填入类别数组 
+								brower.push({
+									value: 500,
+									id:"dd",
+									name:"弟弟："+"\n"+ namedd
+								});
+								localStorage.setItem("dd",JSON.stringify(dd));
+							}
+							
+							var ba = data.ba;
+							if( ba != null || ba != ""){
+								
+								var nameba = "";
+								$.each(ba, function(index, item) {
+									nameba = nameba + item.name+":"+item.age+"岁" + "\n";
+								})
+								names.push("爸爸"); //挨个取出类别并填入类别数组 
+								brower.push({
+									value: 500,
+									id:"ba",
+									name:"爸爸："+"\n"+ nameba
+								});
+								localStorage.setItem("ba",JSON.stringify(ba));
+							}
+							
+							var gg = data.gg;
+							if( gg != null || gg != ""){
+								
+								var namegg = "";
+								$.each(gg, function(index, item) {
+									namegg = namegg + item.name+":"+item.age+"岁" + "\n";
+								})
+								names.push("哥哥"); //挨个取出类别并填入类别数组 
+								brower.push({
+									value: 500,
+									id:"gg",
+									name:"哥哥："+"\n"+ namegg
+								});
+								localStorage.setItem("gg",JSON.stringify(gg));
+							}
+							
+							var jj = data.jj;
+							if( jj !=null || jj != ""){
+								
+								var namejj = "";
+								$.each(jj, function(index, item) {
+									namejj = namejj + item.name+":"+item.age+"岁" + "\n";
+								})
+								names.push("姐姐"); //挨个取出类别并填入类别数组 
+								brower.push({
+									value: 500,
+									id:"jj",
+									name:"姐姐："+"\n"+ namejj
+								});
+								localStorage.setItem("jj",JSON.stringify(jj));
+							}
+							
+							var ma = data.ma;
+							if( ma !=null || ma != ""){
+								
+								var namema = "";
+								$.each(ma, function(index, item) {
+									namema = namema + item.name+":"+item.age+"岁" + "\n";
+								})
+								names.push("妈妈"); //挨个取出类别并填入类别数组 
+								brower.push({
+									value: 500,
+									id:"ma",
+									name:"妈妈："+"\n"+ namema
+								});
+								localStorage.setItem("ma",JSON.stringify(ma));
+							}
+                            
+                            var mm = data.mm;
+                            if( mm !=null || mm != ""){
+								
+								var namemm = "";
+								$.each(mm, function(index, item) {
+									namemm = namemm + item.name+":"+item.age+"岁" + "\n";
+								})
+								names.push("妹妹"); //挨个取出类别并填入类别数组 
+								brower.push({
+									value: 500,
+									id:"mm",
+									name:"妹妹："+"\n"+ namemm
+								});
+								localStorage.setItem("mm",JSON.stringify(mm));
+							}
+                            
+                            var nr = data.nr;
+                            if( nr !=null || nr != ""){
+								
+								var namenr = "";
+								$.each(nr, function(index, item) {
+									namenr = namenr + item.name+":"+item.age+"岁" + "\n";
+								})
+								names.push("女儿"); //挨个取出类别并填入类别数组 
+								brower.push({
+									value: 500,
+									id:"nr",
+									name:"女儿："+"\n"+ namenr
+								});
+								localStorage.setItem("nr",JSON.stringify(nr));
+							}
+                            
+                            var po = data.po;
+                            if( po !=null || po != ""){								
+								var namepo = "";
+								$.each(po, function(index, item) {
+									namepo = namepo + item.name+":"+item.age+"岁" + "\n";
+								})
+								names.push("配偶"); //挨个取出类别并填入类别数组 
+								brower.push({
+									value: 500,
+									id:"po",
+									name:"配偶："+"\n"+ namepo
+								});
+								localStorage.setItem("po",JSON.stringify(po));
+							}
+							if(option && typeof option === "object") {
+								myChart.setOption(option, true);
+							}
+
+							myChart.setOption({ //加载数据图表                
+								legend: {
+									orient: 'vertical',
+									x: 'left',
+									top: "50",
+									left: "50",
+									itemHeight: "30",
+									"textStyle": {
+										"fontSize": 30
+									},
+									data: names
+								},
+								series: [{
+										name: '亲友',
+										type: 'pie',
+										yAxisIndex: 1,
+										selectedMode: 'single',
+										radius: [0, 150],
+										label: {
+											normal: {
+												position: 'inner',
+												"textStyle": {
+													"fontSize": 30
+												}
+											},
+										},
+										labelLine: {
+											normal: {
+												show: false
+											}
+										},
+
+										data: [{
+											value: 335,
+											name: localStorage.username+"\n"+localStorage.birthday,
+										}]
+									},
+									{
+										data: brower
+
+									}
+								]
+							});
+						}
+						
+					},
+					error: function(e) {
+						//隐藏加载中
+						$(".loader").css("display","none");	
+						mui.toast(JSON.stringify(e));
+					}
+				})
+		});
+		
+		function ss(obj){
+			var familyid=obj.getAttribute("name");
+			var familyname=$(obj).html();
+			
+			alert(familyid);
+			$.ajax({
+					url: baseUrl + "/familyInf/relation/listone?token=" + localStorage.token + "&user1=" + familyid,
+					type: "get",
+					success: function(result) {
+						//隐藏加载中
+						$(".loader").css("display","none");	
+						if(result.code == 200) {
+							//								location.href = "touch-login.html";
+						} else {
+							var data = result.extend.result;
+							console.log(data);
+                            $('.zhoubox').css("display", "none");
+//							$.each(data, function(index, item) {
+//								names.push(item.user2cw); //挨个取出类别并填入类别数组 
+//								brower.push({
+//									value: 500,
+//									//										id:item.userMsg.userid,
+//									//										title:item.userMsg.name,
+//									//										name: item.user2cw+":"+"\n" + item.userMsg.name+"\n" +item.userMsg.birthday
+//								});
+//							})
+                            var names = []; //类别数组（用于存放饼图的类别）
+							var brower = [];
+							
+							var son = data.ez;
+							if(son != null || son != ""){
+								
+							    var nameson = "";
+								$.each(son, function(index, item) {
+								nameson = nameson + item.name+":"+item.age+"岁" + "\n";
+								})
+								names.push("儿子"); //挨个取出类别并填入类别数组 
+								brower.push({
+									value: 500,
+									id:"ez",
+									name:"儿子："+"\n"+ nameson
+								});
+								localStorage.setItem("ez",JSON.stringify(son));
+							}
+							
+							
+							var dd = data.dd;
+							if( dd != null || dd != ""){
+								
+								var namedd = "";
+								$.each(dd, function(index, item) {
+									namedd = namedd + item.name+":"+item.age+"岁" + "\n";
+								})
+								names.push("弟弟"); //挨个取出类别并填入类别数组 
+								brower.push({
+									value: 500,
+									id:"dd",
+									name:"弟弟："+"\n"+ namedd
+								});
+								localStorage.setItem("dd",JSON.stringify(dd));
+							}
+							
+							var ba = data.ba;
+							if( ba != null || ba != ""){
+								
+								var nameba = "";
+								$.each(ba, function(index, item) {
+									nameba = nameba + item.name+":"+item.age+"岁" + "\n";
+								})
+								names.push("爸爸"); //挨个取出类别并填入类别数组 
+								brower.push({
+									value: 500,
+									id:"ba",
+									name:"爸爸："+"\n"+ nameba
+								});
+								localStorage.setItem("ba",JSON.stringify(ba));
+							}
+							
+							var gg = data.gg;
+							if( gg != null || gg != ""){
+								
+								var namegg = "";
+								$.each(gg, function(index, item) {
+									namegg = namegg + item.name+":"+item.age+"岁" + "\n";
+								})
+								names.push("哥哥"); //挨个取出类别并填入类别数组 
+								brower.push({
+									value: 500,
+									id:"gg",
+									name:"哥哥："+"\n"+ namegg
+								});
+								localStorage.setItem("gg",JSON.stringify(gg));
+							}
+							
+							var jj = data.jj;
+							if( jj !=null || jj != ""){
+								
+								var namejj = "";
+								$.each(jj, function(index, item) {
+									namejj = namejj + item.name+":"+item.age+"岁" + "\n";
+								})
+								names.push("姐姐"); //挨个取出类别并填入类别数组 
+								brower.push({
+									value: 500,
+									id:"jj",
+									name:"姐姐："+"\n"+ namejj
+								});
+								localStorage.setItem("jj",JSON.stringify(jj));
+							}
+							
+							var ma = data.ma;
+							if( ma !=null || ma != ""){
+								
+								var namema = "";
+								$.each(ma, function(index, item) {
+									namema = namema + item.name+":"+item.age+"岁" + "\n";
+								})
+								names.push("妈妈"); //挨个取出类别并填入类别数组 
+								brower.push({
+									value: 500,
+									id:"ma",
+									name:"妈妈："+"\n"+ namema
+								});
+								localStorage.setItem("ma",JSON.stringify(ma));
+							}
+                            
+                            var mm = data.mm;
+                            if( mm !=null || mm != ""){
+								
+								var namemm = "";
+								$.each(mm, function(index, item) {
+									namemm = namemm + item.name+":"+item.age+"岁" + "\n";
+								})
+								names.push("妹妹"); //挨个取出类别并填入类别数组 
+								brower.push({
+									value: 500,
+									id:"mm",
+									name:"妹妹："+"\n"+ namemm
+								});
+								localStorage.setItem("mm",JSON.stringify(mm));
+							}
+                            
+                            var nr = data.nr;
+                            if( nr !=null || nr != ""){
+								
+								var namenr = "";
+								$.each(nr, function(index, item) {
+									namenr = namenr + item.name+":"+item.age+"岁" + "\n";
+								})
+								names.push("女儿"); //挨个取出类别并填入类别数组 
+								brower.push({
+									value: 500,
+									id:"nr",
+									name:"女儿："+"\n"+ namenr
+								});
+								localStorage.setItem("nr",JSON.stringify(nr));
+							}
+                            
+                            var po = data.po;
+                            if( po !=null || po != ""){
+								
+								var namepo = "";
+								$.each(po, function(index, item) {
+									namepo = namepo + item.name+":"+item.age+"岁" + "\n";
+								})
+								names.push("配偶"); //挨个取出类别并填入类别数组 
+								brower.push({
+									value: 500,
+									id:"po",
+									name:"配偶："+"\n"+ namepo
+								});
+								localStorage.setItem("po",JSON.stringify(po));
+							}
+							if(option && typeof option === "object") {
+								myChart.setOption(option, true);
+							}
+
+							myChart.setOption({ //加载数据图表                
+								legend: {
+									orient: 'vertical',
+									x: 'left',
+									top: "50",
+									left: "50",
+									itemHeight: "30",
+									"textStyle": {
+										"fontSize": 30
+									},
+									data: names
+								},
+								series: [{
+										name: '亲友',
+										type: 'pie',
+										yAxisIndex: 1,
+										selectedMode: 'single',
+										radius: [0, 150],
+										label: {
+											normal: {
+												position: 'inner',
+												"textStyle": {
+													"fontSize": 30
+												}
+											},
+
+										},
+										labelLine: {
+											normal: {
+												show: false
+											}
+										},
+
+										data: [{
+											value: 335,
+											name:familyname,
+
+										}]
+									},
+									{
+										data: brower
+
+									}
+								]
+							});
+						}
+
+					},
+					error: function(e) {
+						//隐藏加载中
+						$(".loader").css("display","none");	
+						mui.toast(JSON.stringify(e));
+					}
+				})
+		}
+		</script>
+
+	</body>
+
+</html>

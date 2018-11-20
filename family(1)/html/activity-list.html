@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>活动详情</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<script type="text/javascript" src="../js/common.js" ></script>
+		<link rel="stylesheet" type="text/css" href="../css/activity-list.css"/>
+	</head>
+
+	
+	<body>	
+			<div class="head">
+				<a href="touch-index.html"><img src="../img/back.png"></a>
+				<div>亲友活动</div>
+			</div>
+			<!--底部-->
+		<div class="dibu-box">
+			<a href="touch-index.html">
+				<div class="dibu-one">
+					<img src="../img/index@1.png" />
+					<span id="">
+					首页
+					</span>
+				</div>
+			</a>
+			<a href="activity-add.html">
+				<div class="dibu-one">
+					<img src="../img/fabu@1.png" />
+					<span id="">
+					消息
+					</span>
+				</div>
+			</a>
+			<a href="hebing.html">
+				<div class="dibu-one">
+					<img src="../img/news@1.png" />
+					<span id="">
+					合并
+					</span>
+				</div>
+			</a>
+			<a href="mine.html">
+				<div class="dibu-one">
+					<img src="../img/mine@1.png" />
+					<span id="">
+					我的
+					</span>
+				</div>
+			</a>
+		</div>
+			
+			
+			<!--活动-->
+			<div class="announcement">
+				<div class="announcement-top">
+					<img src="../img/huodonglist.png"/>
+				</div>
+				<div id="" class="gonggao">
+					<ul class="gonggao-ul">
+						
+					</ul>
+				</div>
+			</div>
+		    <div class="xz" onclick="addactivity()">
+		    	添加活动
+		    </div>
+		    
+		<!--加载中-->
+        <div class="loader">
+		  <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		     width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+		  <path fill="#000" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z">
+		    <animateTransform attributeType="xml"
+		      attributeName="transform"
+		      type="rotate"
+		      from="0 25 25"
+		      to="360 25 25"
+		      dur="0.6s"
+		      repeatCount="indefinite"/>
+		    </path>
+		  </svg>
+		</div>    
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-1.10.2.min.js" ></script>
+		<script type="text/javascript" src="../js/public.js" ></script>
+		<script type="text/javascript">
+			mui('body').on('tap', 'a', function() {
+				document.location.href = this.href;
+			});
+			$(function() {
+				//显示加载中
+			    $(".loader").css("display","block");
+				$.ajax({
+						url: baseUrl + "/familyInf/activity/list?token=" + localStorage.token,
+						type: "get",
+						timeout : 5000, //超时时间设置，单位毫秒
+						success: function(result) {
+							$(".loader").css("display","none");
+							if(result.code == 200){
+								mui.toast(JSON.stringify(result));
+							}else{
+								var data = result.extend.result;
+								console.log(data);
+								$('.gonggao-ul').empty();
+								if(data){
+									$.each(data, function(index, item) {
+										if(index %2 == 0){
+											var xin=$("<img class='xin' src='../img/xing@1.png' />");
+											var title=$("<div style='font-size: 0.34rem; color: #4C4A8E;'></div>").append(item.title);
+											var tine=$("<div class='time' style='color: #222222; font-size: 0.22rem;'></div>").append(item.createtime);
+											var content=$("<div class='right'></div>").append(title,tine);
+											var li=$("<div class='gonggao-li' style='background-color: #FFFFFF;' onclick='gonggao(this)'></div>").append(xin,content).attr("name",item.activityId);
+										}else{
+											var xin=$("<img class='xin' src='../img/xina@2.png' />");
+											var title=$("<div style='font-size: 0.34rem; color: #4C4A8E;'></div>").append(item.title);
+											var tine=$("<div class='time' style='color: #a0a0a0;  font-size: 0.22rem;'></div>").append(item.createtime);
+											var content=$("<div class='right'></div>").append(title,tine);
+											var li=$("<div class='gonggao-li' style='background-color: #ececec;' onclick='gonggao(this)'></div>").append(xin,content).attr("name",item.activityId);
+										}
+										
+										$('.gonggao-ul').append(li);
+										
+									})
+								    
+								}
+								
+							}
+						},
+					error: function(e) {
+						$(".loader").css("display","none");
+						mui.toast(JSON.stringify(e));
+					}
+				})
+			})
+			function gonggao(obj){
+				var activityId=obj.getAttribute("name");
+				sessionStorage.setItem("activityId",activityId);
+				location.href="activity-msg.html?str=activity-list";
+			}
+			
+			
+			//添加活动
+			function addactivity(){
+				location.href="activity-add.html";
+			}
+			
+		</script>
+	</body>
+
+</html>

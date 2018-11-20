@@ -1,0 +1,154 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+html,body {
+	background-color: white;
+	font-size: 0.2rem;
+	background-color: #FFFFFF;
+}
+
+a:active{
+	color: black;
+	background-color: #E3E3E3;
+}
+li {
+	list-style: none;
+}
+.dibu-box{
+	width: 100%;
+	height: 1.05rem;
+	background-color: #FFFFFF;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	z-index: 999;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	border-top: 1px solid #EEEEEE;
+}
+.dibu-one{
+	width: 0.7rem;
+	height: 0.75rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+.dibu-one img{
+	height: 0.40rem;
+	width: auto;
+}
+.dibu-one span{
+	font-size: 0.22rem;
+	color: #999999;
+}
+.active{
+	color: #000000;
+}
+.mui-title {
+	font-size: 18px;
+}
+.science-index{
+	width: 100%;
+	margin-top:1.07rem;
+	background-color: white;
+}
+
+.function-box{
+	
+	width: 100%;
+	height: 100px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.function-box a{
+		width: 25%;
+	    height: 100%;
+	    color: #333333;
+}
+.function-box-one{
+	width: 100%;
+    display: flex;
+    flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	font-size: 0.26rem;
+}
+.function-box-one img{
+	width: 40%;
+	height: auto;
+}
+.announcement{
+	width: 100%;
+	margin-bottom: 1.2rem;
+}
+.gonggao{
+	font-size: 0.38rem;	
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+    text-align: center;	
+    color: #8685ae;
+   
+}				       
+.mui-table-view-cell{
+	height: 55px;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+.back{
+	height: 20px;
+	width: auto;
+}
+#slider{
+	width: 100%;
+	height: 6.5rem;
+	background: url("../img/sy.jpg") no-repeat;
+    -webkit-background-size: 100%;
+    background-size: 100% 100%;
+}
+#slider img{
+	width: 100%;
+	height: 100%;
+}
+.dustry{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-end;
+	background-color: #d9d9da;
+}
+
+.dustry-li{
+	color: #000000;
+	height: 1.1rem;
+	width: 96%;
+	border-bottom: 1px solid #EEEEEE;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	font-size: 0.32rem;
+}
+.dustry-li img{
+	height: 0.36rem;
+	margin-right: 0.15rem;
+}
+.slider-title{
+	width: 1.75rem;
+	height: 1.15rem;
+	position: absolute;
+	top: 20%;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	opacity: 0.9;
+}

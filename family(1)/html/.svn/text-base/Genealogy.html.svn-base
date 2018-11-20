@@ -1,0 +1,288 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>家谱称谓</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<!--<link rel="stylesheet" type="text/css" href="../css/touch-index.css" />-->
+		<link rel="stylesheet" href="../css/common.css" />
+		<script type="text/javascript" src="../js/common.js"></script>
+		<!--<link rel="stylesheet" href="../css/dmaku.css" />-->
+		<link rel="stylesheet" href="../css/genealogy.css" />
+	</head>
+
+	<body>
+		<div class="head">
+			<a href="index.html"><img src="../img/back.png"></a>
+			<div>亲族图谱</div>
+		</div>
+		<!--底部-->
+		<div class="dibu-box">
+			<a href="touch-index.html">
+				<div class="dibu-one">
+					<img src="../img/index@1.png" />
+					<span id="">
+					首页
+					</span>
+				</div>
+			</a>
+			<a href="activity-add.html">
+				<div class="dibu-one">
+					<img src="../img/fabu@1.png" />
+					<span id="">
+					消息
+					</span>
+				</div>
+			</a>
+			<a href="hebing.html">
+				<div class="dibu-one">
+					<img src="../img/news@1.png" />
+					<span id="">
+					合并
+					</span>
+				</div>
+			</a>
+			<a href="mine.html">
+				<div class="dibu-one">
+					<img src="../img/mine@1.png" />
+					<span id="">
+					我的
+					</span>
+				</div>
+			</a>
+		</div>
+		
+			<div id="content">
+				<div class="gen-one clear" id="d50"></div>
+				<div class="gen-one clear" id="d49"></div>
+				<div class="gen-one clear" id="d48"></div>
+				<div class="gen-one clear" id="d47"></div>
+				<div class="gen-one clear" id="d46"></div>
+				<div class="gen-one clear" id="d45"></div>
+				<div class="gen-one clear" id="d44"></div>
+				<div class="gen-one clear" id="d43"></div>
+				<div class="gen-one clear" id="d42"></div>
+				<div class="gen-one clear" id="d41"></div>
+				<div class="gen-one clear" id="d40"></div>
+				<div class="gen-one clear" id="d39"></div>
+				<div class="gen-one clear" id="d38"></div>
+				<div class="gen-one clear" id="d37"></div>
+				<div class="gen-one clear" id="d36"></div>
+				<div class="gen-one clear" id="d35"></div>
+				<div class="gen-one clear" id="d34"></div>
+				<div class="gen-one clear" id="d33"></div>
+				<div class="gen-one clear" id="d32"></div>
+				<div class="gen-one clear" id="d31"></div>
+				<div class="gen-one clear" id="d30"></div>
+				<div class="gen-one clear" id="d29"></div>
+				<div class="gen-one clear" id="d28"></div>
+				<div class="gen-one clear" id="d27"></div>
+				<div class="gen-one clear" id="d26"></div>
+				<div class="gen-one clear" id="d25"></div>
+				<div class="gen-one clear" id="d24"></div>
+				<div class="gen-one clear" id="d23"></div>
+				<div class="gen-one clear" id="d22"></div>
+				<div class="gen-one clear" id="d21"></div>
+				<div class="gen-one clear" id="d20"></div>
+				<div class="gen-one clear" id="d19"></div>
+				<div class="gen-one clear" id="d18"></div>
+				<div class="gen-one clear" id="d17"></div>
+				<div class="gen-one clear" id="d16"></div>
+				<div class="gen-one clear" id="d15"></div>
+				<div class="gen-one clear" id="d14"></div>
+				<div class="gen-one clear" id="d13"></div>
+				<div class="gen-one clear" id="d12"></div>
+				<div class="gen-one clear" id="d11"></div>
+				<div class="gen-one clear" id="d10"></div>
+				<div class="gen-one clear" id="d9"></div>
+				<div class="gen-one clear" id="d8"></div>
+				<div class="gen-one clear" id="d7"></div>
+				<div class="gen-one clear" id="d6"></div>
+				<div class="gen-one clear" id="d5"></div>
+				<div class="gen-one clear" id="d4"></div>
+				<div class="gen-one clear" id="d3"></div>
+				<div class="gen-one clear" id="d2"></div>
+				<div class="gen-one clear" id="d1"></div>
+				<div class="gen-one clear" id="d0" style="color: #007AFF; border-bottom:1px solid #999999;margin-top:0.2rem">
+	
+					<div class="gen-box" onclick="add2(this)">
+						<div class="chengwei userName" style='font-size: 0.24rem;'>
+							姓名二
+						</div>
+						<!--<div class="chengwei user2cw">
+							称谓
+						</div>-->
+						
+						<div class="chengwei birthday" style='font-size: 0.18rem;'>
+							生日
+						</div>				
+						
+					</div>
+					
+				</div>
+				<div class="gen-one clear" id="d-1"></div>
+				<div class="gen-one clear" id="d-2"></div>
+				<div class="gen-one clear" id="d-3"></div>
+				<div class="gen-one clear" id="d-4"></div>
+				<div class="gen-one clear" id="d-5"></div>
+				<div class="gen-one clear" id="d-6"></div>
+				<div class="gen-one clear" id="d-7"></div>
+				<div class="gen-one clear" id="d-8"></div>
+				<div class="gen-one clear" id="d-9"></div>
+				<div class="gen-one clear" id="d-10"></div>
+				<div class="gen-one clear" id="d-11"></div>
+				<div class="gen-one clear" id="d-12"></div>
+				<div class="gen-one clear" id="d-13"></div>
+				<div class="gen-one clear" id="d-14"></div>
+				<div class="gen-one clear" id="d-15"></div>
+				<div class="gen-one clear" id="d-16"></div>
+				<div class="gen-one clear" id="d-17"></div>
+				<div class="gen-one clear" id="d-18"></div>
+				<div class="gen-one clear" id="d-19"></div>
+				<div class="gen-one clear" id="d-20"></div>
+				<div class="gen-one clear" id="d-21"></div>
+				<div class="gen-one clear" id="d-22"></div>
+				<div class="gen-one clear" id="d-23"></div>
+				<div class="gen-one clear" id="d-24"></div>
+				<div class="gen-one clear" id="d-25"></div>
+				<div class="gen-one clear" id="d-26"></div>
+				<div class="gen-one clear" id="d-27"></div>
+				<div class="gen-one clear" id="d-28"></div>
+				<div class="gen-one clear" id="d-29"></div>
+				<div class="gen-one clear" id="d-30"></div>
+				<div class="gen-one clear" id="d-31"></div>
+				<div class="gen-one clear" id="d-32"></div>
+				<div class="gen-one clear" id="d-33"></div>
+				<div class="gen-one clear" id="d-34"></div>
+				<div class="gen-one clear" id="d-35"></div>
+				<div class="gen-one clear" id="d-36"></div>
+				<div class="gen-one clear" id="d-37"></div>
+				<div class="gen-one clear" id="d-38"></div>
+				<div class="gen-one clear" id="d-39"></div>
+				<div class="gen-one clear" id="d-40"></div>
+				<div class="gen-one clear" id="d-41"></div>
+				<div class="gen-one clear" id="d-42"></div>
+				<div class="gen-one clear" id="d-43"></div>
+				<div class="gen-one clear" id="d-44"></div>
+				<div class="gen-one clear" id="d-45"></div>
+				<div class="gen-one clear" id="d-46"></div>
+				<div class="gen-one clear" id="d-47"></div>
+				<div class="gen-one clear" id="d-48"></div>
+				<div class="gen-one clear" id="d-49"></div>
+				<div class="gen-one clear" id="d-50"></div>
+			</div>
+		
+		<!--加载中-->
+        <div class="loader">
+		  <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		     width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+		  <path fill="#000" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z">
+		    <animateTransform attributeType="xml"
+		      attributeName="transform"
+		      type="rotate"
+		      from="0 25 25"
+		      to="360 25 25"
+		      dur="0.6s"
+		      repeatCount="indefinite"/>
+		    </path>
+		  </svg>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="../js/public.js"></script>
+		<script type="text/javascript">
+			mui('body').on('tap', 'a', function() {
+				document.location.href = this.href;
+			});
+			$(function() {
+				//显示加载中
+				$(".loader").css("display","block");
+				var userid = localStorage.getItem("userId");
+				var username = localStorage.getItem("username");
+				var birthday = localStorage.getItem("birthday");				
+			
+				$.ajax({
+					url: baseUrl + "/familyInf/relation/list?token=" + localStorage.token + "&user1=" + userid,
+					type: "get",
+					timeout:5000,
+					success: function(result) {
+						//隐藏加载中
+						$(".loader").css("display","none");
+						var fanhui = result.extend.result;
+						if(result.code == 200) {
+							mui.toast(JSON.stringify(fanhui));
+						} else {
+							console.log(JSON.stringify(fanhui));
+							$(".userName").html(localStorage.username);
+							
+							$(".birthday").html(localStorage.birthday);
+							$.each(fanhui, function(index, item) {																	
+								var name=$("<div class='chengwei' style='font-size: 0.24rem;'></div>").append(item.userMsg.name);
+//								var user2cw=$("<div class='chengwei'></div>").append(item.userMsg.user2cw);
+								var birthday=$("<div class='chengwei' style='font-size: 0.18rem;'></div>").append(item.userMsg.birthday);
+								var gen_box=$("<div class='gen-box' onclick='add1(this)'></div>").append(name,birthday).attr("name1",item.userMsg.userid);
+								$('#d'+item.yl1).append(gen_box).css({"border-bottom":"1px solid #999999","margin-top":"0.2rem"});
+							}) 
+							
+						}
+					},
+					error: function(e) {
+						//隐藏加载中
+						$(".loader").css("display","none");
+						mui.toast(JSON.stringify(e));
+					}
+				})
+
+			})
+			//后代点击添加关系
+			function add1(obj){
+				var userid=obj.getAttribute("name1");
+//				alert(userid);
+				sessionStorage.setItem("userId",userid);
+				var btnArray = ['修改', '添加','取消'];
+                mui.confirm('选择关系修改，添加', '族谱', btnArray, function(e) {
+                    if (e.index == 1) {
+                        location.href="relation.html";
+                    }
+                    if(e.index == 0){                    	
+                        location.href="xiugai.html";
+                    }
+                    if(e.index == 2){
+//                  	location.href="Genealogy.html";
+						location.reload();
+                    }
+                })				
+				
+			}
+			
+			
+			//点击添加关系
+			function add2(obj){
+				var userid = localStorage.getItem("userId");
+//				alert(userid);
+				sessionStorage.setItem("userId",userid);	
+				var btnArray = ['修改', '添加','取消'];
+                mui.confirm('选择关系修改，添加', '族谱', btnArray, function(e) {
+                    if (e.index == 1) {
+                        location.href="relation.html";
+                    }
+                    if (e.index == 0){                      
+                        location.href="xiugai.html";
+                    }
+                    if (e.index == 2){
+//                  	location.href="getjinianri.html";
+						location.reload();
+                    }
+                })
+
+				
+				
+				
+			}
+			
+		</script>
+	</body>
+
+</html>

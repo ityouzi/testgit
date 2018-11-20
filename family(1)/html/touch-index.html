@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>science-index首页</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/touch-index.css" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<script type="text/javascript" src="../js/common.js" ></script>
+	</head>
+
+	<body>
+		<div class="head">
+			<div>首页</div>
+		</div>
+		<!--底部-->
+		<div class="dibu-box">
+			<a>
+				<div class="dibu-one">
+					<img src="../img/index@2.png" />
+					<span id="" class="active" style="color: #cac196;">
+					首页
+					</span>
+				</div>
+			</a>
+			<a href="activity-add.html">
+				<div class="dibu-one">
+					<img src="../img/fabu@1.png" />
+					<span id="">
+					消息
+					</span>
+				</div>
+			</a>
+			<a href="hebing.html">
+				<div class="dibu-one">
+					<img src="../img/news@1.png" />
+					<span id="">
+					合并
+					</span>
+				</div>
+			</a>
+			<a href="mine.html">
+				<div class="dibu-one">
+					<img src="../img/mine@1.png" />
+					<span id="">
+					我的
+					</span>
+				</div>
+			</a>
+		</div>
+		<div class="science-index">
+			<div id="slider">
+				<!--<div class="slider-title">
+					<span style="color: #d3c998;font-size: 0.6rem;">
+						族谱
+					</span>
+					<span style="font-size: 0.22rem; color: #d9cf9a;">zu  pu</span>
+				</div>-->
+				<img src="../img/sy2.jpg"/>
+			</div>
+			<!--功能模块-->
+			<div class="function-box">
+				<a href="friends.html">
+					<div class="function-box-one">
+						<img src="../img/qingyou.png" />
+						<span id="">
+				 		亲族圈
+				 	</span>
+					</div>
+				</a>
+				<a href="index.html">
+					<div class="function-box-one">
+						<img src="../img/zupuc.png" />
+						<span id="">
+				 		亲族称谓
+				 	</span>
+					</div>
+				</a>
+				<a href="zhouyi.html">
+					<div class="function-box-one">
+						<img src="../img/tixing.png" />
+						<span id="">
+				 		亲族日历
+				 	</span>
+					</div>
+				</a>
+				<a href="activity-list.html">
+					<div class="function-box-one">
+						<img src="../img/huodong.png" />
+						<span id="">
+				 		亲友活动
+				 	</span>
+					</div>
+				</a>
+			</div>
+			<!--追加功能模块-->
+			<div class="function-box">
+				<a href="draw.html">
+					<div class="function-box-one">
+						<img src="../img/suanmin.png" />
+						<span id="">
+				 		抽签
+				 	</span>
+					</div>
+				</a>
+				<a href="bename.html">
+					<div class="function-box-one">
+						<img src="../img/qm.png" />
+						<span id="">
+				 		取名
+				 	</span>
+					</div>
+				</a>
+				<a href="">
+					<div class="function-box-one">
+						<img src="../img/wx.png" />
+						<span id="">
+				 	         铺子
+				 		</span>
+					</div>
+				</a>
+				<a href="simiao.html">
+					<div class="function-box-one">
+						<img src="../img/sm.png" />
+						<span id="">
+				 		      名寺
+				 		</span>
+					</div>
+				</a>
+			</div>
+			
+		</div>
+		<!--公告-->
+			<div class="announcement">
+				<div id="" class="gonggao">
+					亲友活动
+				</div>
+				<ul class="dustry" >
+				    <!--<li class="mui-table-view-cell mui-media">
+				        <a href="javascript:;">
+				            <img class="mui-media-object mui-pull-left" src="http://placehold.it/40x30">
+				            <div class="mui-media-body">
+				                <p class="mui-ellipsis"> 幸福</p>
+				                <p class="mui-ellipsis">能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+				            </div>
+				        </a>
+				    </li>
+				   -->
+				</ul>
+		</div>
+		<!--加载中-->
+        <div class="loader">
+		  <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		     width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+		  <path fill="#000" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z">
+		    <animateTransform attributeType="xml"
+		      attributeName="transform"
+		      type="rotate"
+		      from="0 25 25"
+		      to="360 25 25"
+		      dur="0.6s"
+		      repeatCount="indefinite"/>
+		    </path>
+		  </svg>
+		</div> 
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-1.10.2.min.js" ></script>
+		<script type="text/javascript" src="../js/public.js" ></script>
+		<script type="text/javascript">
+			var loginInfo=JSON.parse(localStorage.getItem("loginInfo"));
+//           alert(JSON.stringify(loginInfo));
+			$(function() {
+				//显示加载中
+				$(".loader").css("display","block");
+				$.ajax({
+						url: baseUrl + "/familyInf/activity/list?token=" + localStorage.token,
+						type: "get",
+						timeout:5000,
+						success: function(result) {
+							//隐藏加载中
+							$(".loader").css("display","none");
+							if(result.code == 200){
+								mui.toast(JSON.stringify(result));
+							}else{
+								var data = result.extend.result;
+								$('.dustry').empty();
+								console.log(data)
+								$.each(data, function(index, item) {
+									var img=$("<img src='../img/xinx.png' />");
+									var title=$("<span></span>").append(item.title);
+									
+									var li=$("<div class='dustry-li' onclick='gonggao(this)'></div>").append(img,title).attr("name",item.activityId);
+									$('.dustry').append(li);
+								})
+								
+							}
+						},
+					error: function(e) {
+						//隐藏加载中
+						$(".loader").css("display","none");
+						mui.toast(JSON.stringify(e));
+					}
+				})
+			})
+			function gonggao(obj){
+				var activityId=obj.getAttribute("name");
+				sessionStorage.setItem("activityId",activityId);
+				location.href="activity-msg.html";
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,83 @@
+html,
+	body {
+		width: 100%;
+		height: 100%;
+		background-color: #FFFFFF;
+	}
+	
+	.fabu{
+ 		width: 100%;
+        margin-bottom: 1.2rem;
+       
+ 	}
+ 	
+ 	.fabu-title{
+ 		width: 100%;
+ 		display: flex;
+ 		justify-content: flex-start;
+ 		align-items: center;
+ 		border-bottom: 10px solid #EEEEEE;
+ 		font-size: 16px;
+ 		height: 70px;
+ 		padding: 10px;
+ 		box-sizing: border-box;
+ 	}
+ 	.fabu-title>input{
+ 		height: 40px;
+ 		border: none;
+ 	}
+ 	.fabu-time{
+ 		width: 100%;
+ 		display: flex;
+ 		flex-direction: column;
+ 		justify-content: flex-start;
+ 		align-items: flex-start;
+ 		border-bottom: 10px solid #EEEEEE;
+ 		font-size: 16px;
+ 		padding: 10px;
+ 		box-sizing: border-box;
+ 	}
+ 	.fabu-content{
+ 		width: 100%;
+ 		display: flex;
+ 		justify-content: space-between;
+ 		align-items: center;
+ 		font-size: 0.3rem;
+ 		padding: 0rem 0.35rem 0rem 0.35rem;
+ 		box-sizing: border-box;
+ 		height: 1.15rem;
+ 	}
+ 	.one>span{
+ 		margin-left: 0.3rem;
+ 	}
+ 	.fabu-content>img{
+ 		width: 0.4rem;
+ 	}
+ 	.one{
+ 		display: flex;
+ 		justify-content: flex-start;
+ 		align-items: center;
+ 		
+ 		}
+ 	.one>img{
+ 		width: 0.5rem;
+ 	}	 
+    .tuichu{
+    	width: 40%;
+     	height: 0.8rem;
+    	background-color: #4C4A8E;
+    	color: #FFFFFF;
+    	font-size: 0.26rem;
+    	display: flex;
+    	justify-content: center;
+    	align-items: center;
+    	margin: 1rem auto 1.05rem;
+    	border-radius: 0.4rem;
+    }
+   
+.active{
+	color: #000000;
+}
+.cont{
+	margin-top: 1.1rem;
+}

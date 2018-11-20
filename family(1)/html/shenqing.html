@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>申请详情</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/touch-index.css" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="../js/public.js"></script>			
+		<style type="text/css">
+         	html,
+			body {
+				width: 100%;
+				height: 100%;
+				background-color: #FFFFFF;
+			}
+			
+			
+			#info{
+         		width: 100%;
+         		display: flex;
+         		flex-direction: column;
+         		align-items: center;
+         
+         	}
+         	.fabu-content>span{
+         		width: 20%;
+         	}
+         	.fabu-content2>span{
+         		width: 100%;
+         	}
+         	.fabu-content{
+         		width: 100%;
+         		height: 1.2rem;
+         		display: flex;         		
+         		justify-content: flex-start;
+         		align-items:center;        		
+         		font-size: 0.26rem;
+         		padding: 0rem 0.35rem;
+         		color: #4c4a8e;
+         		box-sizing: border-box;
+         		border-bottom: 5px solid #6563A7;
+         	}
+         	.fabu-content2>div{
+         		color: #222222;
+         		width: 100%;
+         		padding: 0.2rem;
+         		box-sizing: border-box;
+         		
+         	}
+            .fabu-content>div{
+         		color: #222222;
+         		width: 80%;
+         	}
+         	.fabu-content2{
+         		width: 100%;
+         		min-height: 1.2rem;
+         		display: flex;    
+         		flex-direction: column;     		
+         		justify-content: flex-start;
+         		align-items:flex-start;        		
+         		font-size: 0.26rem;
+         		padding: 0.35rem 0.35rem;
+         		color: #4c4a8e;
+         		box-sizing: border-box;
+         		border-bottom: 5px solid #6563A7;
+         	}
+         	.fabu-content2>textarea{
+         		width: 100%;
+         		height: 3rem;
+         		border:none;
+         		padding: 0.2rem;
+         		box-sizing: border-box;
+         	}
+            .baocun{
+            	width: 2.5rem;
+            	height: 0.8rem;
+            	background-color: #4C4A8E;
+            	border-radius: 0.4rem;
+            	box-shadow: 1px 1px 1px 1px #222222;
+            	color: #fefeff;
+            	font-size: 0.26rem;   
+            	text-align: center;
+            	line-height: 0.8rem;
+            	margin-top: 0.95rem;
+            }
+         </style>  
+	</head>
+	<body>
+		<div class="head">
+			<a href="shenqing-list.html"><img src="../img/back.png"></a>
+			<div>申请详情</div>
+		</div>
+		<!--底部-->
+		<div class="dibu-box">
+			<a href="touch-index.html">
+				<div class="dibu-one">
+					<img src="../img/index@1.png" />
+					<span id="">
+					首页
+					</span>
+				</div>
+			</a>
+			<a href="activity-add.html">
+				<div class="dibu-one">
+					<img src="../img/fabu@1.png" />
+					<span id="" >
+					消息
+					</span>
+				</div>
+			</a>
+			<a href="hebing.html">
+				<div class="dibu-one">
+					<img src="../img/news@1.png" />
+					<span id="">
+					合并
+					</span>
+				</div>
+			</a>
+			<a href="mine.html">
+				<div class="dibu-one">
+					<img src="../img/mine@1.png" />
+					<span id="" >
+					我的
+					</span>
+				</div>
+			</a>
+		</div>
+		<form id="info" style="margin-top:1.15rem;">
+		
+				
+						<div class="fabu-content">
+							<span>
+							申请人：
+							</span>
+							<div id="creator" >
+								
+							</div>
+						</div>
+				
+						<div class="fabu-content">
+							<span>
+							类型：
+							</span>
+							<div id="type" >
+								
+							</div>
+						</div>
+				
+				      	<div class="fabu-content">
+							<span>
+							状态：
+							</span>
+							<div id="status" >
+								
+							</div>
+						</div>
+						<div class="fabu-content">
+							<span>
+							时间：
+							</span>
+							<div id="createtime" >
+								
+							</div>
+						</div>
+						<div class="fabu-content">
+							<span>
+							接受人：
+							</span>
+							<div id="received" >
+								
+							</div>
+						</div>
+						<div class="fabu-content2">
+							<span>
+							内容：
+							</span>
+							<div id="contenttr" >
+								
+							</div>
+						</div>
+						<div class="fabu-content2">
+							<span>
+							同意（拒绝）理由：
+							</span>
+							<div id="yl1" >
+								
+							</div>
+						</div>
+				
+
+		</form>
+		
+		<!--加载中-->
+        <div class="loader">
+		  <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		     width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+		  <path fill="#000" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z">
+		    <animateTransform attributeType="xml"
+		      attributeName="transform"
+		      type="rotate"
+		      from="0 25 25"
+		      to="360 25 25"
+		      dur="0.6s"
+		      repeatCount="indefinite"/>
+		    </path>
+		  </svg>
+		</div>
+	</body>
+
+	
+	<script type="text/javascript">	
+			mui('body').on('tap', 'a', function() {
+				document.location.href = this.href;
+			});
+			$(function() {
+				//显示加载中
+				$(".loader").css("display","block");
+				var id =  sessionStorage.getItem("id");				
+				$.ajax({
+					url: baseUrl + "/familyInf/shenqing/get?token=" + localStorage.token + "&id=" + id,
+					type: "get",
+					timeout:5000,
+					success: function(result) {
+						//隐藏加载中
+						$(".loader").css("display","none");	
+						var data = result.extend.result;
+						if(result.code == 100){
+							console.log(data);
+							$('#creator').html(data.creator);
+							$('#type').html(data.type);
+							$('#status').html(data.status);
+							$('#received').html(data.received);
+							$('#contenttr').html(data.content);
+							$('#createtime').html(data.createtime);
+							$('#yl1').html(data.yl1);
+							
+						}else{
+							mui.toast(JSON.stringify(result))
+						}
+						
+						
+					},
+					error: function(e) {
+						//隐藏加载中
+						$(".loader").css("display","none");	
+						mui.toast(JSON.stringify(e))
+					}
+				})
+			})
+			
+
+		</script>
+</html>

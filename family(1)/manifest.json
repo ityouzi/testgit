@@ -1,0 +1,866 @@
+{
+    "@platforms": ["android", "iPhone", "iPad"],
+    "id": "H5D294E0F",/*应用的标识，创建应用时自动生成，勿手动修改*/
+    "name": "family",/*应用名称，程序桌面图标名称*/
+    "version": {
+        "name": "1.0",/*应用版本名称*/
+        "code": ""
+    },
+    "description": "",/*应用描述信息*/
+    "icons": {
+        "72": "icon.png"
+    },
+    "launch_path": "html/touch-login.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+    "developer": {
+        "name": "",/*开发者名称*/
+        "email": "",/*开发者邮箱地址*/
+        "url": ""/*开发者个人主页地址*/
+    },
+    "permissions": {
+        
+        "Cache": {
+            "description": "管理应用缓存"
+        },
+        "Console": {
+            "description": "跟踪调试输出日志"
+        },
+        "Contacts": {
+            "description": "访问系统联系人信息"
+        },
+        "Events": {
+            "description": "应用扩展事件"
+        },
+        "Maps": {
+            "description": "管理地图插件"
+        },
+        "Push":{},"Zip":{},"File":{},"Audio":{},"Camera":{},"Device":{},"Runtime":{},"Gallery":{},"Storage":{},"Webview":{},"Barcode":{},"Uploader":{},"NativeUI":{},"NativeObj":{},"Navigator":{},"Messaging":{},"Proximity":{},"Downloader":{},"Invocation":{},"Orientation":{},"Geolocation":{},"Accelerometer":{},"XMLHttpRequest":{}
+    },
+    "plus": {
+        "splashscreen": {
+            "autoclose": true,/*是否自动关闭程序启动界面，true表示应用加载应用入口页面后自动关闭；false则需调plus.navigator.closeSplashscreen()关闭*/
+            "waiting": true/*是否在程序启动界面显示等待雪花，true表示显示，false表示不显示。*/
+        },
+        "popGesture": "close",/*设置应用默认侧滑返回关闭Webview窗口，"none"为无侧滑返回功能，"hide"为侧滑隐藏Webview窗口。参考http://ask.dcloud.net.cn/article/102*/
+        "runmode": "normal",/*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
+        "signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",/*可选，保留给应用签名，暂不使用*/
+        "distribute": {"plugins":{"push":{"igexin":{"appid":"gAMCDtTfmf74MO8YQ9pt87","appkey":"DXZ7r1z9ey6dyALu4Gf6B7","appsecret":"Y3Rp85xUjE7gm1DweEj1w"}}},
+            "apple": {
+                "appid": "",/*iOS应用标识，苹果开发网站申请的appid，如io.dcloud.HelloH5*/
+                "mobileprovision": "",/*iOS应用打包配置文件*/
+                "password": "",/*iOS应用打包个人证书导入密码*/
+                "p12": "",/*iOS应用打包个人证书，打包配置文件关联的个人证书*/
+                "devices": "universal",/*iOS应用支持的设备类型，可取值iphone/ipad/universal*/
+                "frameworks":[
+                ]/*调用Native.js调用原生Objective-c API需要引用的FrameWork，如需调用GameCenter，则添加"GameKit.framework"*/
+            },
+            "google": {
+                "packagename": "Demo-nnsci",/*Android应用包名，如io.dcloud.HelloH5*/
+                "keystore": "",/*Android应用打包使用的密钥库文件*/
+                "password": "",/*Android应用打包使用密钥库中证书的密码*/
+                "aliasname": "",/*Android应用打包使用密钥库中证书的别名*/
+               "permissions": ["<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>","<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.READ_LOGS\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-permission android:name=\"android.permission.SYSTEM_ALERT_WINDOW\"/>","<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>","<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"android.permission.SEND_SMS\"/>","<uses-permission android:name=\"android.permission.INTERNET\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>","<uses-permission android:name=\"android.permission.RECEIVE_USER_PRESENT\"/>","<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>","<uses-permission android:name=\"android.permission.WRITE_SMS\"/>","<uses-permission android:name=\"android.permission.READ_SMS\"/>"]
+				/*使用Native.js调用原生安卓API需要使用到的系统权限*/
+            },
+            "orientation": [
+                "portrait-primary"
+            ],/*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
+            "icons": {
+                "ios": {
+                    "prerendered": true, /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
+                     /*应用图标，分辨率：512x512，用于自动生成各种尺寸程序图标*/
+                    "iphone": {
+                        "normal": "", /*iPhone3/3GS程序图标，分辨率：57x57*/
+                        "retina": "", /*iPhone4程序图标，分辨率：114x114*/
+                         /*iPhone4S/5/6程序图标，分辨率：120x120*/
+			 /*iPhone6 Plus程序图标，分辨率：180x180*/
+                        "spotlight-normal": "", /*iPhone3/3GS Spotlight搜索程序图标，分辨率：29x29*/
+                        "spotlight-retina": "", /*iPhone4 Spotlight搜索程序图标，分辨率：58x58*/
+                         /*iPhone4S/5/6 Spotlight搜索程序图标，分辨率：80x80*/
+                        "settings-normal": "", /*iPhone4设置页面程序图标，分辨率：29x29*/
+                         /*iPhone4S/5/6设置页面程序图标，分辨率：58x58*/
+			"app@2x":"unpackage/res/icons/120x120.png","app@3x":"unpackage/res/icons/180x180.png","settings@3x":"unpackage/res/icons/87x87.png","settings@2x":"unpackage/res/icons/58x58.png","spotlight@2x":"unpackage/res/icons/80x80.png","spotlight@3x":"unpackage/res/icons/120x120.png","notification@3x":"unpackage/res/icons/60x60.png","notification@2x":"unpackage/res/icons/40x40.png" /*iPhone6Plus设置页面程序图标，分辨率：87x87*/
+                    },
+                    "ipad": {
+                        "normal": "", /*iPad普通屏幕程序图标，分辨率：72x72*/
+                        "retina": "", /*iPad高分屏程序图标，分辨率：144x144*/
+                         /*iPad iOS7程序图标，分辨率：76x76*/
+                         /*iPad iOS7高分屏程序图标，分辨率：152x152*/
+                        "spotlight-normal": "", /*iPad Spotlight搜索程序图标，分辨率：50x50*/
+                        "spotlight-retina": "", /*iPad高分屏Spotlight搜索程序图标，分辨率：100x100*/
+                        /*iPad iOS7 Spotlight搜索程序图标，分辨率：40x40*/
+                        /*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
+                        /*iPad设置页面程序图标，分辨率：29x29*/
+                        "app":"unpackage/res/icons/76x76.png","app@2x":"unpackage/res/icons/152x152.png","settings":"unpackage/res/icons/29x29.png","proapp@2x":"unpackage/res/icons/167x167.png","spotlight":"unpackage/res/icons/40x40.png","settings@2x":"unpackage/res/icons/58x58.png","spotlight@2x":"unpackage/res/icons/80x80.png","notification":"unpackage/res/icons/20x20.png","notification@2x":"unpackage/res/icons/40x40.png" /*iPad高分屏设置页面程序图标，分辨率：58x58*/
+                    },"appstore":"unpackage/res/icons/1024x1024.png"
+                },
+                "android": {
+                    "mdpi": "unpackage/res/icons/48x48.png", /*普通屏程序图标，分辨率：48x48*/
+                    "ldpi": "unpackage/res/icons/48x48.png", /*大屏程序图标，分辨率：48x48*/
+                    "hdpi": "unpackage/res/icons/72x72.png", /*高分屏程序图标，分辨率：72x72*/
+                    "xhdpi": "unpackage/res/icons/96x96.png",/*720P高分屏程序图标，分辨率：96x96*/
+                    "xxhdpi": "unpackage/res/icons/144x144.png","xxxhdpi":"unpackage/res/icons/192x192.png"/*1080P 高分屏程序图标，分辨率：144x144*/
+                }
+            },
+            "splashscreen": {
+                "ios": {
+                    "iphone": {
+                        "default": "", /*iPhone3启动图片选，分辨率：320x480*/
+                        "retina35": "",/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
+                        "retina40": "",/*4.0 英寸设备(iPhone5/iPhone5s)启动图片，分辨率：640x1136*/
+                        "retina47": "",/*4.7 英寸设备(iPhone6)启动图片，分辨率：750x1334*/
+                        "retina55": "",/*5.5 英寸设备(iPhone6 Plus)启动图片，分辨率：1242x2208*/
+                        "retina55l": ""/*5.5 英寸设备(iPhone6 Plus)横屏启动图片，分辨率：2208x1242*/
+                    },
+                    "ipad": {
+                        "portrait": "", /*iPad竖屏启动图片，分辨率：768x1004*/
+                        "portrait-retina": "",/*iPad高分屏竖屏图片，分辨率：1536x2008*/
+                        "landscape": "", /*iPad横屏启动图片，分辨率：1024x748*/
+                        "landscape-retina": "", /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
+                        "portrait7": "", /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
+                        "portrait-retina7": "",/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
+                        "landscape7": "", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
+                        "landscape-retina7": ""/*iPad iOS7高分屏横屏启动图片，分辨率：2048x1536*/
+                    }
+                },
+                "android": {
+                    "mdpi": "", /*普通屏启动图片，分辨率：240x282*/
+                    "ldpi": "", /*大屏启动图片，分辨率：320x442*/
+                    "hdpi": "", /*高分屏启动图片，分辨率：480x762*/
+                    "xhdpi": "", /*720P高分屏启动图片，分辨率：720x1242*/
+                    "xxhdpi": ""/*1080P高分屏启动图片，分辨率：1080x1882*/
+                }
+            }
+        },"ads":{"rp":false,"splash":false,"push":false}
+    },
+	"dependencies": {
+		"pages": {
+			"touch-login.html": {
+				"resources": [
+					"touch-index.html",
+					"img/zupu.jpg",
+					"img/backg.jpg",
+					"js/jquery-1.11.1.min.js",
+					"css/login.css",
+					"css/common.css",
+					"js/public.js",
+					"reg.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"touch-index.html": {
+				"resources": [
+					"img/fabu@1.png",
+					"img/mine@1.png",
+					"js/common.js",
+					"img/news@1.png",
+					"img/index@2.png",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"js/jquery-1.10.2.min.js",
+					"img/huodong.png",
+					"img/tixing.png",
+					"img/qinyou.png",
+					"img/jiapu.png",
+					"css/touch-index.css",
+					"activity-list.html",
+					"mine.html",
+					"friends.html",
+					"index.html",
+					"touch-login.html",
+					"activity-msg.html",
+					"myrl.html",
+					"activity-add.html",
+					"hebing.html",
+					"zhouyi.html"
+				],
+				"refer": [
+					"relation.html",
+					"shenhe.html"
+				],
+				"priority": 0
+			},
+			"activity-add.html": {
+				"resources": [
+					"js/mileageCamera.js",
+					"touch-index.html"
+				],
+				"refer": [
+					"activity-list.html",
+					"hebing.html",
+					"mine.html"
+				],
+				"priority": 0
+			},
+			"activity-msg.html": {
+				"resources": [
+					"css/activity.css",
+					"css/new_item.css",
+					"touch-index.html",
+					"reply-add.html",
+					"minhuodong.html",
+					"img/back.png",
+					"activity-list.html",
+					"mine.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"index.html": {
+				"resources": [
+					"img/back.png",
+					"css/dmaku.css",
+					"touch-index.html"
+				],
+				"refer": [
+					"Genealogy.html"
+				],
+				"priority": 0
+			},
+			"activity-list.html": {
+				"resources": [
+					"img/back.png",
+					"activity-msg.html",
+					"touch-index.html",
+					"reply-add.html"
+				],
+				"refer": [
+					"activity-add.html"
+				],
+				"priority": 0
+			},
+			"reply-add.html": {
+				"resources": [
+					"activity-list.html",
+					"js/mileageCamera.js",
+					"activity-msg.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"Genealogy.html": {
+				"resources": [],
+				"refer": [
+					"index.html",
+					"relation.html",
+					"xiugai.html",
+					"hebing.html",
+					"mine.html",
+					null,
+					"touch-index.html"
+				],
+				"priority": 0
+			},
+			"myrl.html": {
+				"resources": [
+					"touch-index.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"relation.html": {
+				"resources": [],
+				"refer": [
+					"touch-index.html",
+					"index.html",
+					"relation.html",
+					"Genealogy.html"
+				],
+				"priority": 0
+			},
+			"mine.html": {
+				"resources": [
+					"touch-index.html",
+					"css/dmaku.css",
+					"img/back.png",
+					"info.html",
+					"minhuodong.html",
+					"yingyao.html",
+					"jinianri.html",
+					"memorialday.html",
+					"shenqing-list.html",
+					"shenhe-list.html",
+					"friends-list.html",
+					"css/mine.css",
+					"img/index@1.png",
+					"img/mine@2.png",
+					"touch-login.html",
+					"change.html"
+				],
+				"refer": [
+					"xiugai.html",
+					"Genealogy.html",
+					"myfriends.html",
+					"shenhe.html",
+					"activity-add.html",
+					"hebing.html"
+				],
+				"priority": 0
+			},
+			"info.html": {
+				"resources": [
+					"mine.html",
+					"img/back.png",
+					"js/common.js",
+					"js/mui.min.js",
+					"css/common.css",
+					"js/public.js",
+					"css/dmaku.css",
+					"css/mui.min.css",
+					"js/jquery-1.10.2.min.js",
+					"css/touch-index.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"minhuodong.html": {
+				"resources": [
+					"activity-msg.html",
+					"mine.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"yingyao.html": {
+				"resources": [
+					"mine.html",
+					"img/back.png",
+					"js/common.js",
+					"js/mui.min.js",
+					"css/common.css",
+					"js/public.js",
+					"css/dmaku.css",
+					"css/mui.min.css",
+					"js/jquery-1.10.2.min.js",
+					"css/touch-index.css"
+				],
+				"refer": [
+					"activity-msg.html"
+				],
+				"priority": 0
+			},
+			"jinianri.html": {
+				"resources": [
+					"memorialday.html",
+					"getjinianri.html",
+					"img/back.png",
+					"js/common.js",
+					"js/mui.min.js",
+					"css/common.css",
+					"js/public.js",
+					"css/dmaku.css",
+					"css/mui.min.css",
+					"js/jquery-1.10.2.min.js",
+					"css/touch-index.css",
+					"mine.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"memorialday.html": {
+				"resources": [
+					"js/mui.picker.min.js",
+					"css/app.css",
+					"css/mui.picker.min.css",
+					"jinianri.html",
+					"mine.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"friends.html": {
+				"resources": [
+					"img/qiandao@2.png",
+					"img/back.png",
+					"css/activity.css",
+					"css/new_item.css",
+					"js/mui.min.js",
+					"css/common.css",
+					"js/public.js",
+					"css/mui.min.css",
+					"js/jquery-1.10.2.min.js",
+					"touch-index.html",
+					"dongtai.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"dongtai.html": {
+				"resources": [
+					"img/fandui.png",
+					"css/dmaku.css",
+					"js/mileageCamera2.js",
+					"friends.html",
+					"img/back.png",
+					"js/common.js",
+					"js/mui.min.js",
+					"css/common.css",
+					"js/public.js",
+					"css/mui.min.css",
+					"js/jquery-1.10.2.min.js",
+					"css/touch-index.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"getjinianri.html": {
+				"resources": [
+					"memorialday.html",
+					"img/back.png",
+					"js/common.js",
+					"jinianri.html",
+					"js/mui.min.js",
+					"css/common.css",
+					"js/public.js",
+					"css/dmaku.css",
+					"css/mui.min.css",
+					"js/jquery-1.10.2.min.js",
+					"css/touch-index.css"
+				],
+				"refer": [
+					"getjinianri.html"
+				],
+				"priority": 0
+			},
+			"xiugai.html": {
+				"resources": [],
+				"refer": [
+					"Genealogy.html",
+					"mine.html"
+				],
+				"priority": 0
+			},
+			"hebing.html": {
+				"resources": [
+					"touch-index.html"
+				],
+				"refer": [
+					"mine.html",
+					"Genealogy.html",
+					"shenhe-list.html",
+					"shenqing-list.html",
+					"activity-add.html",
+					"touch-login.html"
+				],
+				"priority": 0
+			},
+			"myfriends.html": {
+				"resources": [
+					"img/back.png",
+					"js/common.js",
+					"js/mui.min.js",
+					"css/common.css",
+					"js/public.js",
+					"css/dmaku.css",
+					"css/mui.min.css",
+					"js/jquery-1.10.2.min.js",
+					"css/touch-index.css",
+					"mine.html",
+					"friends-list.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"friends-list.html": {
+				"resources": [
+					"shenhe-list.html",
+					"mine.html",
+					"shenhe.html",
+					"myfriends.html",
+					"touch-index.html",
+					"img/back.png",
+					"js/common.js",
+					"js/mui.min.js",
+					"css/common.css",
+					"js/public.js",
+					"css/dmaku.css",
+					"css/mui.min.css",
+					"js/jquery-1.10.2.min.js",
+					"css/touch-index.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"shenhe.html": {
+				"resources": [
+					"touch-index.html",
+					"friends-list.html",
+					"shenhe-list.html",
+					"img/back.png",
+					"js/common.js",
+					"js/mui.min.js",
+					"css/common.css",
+					"js/public.js",
+					"css/dmaku.css",
+					"css/mui.min.css",
+					"js/jquery-1.10.2.min.js",
+					"css/touch-index.css",
+					"mine.html"
+				],
+				"refer": [
+					"myfriends.html"
+				],
+				"priority": 0
+			},
+			"shenhe-list.html": {
+				"resources": [
+					"friends-list.html",
+					"mine.html",
+					"shenhe.html",
+					"img/back.png",
+					"js/common.js",
+					"js/mui.min.js",
+					"css/common.css",
+					"js/public.js",
+					"css/dmaku.css",
+					"css/mui.min.css",
+					"js/jquery-1.10.2.min.js",
+					"css/touch-index.css"
+				],
+				"refer": [
+					"touch-index.html",
+					"hebing.html"
+				],
+				"priority": 0
+			},
+			"shenqing-list.html": {
+				"resources": [
+					"mine.html"
+				],
+				"refer": [
+					"touch-index.html",
+					"shenhe.html"
+				],
+				"priority": 0
+			},
+			"reg.html": {
+				"resources": [
+					"img/back.png",
+					"js/common.js",
+					"js/mui.picker.min.js",
+					"css/app.css",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"touch-login.html",
+					"js/jquery-1.10.2.min.js",
+					"css/mui.picker.min.css",
+					"css/touch-index.css",
+					"css/common.css",
+					"js/public.js"
+				],
+				"refer": [
+					"touch-index.html",
+					"reg.html"
+				],
+				"priority": 0
+			},
+			"zhouyi.html": {
+				"resources": [
+					"wnlimg/Show.js",
+					"wnlimg/1.css",
+					"wnlimg/Main.js",
+					"wnlimg/Weather.js",
+					"wnlimg/moon19.gif",
+					"wnlimg/moon17.gif"
+				],
+				"refer": [
+					"touch-index.html"
+				],
+				"priority": 0
+			},
+			"change.html": {
+				"resources": [
+					"img/fabu@1.png",
+					"img/mine@1.png",
+					"img/index@1.png",
+					"js/public.js",
+					"css/touch-index.css",
+					"img/back.png",
+					"js/common.js",
+					"img/news@1.png",
+					"css/common.css",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"css/dmaku.css",
+					"js/jquery-1.10.2.min.js",
+					"mine.html",
+					"touch-login.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/touch-login.html": {
+				"resources": [],
+				"refer": [
+					"html/touch-index.html",
+					"html/reg.html"
+				],
+				"priority": 0
+			},
+			"html/touch-index.html": {
+				"resources": [],
+				"refer": [
+					"html/activity-add.html",
+					"html/mine.html",
+					"html/draw.html",
+					"html/activity-msg.html",
+					"html/friends.html",
+					"html/zhouyi.html",
+					"html/index.html",
+					"html/activity-list.html",
+					"html/bename.html",
+					"html/hebing.html"
+				],
+				"priority": 0
+			},
+			"html/activity-list.html": {
+				"resources": [],
+				"refer": [
+					"html/touch-index.html",
+					"html/activity-add.html",
+					"html/activity-msg.html",
+					"html/mine.html"
+				],
+				"priority": 0
+			},
+			"html/activity-add.html": {
+				"resources": [],
+				"refer": [
+					"html/activity-list.html",
+					"html/hebing.html",
+					"html/touch-index.html",
+					"html/mine.html"
+				],
+				"priority": 0
+			},
+			"html/mine.html": {
+				"resources": [],
+				"refer": [
+					"html/touch-index.html",
+					"html/touch-login.html",
+					"html/info.html",
+					"html/activity-add.html",
+					"html/jinianri.html",
+					"html/yingyao.html",
+					"html/minhuodong.html",
+					"html/shenhe-list.html",
+					"html/shenqing-list.html",
+					"html/change.html",
+					"html/hebing.html",
+					"html/friends-list.html"
+				],
+				"priority": 0
+			},
+			"html/hebing.html": {
+				"resources": [],
+				"refer": [
+					"html/mine.html",
+					"html/touch-index.html",
+					"html/activity-add.html",
+					"html/Genealogy.html"
+				],
+				"priority": 0
+			},
+			"html/draw.html": {
+				"resources": [],
+				"refer": [
+					"html/touch-index.html",
+					"html/mine.html",
+					"html/Sign-parsing.html",
+					"html/activity-add.html"
+				],
+				"priority": 0
+			},
+			"html/activity-msg.html": {
+				"resources": [],
+				"refer": [
+					"html/touch-index.html",
+					"html/reply-add.html"
+				],
+				"priority": 0
+			},
+			"html/friends.html": {
+				"resources": [
+					"img/回复图标.png"
+				],
+				"refer": [
+					"html/dongtai.html",
+					"html/touch-index.html",
+					"html/mine.html",
+					"html/activity-add.html"
+				],
+				"priority": 0
+			},
+			"html/dongtai.html": {
+				"resources": [],
+				"refer": [
+					"html/friends.html"
+				],
+				"priority": 0
+			},
+			"html/zhouyi.html": {
+				"resources": [],
+				"refer": [
+					"html/touch-index.html"
+				],
+				"priority": 0
+			},
+			"html/index.html": {
+				"resources": [],
+				"refer": [
+					"html/Genealogy.html",
+					"html/touch-index.html"
+				],
+				"priority": 0
+			},
+			"html/Genealogy.html": {
+				"resources": [],
+				"refer": [
+					"html/mine.html",
+					"html/relation.html",
+					"html/index.html",
+					"html/xiugai.html",
+					"html/hebing.html"
+				],
+				"priority": 0
+			},
+			"html/relation.html": {
+				"resources": [],
+				"refer": [
+					"html/Genealogy.html"
+				],
+				"priority": 0
+			},
+			"html/info.html": {
+				"resources": [],
+				"refer": [
+					"html/mine.html",
+					"html/hebing.html",
+					"html/touch-index.html"
+				],
+				"priority": 0
+			},
+			"html/Sign-parsing.html": {
+				"resources": [],
+				"refer": [
+					"html/draw.html"
+				],
+				"priority": 0
+			},
+			"html/jinianri.html": {
+				"resources": [],
+				"refer": [
+					"html/mine.html",
+					"html/memorialday.html"
+				],
+				"priority": 0
+			},
+			"html/xiugai.html": {
+				"resources": [],
+				"refer": [
+					"html/Genealogy.html"
+				],
+				"priority": 0
+			},
+			"html/bename.html": {
+				"resources": [],
+				"refer": [
+					"html/touch-index.html"
+				],
+				"priority": 0
+			},
+			"html/reply-add.html": {
+				"resources": [],
+				"refer": [
+					"html/activity-list.html"
+				],
+				"priority": 0
+			},
+			"html/minhuodong.html": {
+				"resources": [],
+				"refer": [
+					"html/mine.html",
+					"html/touch-index.html"
+				],
+				"priority": 0
+			},
+			"html/yingyao.html": {
+				"resources": [],
+				"refer": [
+					"html/mine.html"
+				],
+				"priority": 0
+			},
+			"html/shenqing-list.html": {
+				"resources": [],
+				"refer": [
+					"html/mine.html"
+				],
+				"priority": 0
+			},
+			"html/shenhe-list.html": {
+				"resources": [],
+				"refer": [
+					"html/mine.html"
+				],
+				"priority": 0
+			},
+			"html/change.html": {
+				"resources": [],
+				"refer": [
+					"html/touch-login.html"
+				],
+				"priority": 0
+			},
+			"html/reg.html": {
+				"resources": [],
+				"refer": [
+					"html/touch-login.html"
+				],
+				"priority": 0
+			},
+			"html/memorialday.html": {
+				"resources": [],
+				"refer": [
+					"html/mine.html"
+				],
+				"priority": 0
+			},
+			"html/friends-list.html": {
+				"resources": [],
+				"refer": [
+					"html/myfriends.html",
+					"html/mine.html"
+				],
+				"priority": 0
+			},
+			"html/myfriends.html": {
+				"resources": [],
+				"refer": [
+					"html/mine.html"
+				],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"images/cbd.jpg",
+				"js/echarts-all.js",
+				"images/muwu.jpg",
+				"images/shuijiao.jpg",
+				"pie-nest.html",
+				"images/logo.png",
+				"images/60x60.gif",
+				"js/touch.min.js",
+				"images/login-1.png",
+				"js/jquery-1.11.3.min.js",
+				"img/fabu@2.png",
+				"images/qrcode.png",
+				"img/news@2.png",
+				"images/yuantiao.jpg",
+				"js/whir.touch.js",
+				"js/cat.touchjs.js"
+			]
+		}
+	}
+}

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/common.js" ></script>
+		<style>
+		.draw-listbox{
+			width: 100%;
+			padding: 0.2rem;
+			box-sizing: border-box;
+			margin-top: 0.96rem;
+		}
+		html,body{
+			width: 7.5rem;
+			height: 100%;
+			background: url("../img/cq-bg.jpg") no-repeat;
+			-webkit-background-size: 100%;
+			background-size: 100% 100%;
+			overflow-y: auto;
+		}
+		
+		.draw-tips{
+			width: 65%;
+			height: 0.75rem;
+			font-size: 0.24rem;
+			background-color: rgba(225, 222, 255, 0.25);
+			color: #f0a086;
+			filter: Alpha(opacity=25);
+			box-sizing: border-box;
+			text-align: center;
+			line-height: 0.75rem;
+			border-radius: 0.1rem;
+			position: fixed;
+			left: 50%;
+			bottom: 5.4rem;
+			-webkit-transform: translateX(-50%);
+		}
+		.Birth-box{
+			width: 65%;
+			height:1.75rem;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
+			border-radius: 0.2rem;
+			position: fixed;
+			left: 50%;
+			bottom: 3.35rem;
+			-webkit-transform: translateX(-50%);
+			
+		}
+		.Birth-date{
+			border-radius: 0.05rem;
+			width: 100%;
+			height: 0.7rem;
+			background-color: rgba(225, 222, 255, 0.54);
+			color: #FFFFFF;
+			filter: Alpha(opacity=54);
+			font-size: 0.26rem;
+			padding: 0 0.1rem;
+			box-sizing: border-box;
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+		}
+		.Birth-date>span{
+			width: 30%;
+			text-align: center;
+		}
+		.Birth-date>input{
+			width: 68%;
+			height: 100%;
+			border: none;
+			background: none;
+			font-size: 1em;
+			font-family: "Microsoft YaHei";
+			color: #FFFFFF;
+			letter-spacing: 1px;
+			padding-left: 2px;
+			
+		}
+		#draw{
+			width: 2.35rem;
+			text-align: center;
+			padding: 0.15rem;
+		
+			font-size: 0.26rem;
+			box-sizing: border-box;
+		    border:2px solid #acaed5;
+			color: #FFFFFF;
+			border-radius: 0.4rem;
+			position: fixed;
+			left: 50%;
+			bottom: 1.85rem;
+			-webkit-transform: translateX(-50%);
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div class="head">
+			<a href="touch-index.html"><img src="../img/back.png"></a>			
+			<div class="title">抽签</div>	 
+			
+		</div>
+			<!--底部-->
+		<div class="dibu-box">
+			<a href="touch-index.html">
+				<div class="dibu-one">
+					<img src="../img/index@1.png" />
+					<span id="">
+					首页
+					</span>
+				</div>
+			</a>
+			<a href="activity-add.html">
+				<div class="dibu-one">
+					<img src="../img/fabu@1.png" />
+					<span id="">
+					消息
+					</span>
+				</div>
+			</a>
+			<a href="hebing.html">
+				<div class="dibu-one">
+					<img src="../img/news@1.png" />
+					<span id="">
+					合并
+					</span>
+				</div>
+			</a>
+			<a href="mine.html">
+				<div class="dibu-one">
+					<img src="../img/mine@1.png" />
+					<span id="">
+					   我的
+					</span>
+				</div>
+			</a>
+		</div>
+		
+		<div class="draw-listbox">			
+		     
+		      <div class="draw-tips">
+		      	 为了更加的准确，请输入姓名生辰
+		      </div>
+		      <form class="Birth-box" action="get">
+			      	<div class="Birth-date">
+				      	 <span>姓名：</span>
+				      	 <input type="text" name="name" maxlength="4" id="name" placeholder="请输入中文..." style="font-size: 15px;"onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))"/>
+				    </div>
+			        <div class="Birth-date">
+				      	 <span>生辰：</span>
+				      	 <input type="date" name="date" id="birth" value="" />
+			        </div>
+		      </form>
+		      <div id="draw" onclick="draw()">
+		      	  抽签
+		      </div>
+		      
+		</div>
+		<!--加载中-->
+        <div class="loader">
+		  <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		     width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+		  <path fill="#000" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z">
+		    <animateTransform attributeType="xml"
+		      attributeName="transform"
+		      type="rotate"
+		      from="0 25 25"
+		      to="360 25 25"
+		      dur="0.6s"
+		      repeatCount="indefinite"/>
+		    </path>
+		  </svg>
+		</div> 
+	
+		
+		
+		
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="../js/public.js"></script>
+		<!--朋友圈动态显示-->
+		<script type="text/javascript">
+			mui('body').on('tap', 'a', function() {
+				document.location.href = this.href;
+			});
+			function draw() {
+				//显示加载中
+			    $(".loader").css("display","block");
+				$.ajax({
+					url: baseUrl + "/familyInf/qianwen/get?token=" + localStorage.token,
+					data: $('.Birth-box').serialize(),
+					type: "post",
+					timeout:5000,
+					success: function(result) {
+						//隐藏加载中
+						$(".loader").css("display","none");	
+						var data = result.extend.result;
+						
+						if(result.code == 200) {
+							mui.toast(JSON.stringify(data));
+						} else {
+							
+							console.log(data);
+							sessionStorage.setItem("qianwen",JSON.stringify(data));
+							location.href="Sign-parsing.html"
+						}                            
+						
+					},
+					error: function(e) {
+						//隐藏加载中
+						$(".loader").css("display","none");	
+						mui.toast(JSON.stringify(e));
+					}
+				})
+			}
+				
+			//
+		
+		</script>	
+		
+		
+		
+	</body>
+</html>

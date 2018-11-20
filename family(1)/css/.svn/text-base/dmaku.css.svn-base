@@ -1,0 +1,261 @@
+﻿html,body{
+	width: 100%;
+	height: 100%;
+	background-color: rgba(78, 75, 144, 0.8);
+    color: #FFFFFF;
+    filter: Alpha(opacity=80);
+	overflow-y: auto;
+	
+}
+body{
+	margin:0;
+     padding:0;
+}
+.echarts_pie{
+	height:1000px;
+	width:100%;
+
+}
+#echart{
+	 height:1000px;
+	width:1000px;
+	overflow: auto;
+	-webkit-tap-highlight-color: transparent; 
+	-webkit-user-select: none; 
+	cursor: default;
+	 background-color: rgba(0, 0, 0, 0);
+}
+.echarts_pie ul{
+	float:left;
+	list-style:none;
+}
+.echarts_pie ul li{
+	float:left;
+}
+.echarts_pie .government{
+	margin-top:-500px;
+	width:200px;
+	height:60px;
+	font-size: 15px;
+	color: #4A4A4A;
+	letter-spacing: 0px;
+	line-height: 20px;
+}
+.echarts_pie .government_img{
+	margin-top:-920px;
+	margin-left:235px;
+}
+.echarts_pie .bussiness{
+	width:195px;
+	height:60px;
+	font-size: 15px;
+	color: #4A4A4A;
+	letter-spacing: 0px;
+	line-height: 20px;
+	margin-top:140px;
+}
+.echarts_pie .bussiness_img{
+	margin-top:-560px;
+	margin-left:-170px;
+}
+.echarts_pie .industry{
+	width:195px;
+	height:60px;
+	font-size: 15px;
+	color: #4A4A4A;
+	letter-spacing: 0px;
+	line-height: 20px;
+	margin-top:160px;
+}
+.echarts_pie .industry_img{
+	margin-top:-180px;
+	margin-left:-110px;
+}
+.echarts_pie .hospital_img{
+	margin-top:-950px;
+	margin-left:620px;
+}
+.echarts_pie .school_img{
+	margin-top:-680px;
+	margin-left:690px;
+}
+.echarts_pie .hotel_img{
+	margin-top:-300px;
+	margin-left:620px;
+}
+.echarts_pie .hospital{
+	margin-top:-570px;
+	margin-left:800px;
+	font-size: 15px;
+	color: #4A4A4A;
+	letter-spacing: 0px;
+	line-height: 20px;
+}
+.echarts_pie .school{
+	font-size: 15px;
+	color: #4A4A4A;
+	letter-spacing: 0px;
+	line-height: 20px;
+	margin-left:800px;
+	margin-top:110px;
+}
+.echarts_pie .hotel{
+	font-size: 15px;
+	color: #4A4A4A;
+	letter-spacing: 0px;
+	line-height: 20px;
+	margin-left:810px;
+	margin-top:190px;
+}
+.container{
+	width: 100%;
+	position: relative;
+	height:100%;
+}
+.zhoubox{
+	width: 80%;
+	height: 125px;
+	background-color: rgba(225, 222, 255, 0.54);
+    color: #FFFFFF;
+    filter: Alpha(opacity=54);
+	border-radius: 10px;
+	box-shadow: 1px 1px 1px 1px #CCCCCC;
+	position: absolute;
+	left: 50%;
+	top: 10%;
+	-webkit-transform:translateX(-50%);
+	font-size: 26px;
+	display: none;
+	z-index: 9999;
+
+}
+.xuanzhe>span{
+	padding: 15px 10px;
+	border: 2px solid #b4b4dc;
+	border-radius: 20px;
+	background-color: rgba(78, 75, 144, 0.5);
+    color: #FFFFFF;
+    filter: Alpha(opacity=50);
+}
+.but-box{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.name{
+	width: 70%;
+	height: 60px;
+	border:1px solid #999999;
+	border-radius: 5px;
+	margin: 40px auto;
+	margin-left: 15%;
+}
+.queren{
+	
+    width: 150px;
+    height: 70px;
+    text-align: center;
+    line-height: 70px;
+    color: #ffffff;
+
+    border-radius: 10px;
+    background-color: green;
+}
+.quxiao{
+	
+    width: 150px;
+    height: 70px;
+    text-align: center;
+    line-height: 70px;
+    color: #ffffff;
+
+    border-radius: 10px;
+    background-color: red;
+}
+.zr-element{
+	position: absolute;
+	 left: 0px;
+	  top: 0px;
+	  min-height:1000px;
+	min-width:1000px;
+	overflow: auto;
+	    -webkit-user-select: none;
+}
+#fangda{
+	position: fixed;
+	left: 5%;
+	bottom: 5%;
+	background-color: #4A4A4A;
+	color: #FFFFFF;
+	border-radius: 50%;
+	font-size: 50px;
+	width: 100px;
+	height: 100px;
+	line-height: 100px;
+	text-align: center;
+}
+#suoxiao{
+	position: fixed;
+	right: 5%;
+	bottom: 5%;
+	background-color: #4A4A4A;
+	color: #FFFFFF;
+	border-radius: 50%;
+	font-size: 50px;
+	width: 100px;
+	height: 100px;
+	line-height: 100px;
+	text-align: center;
+}
+.gen-one{
+	width: 96%;
+	min-height: 0rem;	
+	margin: 0 auto;
+	box-sizing: border-box;
+	
+}
+.gen-box{
+	float: left;
+	width: 20%;
+	height: 2.3rem;
+	border: 1px solid #999999;
+	border-radius: 0.1rem;
+	margin-top: 0.2rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	margin-top: 0.1rem;
+	margin-left: 2%;
+	margin-right: 3%;
+	margin-bottom: 0.2rem;
+}
+.gen-box-xian{
+	width: 96%;
+	height: 20%;
+		font-size: 0.2rem;
+		text-align: center;
+}
+.chengwei{
+	width: 96%;
+	height: 0.7rem;
+	/*border: 1px solid #000000;*/
+	border-radius: 0.1rem;
+	font-size: 0.2rem;
+	text-align: center;
+	line-height:  0.7rem;
+	overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
+}
+.xuanzhe{
+	height: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;	
+	font-size: 30px;		
+}
+.inp{
+	 transform:scale(2);
+	 margin-right: 10px;
+}
