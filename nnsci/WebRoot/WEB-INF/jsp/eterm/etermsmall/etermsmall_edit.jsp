@@ -1,0 +1,466 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<base href="<%=basePath%>">
+	<!-- 下拉框 -->
+	<link rel="stylesheet" href="static/ace/css/chosen.css" />
+	<!-- jsp文件头和头部 -->
+	<%@ include file="/WEB-INF/jsp/system/index/top.jsp"%>
+	<!-- 日期框 -->
+	<link rel="stylesheet" href="static/ace/css/datepicker.css" />
+</head>
+<body class="no-skin">
+<!-- /section:basics/navbar.layout -->
+<div class="main-container" id="main-container">
+	<!-- /section:basics/sidebar -->
+	<div class="main-content">
+		<div class="main-content-inner">
+			<div class="page-content">
+				<div class="row">
+					<div class="col-xs-12">
+					
+					<form action="etermsmall/${msg }.do" name="Form" id="Form" method="post">
+						<input type="hidden" name="ETERMSMALL_ID" id="ETERMSMALL_ID" value="${pd.ETERMSMALL_ID}"/>
+						<div id="zhongxin" style="padding-top: 13px;">
+						<table id="table_report" class="table table-striped table-bordered table-hover">
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">创建人:</td>
+								<td><input type="text" name="CREATE_BY" id="CREATE_BY" value="${pd.CREATE_BY}" readonly="readonly" maxlength="255" placeholder="这里输入创建人" title="创建人" style="width:98%;"/></td>
+							</tr>
+							<%-- <tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">创建时间:</td>
+								<td><input type="text" name="CREATE_TIME" id="CREATE_TIME" value="${pd.CREATE_TIME}" maxlength="255" placeholder="这里输入创建时间" title="创建时间" style="width:98%;"/></td>
+							</tr> --%>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">状态:</td>
+<%-- 								<td><input type="text" name="STATUS" id="STATUS" value="${pd.STATUS}" maxlength="255" placeholder="这里输入状态" title="状态" style="width:98%;"/></td>
+ --%>								<td style="vertical-align:top;padding-left:2px;">								
+									<select class="chosen-select form-control" name="STATUS" id="STATUS" data-placeholder="请选择" style="vertical-align:top;width: 120px;">
+									<option value="">--请选择--</option>
+									<option value="停用">停用</option>
+									<option value="启用">启用</option>
+									</select>			
+								</td>
+							
+							</tr>
+						<%-- 	<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">用户ID:</td>
+								<td><input type="text" name="USERID" id="USERID" value="${pd.USERID}" maxlength="255" placeholder="这里输入用户ID" title="用户ID" style="width:98%;"/></td>
+							</tr> --%>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">账号:</td>
+								<td><input type="text" name="ACCOUNT" id="ACCOUNT" value="${pd.ACCOUNT}" maxlength="255" placeholder="这里输入账号" title="账号" style="width:98%;"/></td>
+							</tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">密码:</td>
+								<td><input type="text" name="PASSWORD" id="PASSWORD" value="${pd.PASSWORD}" maxlength="255" placeholder="这里输入密码" title="密码" style="width:98%;"/></td>
+							</tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">备注:</td>
+								<td><input type="text" name="REMARK" id="REMARK" value="${pd.REMARK}" maxlength="255" placeholder="这里输入备注" title="备注" style="width:98%;"/></td>
+							</tr>
+						<%-- 	<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">预留:</td>
+								<td><input type="text" name="YL1" id="YL1" value="${pd.YL1}" maxlength="255" placeholder="这里输入预留" title="预留" style="width:98%;"/></td>
+							</tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">预留:</td>
+								<td><input type="text" name="YL2" id="YL2" value="${pd.YL2}" maxlength="255" placeholder="这里输入预留" title="预留" style="width:98%;"/></td>
+							</tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">预留:</td>
+								<td><input type="text" name="YL3" id="YL3" value="${pd.YL3}" maxlength="255" placeholder="这里输入预留" title="预留" style="width:98%;"/></td>
+							</tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">预留:</td>
+								<td><input type="text" name="YL4" id="YL4" value="${pd.YL4}" maxlength="255" placeholder="这里输入预留" title="预留" style="width:98%;"/></td>
+							</tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">预留:</td>
+								<td><input type="text" name="YL5" id="YL5" value="${pd.YL5}" maxlength="255" placeholder="这里输入预留" title="预留" style="width:98%;"/></td>
+							</tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">预留:</td>
+								<td><input type="text" name="YL6" id="YL6" value="${pd.YL6}" maxlength="255" placeholder="这里输入预留" title="预留" style="width:98%;"/></td>
+							</tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">预留:</td>
+								<td><input type="text" name="YL7" id="YL7" value="${pd.YL7}" maxlength="255" placeholder="这里输入预留" title="预留" style="width:98%;"/></td>
+							</tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">预留:</td>
+								<td><input type="text" name="YL8" id="YL8" value="${pd.YL8}" maxlength="255" placeholder="这里输入预留" title="预留" style="width:98%;"/></td>
+							</tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">预留:</td>
+								<td><input type="text" name="YL9" id="YL9" value="${pd.YL9}" maxlength="255" placeholder="这里输入预留" title="预留" style="width:98%;"/></td>
+							</tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">预留:</td>
+								<td><input type="text" name="YL10" id="YL10" value="${pd.YL10}" maxlength="255" placeholder="这里输入预留" title="预留" style="width:98%;"/></td>
+							</tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">预留:</td>
+								<td><input type="text" name="YL11" id="YL11" value="${pd.YL11}" maxlength="255" placeholder="这里输入预留" title="预留" style="width:98%;"/></td>
+							</tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">预留:</td>
+								<td><input type="text" name="YL12" id="YL12" value="${pd.YL12}" maxlength="255" placeholder="这里输入预留" title="预留" style="width:98%;"/></td>
+							</tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">预留:</td>
+								<td><input type="text" name="YL13" id="YL13" value="${pd.YL13}" maxlength="255" placeholder="这里输入预留" title="预留" style="width:98%;"/></td>
+							</tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">预留:</td>
+								<td><input type="text" name="YL14" id="YL14" value="${pd.YL14}" maxlength="255" placeholder="这里输入预留" title="预留" style="width:98%;"/></td>
+							</tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">预留:</td>
+								<td><input type="text" name="YL15" id="YL15" value="${pd.YL15}" maxlength="255" placeholder="这里输入预留" title="预留" style="width:98%;"/></td>
+							</tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">预留:</td>
+								<td><input type="text" name="YL16" id="YL16" value="${pd.YL16}" maxlength="255" placeholder="这里输入预留" title="预留" style="width:98%;"/></td>
+							</tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">预留:</td>
+								<td><input type="text" name="YL17" id="YL17" value="${pd.YL17}" maxlength="255" placeholder="这里输入预留" title="预留" style="width:98%;"/></td>
+							</tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">预留:</td>
+								<td><input type="text" name="YL18" id="YL18" value="${pd.YL18}" maxlength="255" placeholder="这里输入预留" title="预留" style="width:98%;"/></td>
+							</tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">预留:</td>
+								<td><input type="text" name="YL19" id="YL19" value="${pd.YL19}" maxlength="255" placeholder="这里输入预留" title="预留" style="width:98%;"/></td>
+							</tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">预留:</td>
+								<td><input type="text" name="YL20" id="YL20" value="${pd.YL20}" maxlength="255" placeholder="这里输入预留" title="预留" style="width:98%;"/></td>
+							</tr> --%>
+							<tr>
+								<td style="text-align: center;" colspan="10">
+									<a class="btn btn-mini btn-primary" onclick="save();">保存</a>
+									<a class="btn btn-mini btn-danger" onclick="top.Dialog.close();">取消</a>
+								</td>
+							</tr>
+						</table>
+						</div>
+						<div id="zhongxin2" class="center" style="display:none"><br/><br/><br/><br/><br/><img src="static/images/jiazai.gif" /><br/><h4 class="lighter block green">提交中...</h4></div>
+					</form>
+					</div>
+					<!-- /.col -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /.page-content -->
+		</div>
+	</div>
+	<!-- /.main-content -->
+</div>
+<!-- /.main-container -->
+
+
+	<!-- 页面底部js¨ -->
+	<%@ include file="/WEB-INF/jsp/system/index/foot.jsp"%>
+	<!-- 下拉框 -->
+	<script src="static/ace/js/chosen.jquery.js"></script>
+	<!-- 日期框 -->
+	<script src="static/ace/js/date-time/bootstrap-datepicker.js"></script>
+	<!--提示框-->
+	<script type="text/javascript" src="static/js/jquery.tips.js"></script>
+		<script type="text/javascript">
+		$(top.hangge());
+		//保存
+		function save(){
+			if($("#CREATE_BY").val()==""){
+				$("#CREATE_BY").tips({
+					side:3,
+		            msg:'请输入创建人',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#CREATE_BY").focus();
+			return false;
+			}
+			if($("#CREATE_TIME").val()==""){
+				$("#CREATE_TIME").tips({
+					side:3,
+		            msg:'请输入创建时间',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#CREATE_TIME").focus();
+			return false;
+			}
+			if($("#STATUS").val()==""){
+				$("#STATUS").tips({
+					side:3,
+		            msg:'请输入状态',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#STATUS").focus();
+			return false;
+			}
+			if($("#USERID").val()==""){
+				$("#USERID").tips({
+					side:3,
+		            msg:'请输入用户ID',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#USERID").focus();
+			return false;
+			}
+			if($("#ACCOUNT").val()==""){
+				$("#ACCOUNT").tips({
+					side:3,
+		            msg:'请输入账号',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#ACCOUNT").focus();
+			return false;
+			}
+			if($("#PASSWORD").val()==""){
+				$("#PASSWORD").tips({
+					side:3,
+		            msg:'请输入密码',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#PASSWORD").focus();
+			return false;
+			}
+			if($("#REMARK").val()==""){
+				$("#REMARK").tips({
+					side:3,
+		            msg:'请输入备注',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#REMARK").focus();
+			return false;
+			}
+			if($("#YL1").val()==""){
+				$("#YL1").tips({
+					side:3,
+		            msg:'请输入预留',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#YL1").focus();
+			return false;
+			}
+			if($("#YL2").val()==""){
+				$("#YL2").tips({
+					side:3,
+		            msg:'请输入预留',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#YL2").focus();
+			return false;
+			}
+			if($("#YL3").val()==""){
+				$("#YL3").tips({
+					side:3,
+		            msg:'请输入预留',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#YL3").focus();
+			return false;
+			}
+			if($("#YL4").val()==""){
+				$("#YL4").tips({
+					side:3,
+		            msg:'请输入预留',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#YL4").focus();
+			return false;
+			}
+			if($("#YL5").val()==""){
+				$("#YL5").tips({
+					side:3,
+		            msg:'请输入预留',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#YL5").focus();
+			return false;
+			}
+			if($("#YL6").val()==""){
+				$("#YL6").tips({
+					side:3,
+		            msg:'请输入预留',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#YL6").focus();
+			return false;
+			}
+			if($("#YL7").val()==""){
+				$("#YL7").tips({
+					side:3,
+		            msg:'请输入预留',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#YL7").focus();
+			return false;
+			}
+			if($("#YL8").val()==""){
+				$("#YL8").tips({
+					side:3,
+		            msg:'请输入预留',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#YL8").focus();
+			return false;
+			}
+			if($("#YL9").val()==""){
+				$("#YL9").tips({
+					side:3,
+		            msg:'请输入预留',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#YL9").focus();
+			return false;
+			}
+			if($("#YL10").val()==""){
+				$("#YL10").tips({
+					side:3,
+		            msg:'请输入预留',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#YL10").focus();
+			return false;
+			}
+			if($("#YL11").val()==""){
+				$("#YL11").tips({
+					side:3,
+		            msg:'请输入预留',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#YL11").focus();
+			return false;
+			}
+			if($("#YL12").val()==""){
+				$("#YL12").tips({
+					side:3,
+		            msg:'请输入预留',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#YL12").focus();
+			return false;
+			}
+			if($("#YL13").val()==""){
+				$("#YL13").tips({
+					side:3,
+		            msg:'请输入预留',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#YL13").focus();
+			return false;
+			}
+			if($("#YL14").val()==""){
+				$("#YL14").tips({
+					side:3,
+		            msg:'请输入预留',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#YL14").focus();
+			return false;
+			}
+			if($("#YL15").val()==""){
+				$("#YL15").tips({
+					side:3,
+		            msg:'请输入预留',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#YL15").focus();
+			return false;
+			}
+			if($("#YL16").val()==""){
+				$("#YL16").tips({
+					side:3,
+		            msg:'请输入预留',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#YL16").focus();
+			return false;
+			}
+			if($("#YL17").val()==""){
+				$("#YL17").tips({
+					side:3,
+		            msg:'请输入预留',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#YL17").focus();
+			return false;
+			}
+			if($("#YL18").val()==""){
+				$("#YL18").tips({
+					side:3,
+		            msg:'请输入预留',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#YL18").focus();
+			return false;
+			}
+			if($("#YL19").val()==""){
+				$("#YL19").tips({
+					side:3,
+		            msg:'请输入预留',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#YL19").focus();
+			return false;
+			}
+			if($("#YL20").val()==""){
+				$("#YL20").tips({
+					side:3,
+		            msg:'请输入预留',
+		            bg:'#AE81FF',
+		            time:2
+		        });
+				$("#YL20").focus();
+			return false;
+			}
+			$("#Form").submit();
+			$("#zhongxin").hide();
+			$("#zhongxin2").show();
+		}
+		
+		$(function() {
+			//日期框
+			$('.date-picker').datepicker({autoclose: true,todayHighlight: true});
+		});
+		</script>
+</body>
+</html>

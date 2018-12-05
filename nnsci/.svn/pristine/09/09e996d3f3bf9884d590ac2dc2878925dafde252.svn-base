@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CommentMapper">
+	
+	<!--表名 -->
+	<sql id="tableName">
+		TB_COMMENT
+	</sql>
+	
+	<!-- 字段 -->
+	<sql id="Field">
+		PID,	
+		CREATOR,	
+		CREATE_TIME,	
+		CONTENT,	
+		STATUS,	
+		YL1,	
+		YL2,	
+		YL3,	
+		COMMENT_ID
+	</sql>
+	
+	<!-- 字段值 -->
+	<sql id="FieldValue">
+		#{PID},	
+		#{CREATOR},	
+		#{CREATE_TIME},	
+		#{CONTENT},	
+		#{STATUS},	
+		#{YL1},	
+		#{YL2},	
+		#{YL3},	
+		#{COMMENT_ID}
+	</sql>
+	
+	<!-- 新增-->
+	<insert id="save" parameterType="pd">
+		insert into 
+	<include refid="tableName"></include>
+		(
+	<include refid="Field"></include>
+		) values (
+	<include refid="FieldValue"></include>
+		)
+	</insert>
+	
+	<!-- 删除-->
+	<delete id="delete" parameterType="pd">
+		delete from
+		<include refid="tableName"></include>
+		where 
+			COMMENT_ID = #{COMMENT_ID}
+	</delete>
+	
+	<!-- 修改 -->
+	<update id="edit" parameterType="pd">
+		update
+		<include refid="tableName"></include>
+		set 
+			PID = #{PID},
+			CREATOR = #{CREATOR},
+			CREATE_TIME = #{CREATE_TIME},
+			CONTENT = #{CONTENT},
+			STATUS = #{STATUS},
+			YL1 = #{YL1},
+			YL2 = #{YL2},
+			YL3 = #{YL3},
+		COMMENT_ID = COMMENT_ID
+		where 
+		COMMENT_ID = #{COMMENT_ID}
+	</update>
+	
+	<!-- 通过ID获取数据 -->
+	<select id="findById" parameterType="pd" resultType="pd">
+		select 
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include>
+		where 
+			COMMENT_ID = #{COMMENT_ID}
+	</select>
+	
+	<!-- 列表 -->
+	<select id="datalistPage" parameterType="page" resultType="pd">
+		select
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include>
+		where 1=1
+		<if test="pd.keywords!= null and pd.keywords != ''"><!-- 关键词检索 -->
+			and
+				(
+					CREATOR LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+				<!--	根据需求自己加检索条件
+					字段1 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+					 or 
+					字段2 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') 
+				-->
+				)
+		</if>
+		<!-- <if test="pd.lastStart!= null and pd.lastStart != ''">关键词检索
+			and
+				(
+					CREATE_TIME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+					根据需求自己加检索条件
+					字段1 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+					 or 
+					字段2 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') 
+				
+				)
+		</if> -->
+		<if test="pd.name!= null and pd.name != ''"><!-- 关键词检索 -->
+			and
+				(
+					STATUS LIKE CONCAT(CONCAT('%', #{pd.name}),'%')
+				)
+		</if>
+		<if test="pd.lastStart!= null and pd.lastStart != ''"><!-- 关键词检索 -->
+			and
+				(
+					CREATE_TIME LIKE CONCAT(CONCAT('%', #{pd.lastStart}),'%')
+				)
+		</if>
+		<if test="pd.pid!= null and pd.pid != ''"><!-- 关键词检索 -->
+			and
+				(
+					PID=#{pd.pid}
+				)
+		</if>
+		 <!-- <if test="pd.lastStart!=null and pd.lastStart!=''">开始时间检索
+			and CREATETIME &gt;= #{pd.lastStart}
+		</if>
+		<if test="pd.lastEnd!=null and pd.lastEnd!=''">结束时间检索
+			and CREATETIME &lt;= #{pd.lastEnd}
+		</if>-->
+		order by CREATE_TIME desc  
+	</select>
+	
+	<!-- 列表(全部) -->
+	<select id="listAll" parameterType="pd" resultType="pd">
+		select
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include>
+	</select>
+	
+	<!-- 批量删除 -->
+	<delete id="deleteAll" parameterType="String">
+		delete from
+		<include refid="tableName"></include>
+		where 
+			COMMENT_ID in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+                 #{item}
+		</foreach>
+	</delete>
+	
+	<!-- fh313596790qq(青苔) -->
+</mapper>
