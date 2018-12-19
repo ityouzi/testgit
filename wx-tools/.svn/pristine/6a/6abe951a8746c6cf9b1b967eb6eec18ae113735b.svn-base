@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>订单列表</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/order.css"/>
+		<!--<link rel="stylesheet" href="../css/mui.min.css" />-->
+		<script src="../my-js/common.js"></script>
+		<script src="../my-js/public.js"></script>
+		
+
+		<style type="text/css">
+			
+			
+		</style>
+	</head> 
+	<body>
+	
+	
+		
+		<div class="dingdan-content">
+		
+			<!--<div class="dingdan-one">
+				<div class="dingdan-one-center">
+					<div class="dingdan-one-left">
+						<img src="../images/cbd.jpg"/>
+					</div>
+					<div class="dingdan-one-right">
+						<div class="dingdan-one-top">
+							<span id="">
+								订单号：
+							</span>
+							<span id="">
+								1234557687980545667768
+							</span>
+						</div>
+						
+						<div class="dingdan-one-top">
+							<span id="">
+								车架号：
+							</span>
+							<span id="">
+								1234557687980545667768
+							</span>
+						</div>
+						<div class="dingdan-one-top">
+							<span id="">
+								发动机号：
+							</span>
+							<span id="">
+								1234557687980545667768
+							</span>
+						</div>
+						<div class="dingdan-one-top-two">
+							<span id="">服务顾问</span>
+							<span>鄂A123456</span>
+							<span id="">2018-03-04</span>
+						</div>
+					</div>
+				</div>
+				
+			</div>-->
+
+		</div>	
+		
+	
+	
+		<script src="../my-js/jquery-2.1.0.js"></script> 
+		<script type="text/javascript" src="../my-js/mui.min.js" ></script>
+		<script type="text/javascript">
+			mui('.dibu-box').on('tap','a',function(){
+				
+				document.location.href=this.href;
+			});
+			function getUrlQueryString(names, urls) {
+				urls = urls || window.location.href;
+				urls && urls.indexOf("?") > -1 ? urls = urls
+						.substring(urls.indexOf("?") + 1) : "";
+				var reg = new RegExp("(^|&)" + names + "=([^&]*)(&|$)", "i");
+				var r = urls ? urls.match(reg) : window.location.search.substr(1)
+						.match(reg);
+				if (r != null && r[2] != "")
+					return unescape(r[2]);
+				return null;
+			};
+
+			window.onload = function(){
+				var code = getUrlQueryString('code');
+				//alert(code);
+				$.ajax({
+						url: urlBase+"orderWx?code="+code,
+//						data: {"yl1":localStorage.username},
+						dataType: "json",
+						type: "get",
+						timeout : 5000, //超时时间设置，单位毫秒
+						success: function(result) {
+//							alert(JSON.stringify(result));
+							var data=result.extend.result;
+							console.log(data);
+							$.each(data, function(index,item) {
+//								var list='<div class="dingdan-one"><div class="dingdan-one-center"><div class="dingdan-one-left"><img src="../images/cbd.jpg"/></div><div class="dingdan-one-right"><div class="dingdan-one-top"><span id="">订单号：</span><span id="">'+item.orderId+'</span></div><div class="dingdan-one-top"><span id="">车架号：</span><span id="">'+item.carNum2+'</span></div><div class="dingdan-one-top"><span id="">发动机号：</span><span>'+item.carNum3+'</span></div><div class="dingdan-one-top-two"><span id="">服务顾问</span><span>鄂A123456</span><span id="">'+item.createTime+'</span></div></div></div>';
+//								图片
+ 								var img;
+                                if(item.yl1){
+                                	img=$("<img />").attr("src",item.yl1);
+                                	
+								}else{
+								   img=$("<img />").attr("src","../my-img/login/oeder.png");
+								}
+								var imgDiv=$('<div class="dingdan-one-left"></div>').append(img);
+//								订单号
+								var orderIdTitle=$('<span>订单号:</span>');
+								var orderId=$('<span></span>').append(item.orderId);
+								var orderIdDiv=$('<div class="dingdan-one-top"></div>').append(orderIdTitle,orderId);
+//								车架号
+								var carNum2Title=$('<span>车架号:</span>');
+								var carNum2=$('<span></span>').append(item.carNum2);
+								var carNum2Div=$('<div class="dingdan-one-top"></div>').append(carNum2Title,carNum2);
+//								发动机号
+								var carNum3Title=$('<span>发动机号:</span>');
+								var carNum3=$('<span></span>').append(item.carNum2);
+								var carNum3Div=$('<div class="dingdan-one-top"></div>').append(carNum2Title,carNum3);
+								//订单状态
+								
+								var status;
+								if(item.status == "财务已确认"){
+									var status=$("<div class='status' style='color: red;'></div>").append(item.status);								
+								}else{
+									var status=$("<div class='status'></div>").append(item.status);
+								}
+//								服务顾问 车牌号 创建时间
+								var serviceConsultant=$('<span></span>').append(item.yl11);
+								var carNum1=$('<span class="carNum1"></span>').append(item.carNum1);
+								var createTime=$('<span></span>').append(item.createTime);
+//								div
+								var div=$('<div class="dingdan-one-top-two"></div>').append(serviceConsultant,carNum1,createTime);
+//								填充div
+								var divs=$('<div class="dingdan-one-right"></div>').append(orderIdDiv,status,div);
+								var centerDiv=$('<div class="dingdan-one-center"></div>').append(imgDiv,divs);
+								var list=$('<div class="dingdan-one" onclick="xq(this)"></div>').append(centerDiv).attr("orderId",item.orderId);
+								$('.dingdan-content').append(list);
+							});
+						},
+						error: function(e) {
+							 mui.toast(JSON.stringify(e));
+						}
+					});
+			}
+			
+		function xq(obj){
+			var orderId=obj.getAttribute("orderId");
+			sessionStorage.setItem('orderId',orderId);
+			location.href="order-details.html";
+		}
+			
+	</script>	
+   
+	</body>
+</html>

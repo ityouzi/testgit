@@ -1,0 +1,1312 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>订单详情</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/Order-details.css"/>
+		<link rel="stylesheet" href="../css/mui.picker.min.css" />
+		<script src="../my-js/common.js"></script>
+		<script src="../my-js/public.js"></script>
+		<script src="../my-js/audio2.js"></script>
+		<link rel="stylesheet" href="../css/zoom.css" />
+	</head>
+	<body>
+		
+		<div class="order-details-content" style="margin-top: 0">
+			 <!--订单号-->
+			<div class="dindanhao">
+			 	<span id="">
+			 		订单号：
+			 	</span>
+			 	<span id="ddh">
+			 		
+			 	</span>
+			</div>
+		
+			<!--订单基本信息-->
+			 <div class="order-details-one">
+			 	 <div class="od-top" style="background-color: #F4F3F8;">
+			 	 	  <span>
+			 	 		订单基本信息
+			 	 	  </span>
+			 	 	  <img src="../my-img/Order-details/xia@1.png"/>
+			 	 </div> 
+			 	 <div class="od-bottom wrap" style="display: block;" id="jbInfo">
+			 	 	  <!--<ul>
+			 	 	  	
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">接单状态</span>
+			 	 	  		<span class="od-bottom-right" id="status"> </span>
+			 	 	  	</li>
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">创建人</span>
+			 	 	  		<span class="od-bottom-right" id="createBy"></span>
+			 	 	  	</li>
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">创建时间</span>
+			 	 	  		<span class="od-bottom-right" id="createTime"></span>
+			 	 	  	</li>
+			 	 	  	
+			 	 	  </ul>-->
+			 	 </div>
+			 </div>
+			 
+			 <!--车辆信息-->
+			 <div class="order-details-one">
+			 	 <div class="od-top">
+			 	 	  <span>
+			 	 		车辆信息
+			 	 	  </span>
+			 	 	  <img src="../my-img/Order-details/shang@1.png"/>
+			 	 </div> 
+			 	 <div class="od-bottom wrap" id="carInfo">
+			 	 	  <!--<ul>
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">创建人</span>
+			 	 	  		<span class="od-bottom-right" id="createBya"></span>
+			 	 	  	</li>
+			 			 	 	  
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">车牌号</span>
+			 	 	  		<span class="od-bottom-right" id="carNum1a"></span>
+			 	 	  	</li>
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">车架号</span>
+			 	 	  		<span class="od-bottom-right" id="carNum2a"></span>
+			 	 	  	</li>
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">发动机号</span>
+			 	 	  		<span class="od-bottom-right" id="carNum3a"></span>
+			 	 	  	</li>
+			 	 
+			 	 	  	
+			 	 	  	
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">汽车品牌</span>
+			 	 	  		<span class="od-bottom-right" id="carBrank"></span>
+			 	 	  	</li>
+			 	 	  	
+			 	 	  	
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">汽车类型</span>
+			 	 	  		<span class="od-bottom-right" id="carType"></span>
+			 	 	  	</li>
+			 	 	  	
+			 	 	
+			 	 	  </ul>-->
+			 	 	  
+			 	 </div>
+			 </div>
+			 
+			  <!--接车单信息-->
+			 <div class="order-details-one">
+			 	 <div class="od-top">
+			 	 	  <span>
+			 	 		接车单信息(需要客户授权)
+			 	 	  </span>
+			 	 	  <img src="../my-img/Order-details/shang@1.png"/>
+			 	 </div> 
+			 	 <div class="od-bottom-two wrap" id="reInfo">
+			 	 	  <!--<ul>
+			 	 	  	
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">创建人</span>
+			 	 	  		<span class="od-bottom-right" id="createBy2"></span>
+			 	 	  	</li>
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">入场时间</span>
+			 	 	  		<span class="od-bottom-right" id="createTime2"></span>
+			 	 	  	</li>	
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">审核时间</span>
+			 	 	  		<span class="od-bottom-right" id="checkedTime"></span>
+			 	 	  	</li>
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">接车单ID</span>
+			 	 	  		<span class="od-bottom-right" id="receptionId"></span>
+			 	 	  	</li>			 	 	  	
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">服务顾问</span>
+			 	 	  		<span class="od-bottom-right" id="serviceAdvisor"></span>
+			 	 	  	</li>
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">复核人</span>
+			 	 	  		<span class="od-bottom-right" id="rcheckedBy"></span>
+			 	 	  	</li>
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">里程</span>
+			 	 	  		<span class="od-bottom-right" id="mileage"></span>
+			 	 	  		
+			 	 	  		<span class="look">查看图片</span>
+			 	 	  		
+			 	 	  	</li>
+			 	 	  			 	 	  	
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">外观图片</span>
+			 	 	  		<span class="od-bottom-right"></span>
+			 	 	  		<span class="look1">查看图片</span>
+			 	 	  	</li>			 	 			 	 	  
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">是否同意路测</span>
+			 	 	  		<span class="od-bottom-right" id="isAgree"></span>
+			 	 	  	</li>			 	 	 			 	 	  	
+			 	 	  
+			 	 	  </ul> -->
+			 	 	  
+                     <div class="push-box" id="receptionBtn">
+			 	 	  	
+			 	 	  </div>
+			 	 </div>
+			 </div>
+			 
+			  <!--信息反馈单-->
+			 <div class="order-details-one">
+			 	 <div class="od-top">
+			 	 	  <span>
+			 	 		信息反馈单
+			 	 	  </span>
+			 	 	  <img src="../my-img/Order-details/shang@1.png"/>
+			 	 </div> 
+			 	 <div class="od-bottom-two wrap" id="infoFeedBack">
+			 	 	  <!--<ul class="infoFeedBack">
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">反馈单号</span>
+			 	 	  		<span class="od-bottom-right"></span>
+			 	 	  	</li>
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">服务顾问</span>
+			 	 	  		<span class="od-bottom-right"></span>
+			 	 	  	</li>
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">复核人</span>
+			 	 	  		<span class="od-bottom-right"></span>
+			 	 	  	</li>	
+			 	 	  	<div class="feedback">
+			 	 	  		<span class="od-bottom-left">反馈内容</span>
+			 	 	  		<span class="od-bottom-right"></span>
+			 	 	  
+			 	 	  		<audio loop src="" controls="controls">
+			 	 	  	
+			 	 	  	</div>
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">诊断人</span>
+			 	 	  		<span class="od-bottom-right"></span>
+			 	 	  	</li>			 	 	  	
+			 	 	  	<div class="feedback">
+			 	 	  		<span class="od-bottom-left">诊断结果</span>
+			 	 	  		<span class="od-bottom-right"></span>
+			 	 	  
+			 	 	  		<audio loop src="" controls="controls">
+			 	 	  	</div>
+			 	 	
+			 	 	  			 	 	  	
+			 	 	  </ul>-->
+
+			 	 </div>
+			 </div>
+			 
+			 <!--派工单信息-->
+			 <div class="order-details-one">
+			 	 <div class="od-top">
+			 	 	  <span>
+			 	 		派工单信息
+			 	 	  </span>
+			 	 	  <img src="../my-img/Order-details/shang@1.png"/>
+			 	 </div> 
+			 	 <div class="od-bottom-two wrap" id="dispatchings">
+			 	 	  <!--<ul class="dispatchings">
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">派工单ID</span>
+			 	 	  		<span class="od-bottom-right"></span>
+			 	 	  	</li>
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">创建人</span>
+			 	 	  		<span class="od-bottom-right"></span>
+			 	 	  	</li>
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">创建时间</span>
+			 	 	  		<span class="od-bottom-right"></span>
+			 	 	  	</li>
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">派工状态</span>
+			 	 	  		<span class="od-bottom-right"></span>
+			 	 	  	</li>
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">维修技师</span>
+			 	 	  		<span class="od-bottom-right"></span>
+			 	 	  	</li>
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">复核人</span>
+			 	 	  		<span class="od-bottom-right"></span>
+			 	 	  	</li>
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">预交车日</span>
+			 	 	  		<span class="od-bottom-right"></span>
+			 	 	  	</li>			 	 	  	
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">总检查员</span>
+			 	 	  		<span class="od-bottom-right"></span>
+			 	 	  	</li>
+			 	 	  	<div class="feedback">
+			 	 	  		<span class="od-bottom-left">总检查备注</span>
+			 	 	  		<span class="od-bottom-right"></span>
+			 	 	  	</div>
+			 	 	  	
+			 	 	  </ul>-->
+			 	 	  
+			 	 	  <div class="school">
+			 	 	  	  <!--<div class="school-one">
+			 	 	  	  	 <ul>
+			 	 	  	  	 	<li>
+			 	 	  	  	 		<span class="school-one-left">序号</span>
+			 	 	  	  	 		<span class="school-one-right"></span>
+			 	 	  	  	 	</li>
+			 	 	  	  	 	<li>
+			 	 	  	  	 		<span class="school-one-left">作业名称</span>
+			 	 	  	  	 		<span class="school-one-right"></span>
+			 	 	  	  	 	</li>
+			 	 	  	  	 
+			 	 	  	  	 </ul>
+			 	 	  	  </div>-->
+			 	 	  	  
+			 	 	
+			 	 	  	  
+			 	 	  </div>
+			 	 </div>
+			 	 
+			 </div>
+			 
+			 
+	 <!--报价单信息-->
+			<div class="order-details-one">
+			 	 <div class="od-top">
+			 	 	  <span>
+			 	 		报价单信息(需要客户确认)
+			 	 	  </span>
+			 	 	  <img src="../my-img/Order-details/shang@1.png"/>
+			 	 </div> 
+			 	 <div class="od-bottom-two wrap" id="partOffers">
+			 	 	  <!--<ul class="partOffers">
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">复核人</span>
+			 	 	  		<span class="od-bottom-right"></span>
+			 	 	  	</li>
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">报价人</span>
+			 	 	  		<span class="od-bottom-right"></span>
+			 	 	  	</li>	
+			 	 	  	
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">销售人</span>
+			 	 	  		<span class="od-bottom-right"></span>
+			 	 	  	</li>			 	 	  	
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">合计</span>
+			 	 	  		<span class="od-bottom-right"></span>
+			 	 	  	</li>
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">报价状态</span>
+			 	 	  		<span class="od-bottom-right"></span>
+			 	 	  	</li>
+			 	 	  	<div class="school">
+			 	 	  		<div class="school-one">
+			 	 	  			<ul>
+						 	 	  	<li>
+						 	 	  		<span class="od-bottom-left">配件名称</span>
+						 	 	  		<span class="od-bottom-right"></span>
+						 	 	  	</li>
+						 	 	  	<li>
+						 	 	  		<span class="od-bottom-left">配件编号</span>
+						 	 	  		<span class="od-bottom-right"></span>
+						 	 	  	</li>
+						 	 	  	<li>
+						 	 	  		<span class="od-bottom-left">数量</span>
+						 	 	  		<span class="od-bottom-right"></span>
+						 	 	  	</li>
+						 	 	  	<li>
+						 	 	  		<span class="od-bottom-left">单价</span>
+						 	 	  		<span class="od-bottom-right"></span>
+						 	 	  	</li>
+						 	 	  	<li>
+						 	 	  		<span class="od-bottom-left">小计</span>
+						 	 	  		<span class="od-bottom-right"></span>
+						 	 	  	</li> 
+			 	 	  			</ul>
+			 	 	  		</div>
+			 	 	  	</div>
+			 	 	  		 	  	
+			 	 	  </ul>-->
+			 	 
+			 	 </div>
+			</div> 
+	 <!--采购单信息     不要了-->
+			<!--<div class="order-details-one">
+			 	 <div class="od-top">
+			 	 	  <span>
+			 	 		采购单信息
+			 	 	  </span>
+			 	 	  <img src="../my-img/Order-details/shang@1.png"/>
+			 	 </div> 
+			 	 <div class="od-bottom-two wrap">
+			 	 	  <ul>
+			 	 	  	
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">复核人</span>
+			 	 	  		<span class="od-bottom-right"></span>
+			 	 	  	</li>
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">期望交付日期</span>
+			 	 	  		<span class="od-bottom-right"></span>
+			 	 	  	</li>	
+			 	 	  	
+			 	 	  	<div class="feedback">
+			 	 	  		<span class="od-bottom-left">备注</span>
+			 	 	  		<span class="od-bottom-right"></span>
+			 	 	  	</div>			 	 	  	
+			 	 	  	
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">采购状态</span>
+			 	 	  		<span class="od-bottom-right"></span>
+			 	 	  	</li>
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">配件名称</span>
+			 	 	  		<span class="od-bottom-right"></span>
+			 	 	  	</li>
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">配件编号</span>
+			 	 	  		<span class="od-bottom-right"></span>
+			 	 	  	</li>
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">采购数量</span>
+			 	 	  		<span class="od-bottom-right"></span>
+			 	 	  	</li>		
+			 	 	  </ul>
+			 	 	  <div class="push-box">
+			 	 	  	<button class="creatPur">创建采购单</button>	
+			 	 	  	<button class="overPur">采购完成</button>	
+			 	 	  </div> 
+			 	 </div>
+			 </div> -->
+		 <!--结算单信息-->
+			<div class="order-details-one">
+			 	 <div class="od-top">
+			 	 	  <span>
+			 	 		结算单信息
+			 	 	  </span>
+			 	 	  <img src="../my-img/Order-details/shang@1.png"/>
+			 	 </div> 
+			 	 <div class="od-bottom-two wrap" id="settle">
+			 	 	  <!--<ul>
+			 	 	  	
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">合计</span>
+			 	 	  		<span class="od-bottom-right" id="settleTotal"></span>
+			 	 	  	</li>
+			 	 	  	<li>
+			 	 	  		<span class="od-bottom-left">结算状态</span>
+			 	 	  		<span class="od-bottom-right" id="settleStatus"></span>
+			 	 	  	</li>	
+			 	 	  	
+			 	 	  	<div class="feedback">
+			 	 	  		<span class="od-bottom-left">结算备注</span>
+			 	 	  		<span class="od-bottom-right" id="settleRemark"></span>
+			 	 	  	</div>			 	 	  	
+			 	 	  	</ul>-->
+			 	 	 
+			 	 	  <!--配件名称-->	
+			 	 	  <!--<div class="peijian-box" id="settleParts">
+			 	 	  	  <div class="peijian-one">
+			 	 	  	  	<ul>
+			 	 	  	  		 <li>
+			 	 	  	  	 		<span class="school-one-left">配件名称</span>
+			 	 	  	  	 		<span class="school-one-right"></span>
+			 	 	  	  	 	</li>
+			 	 	  	  	 	<li>
+			 	 	  	  	 		<span class="school-one-left">配件编号</span>
+			 	 	  	  	 		<span class="school-one-right"></span>
+			 	 	  	  	 	</li>
+			 	 	  	  	 	<li>
+			 	 	  	  	 		<span class="school-one-left">数量</span>
+			 	 	  	  	 		<span class="school-one-right"></span>
+			 	 	  	  	 	</li>
+			 	 	  	  	 	<li>
+			 	 	  	  	 		<span class="school-one-left">单价</span>
+			 	 	  	  	 		<span class="school-one-right"></span>
+			 	 	  	  	 	</li>
+			 	 	  	  	 	<li>
+			 	 	  	  	 		<span class="school-one-left">小计</span>
+			 	 	  	  	 		<span class="school-one-right"></span>
+			 	 	  	  	 	</li>
+			 	 	  	  	</ul>
+			 	 	  	  	   
+			 	 	  	  </div>
+			 	 	  	 
+			 	 	  </div>-->
+			 	 	  
+			 	 	  <!--作业项目-->
+			 	 	  <!--<div class="peijian-box" id="settleWork">
+			 	 	  	  <div class="peijian-one">
+			 	 	  	  	<ul>
+			 	 	  	  		<li>
+			 	 	  	  	 		<span class="school-one-left">作业项目名称</span>
+			 	 	  	  	 		<span class="school-one-right"></span>
+			 	 	  	  	 	</li>
+			 	 	  	  	 	<li>
+			 	 	  	  	 		<span class="school-one-left">工时</span>
+			 	 	  	  	 		<span class="school-one-right"></span>
+			 	 	  	  	 	</li>
+			 	 	  	  	 	<li>
+			 	 	  	  	 		<span class="school-one-left">金额</span>
+			 	 	  	  	 		<span class="school-one-right"></span>
+			 	 	  	  	 	</li>
+			 	 	  	  	 	<li>
+			 	 	  	  	 		<span class="school-one-left">应收</span>
+			 	 	  	  	 		<span class="school-one-right"></span>
+			 	 	  	  	 	</li>
+			 	 	  	  	 	<li>
+			 	 	  	  	 		<span class="school-one-left">实收</span>
+			 	 	  	  	 		<span class="school-one-right"></span>
+			 	 	  	  	 	</li>
+			 	 	  	  	</ul>
+			 	 	  	  	   
+			 	 	  	  </div>-->
+			 	 	  	 
+			 	 	  <!--</div>-->
+			 	 	  
+			 	 	  <div class="push-box" id="settleBtn">
+			 	 	  	
+			 	 	  	<!--<button class="pay" onclick="khfk(this)">客户付款</button>-->	
+			 	 	  	
+			 	 	  </div>
+			 	 </div>
+			</div> 	 
+		</div>
+	<!--里程的查看图片遮罩层-->
+		<div id="look" class="mui-hidden">
+			<span>×</span>
+		</div>
+	<!--外观图片的查看图片遮罩层-->
+		<div id="look1" class=" mui-hidden">
+			<span class="btn">×</span>
+			<span class="btn1 mui-icon mui-icon-arrowleft"></span>
+			<span class="btn2 mui-icon mui-icon-arrowright"></span>
+			<!--<img src="../images/cbd.jpg" alt="" />
+			<img src="../images/yuantiao.jpg" alt="" />
+			<img src="../images/shuijiao.jpg" alt="" />-->
+		</div>
+	<div class="clear"></div>
+		<script src="../my-js/mui.min.js"></script>
+		<script src="../my-js/jquery-2.1.0.js"></script> 
+		<!--<script src="../my-js/zoom.min.js"></script>-->
+		<!--<script src="../my-js/zoom.min.js"></script>-->
+		<script src="../my-js/mui.picker.min.js"></script>
+		
+		<script>
+//			移动端底部栏点击跳转页面
+			mui('.dibu-box').on('tap','a',function(){document.location.href=this.href;});
+			mui('header').on('tap','a',function(){document.location.href=this.href;});
+            var carche;
+            var jieche;
+            var orderInfo;
+            var orderid = sessionStorage.getItem("orderId");
+             
+            //var roletype= loginInfo.userInfo.roletype;
+		$(function(){
+//				点击折叠切换
+				$('.od-top').each(function(i){
+					$(this).on('tap',function(){
+						if($('.wrap').eq(i).css('display')=='none'){
+							$('.wrap').eq(i).css('display','block');
+							$(this).css('background-color','#F4F3F8');
+							$('.od-top>img').eq(i).attr("src","../my-img/Order-details/xia@1.png");
+						}else{
+							$('.wrap').eq(i).css('display','none');
+							$(this).css('background-color','#ffffff');
+							$('.od-top>img').eq(i).attr("src","../my-img/Order-details/shang@1.png");
+						}
+					})
+				})
+				
+//		订单详情渲染数据
+		$.ajax({
+            type: "get",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: urlBase+"orderlist" ,
+            data:"orderId="+orderid,
+            timeout : 5000, //超时时间设置，单位毫秒
+//				data:"orderId=20180514180331351325533",
+            success: function(result) {
+            	if(result.code == 205) {
+				    mui.toast("登录过期，请重新登录！");
+				    setTimeout(function() {
+					  location.href="login.html";
+				    }, 1000);
+			    }else{
+                	
+					
+//					基本信息
+					orderInfo = result.extend.result;
+					//alert(JSON.stringify(orderInfo));
+					
+//					顶部订单号显示
+					$('#ddh').html(orderInfo.orderId);
+					
+					
+//					保存整个详情的数据
+					sessionStorage.setItem('orderInfo',JSON.stringify(orderInfo));
+
+//					如果订单详情数据不等于空
+					if(orderInfo!=null){
+						
+												
+						
+//						订单基本信息
+						var span1=$('<span class="od-bottom-left">接单状态</span>');
+						var span2=$('<span class="od-bottom-right" id="status"></span>').append(orderInfo.status);
+						var li1=$('<li></li>').append(span1,span2);
+						var span3=$('<span class="od-bottom-left">创建人</span>');
+						var span4=$('<span class="od-bottom-right" id="createBy"></span>').append(orderInfo.yl11);
+						var li2=$('<li></li>').append(span3,span4);
+						var span5=$('<span class="od-bottom-left">创建时间</span>');
+						var span6=$('<span class="od-bottom-right" id="createTime"></span>').append(orderInfo.createTime);
+						var li3=$('<li></li>').append(span5,span6);
+						var ul=$('<ul></ul>').append(li1,li2,li3).appendTo($('#jbInfo'));
+
+
+//						车辆信息
+						var carInfo = orderInfo.carInfo;
+						if(carInfo!=null){
+							var carsp1=$('<span class="od-bottom-left">创建人</span>');
+							var carsp2=$('<span class="od-bottom-right" id="createBya"></span>').append(carInfo.yl11);
+							var carli1=$('<li></li>').append(carsp1,carsp2);
+							var carsp3=$('<span class="od-bottom-left">车牌号</span>');
+							var carsp4=$('<span class="od-bottom-right" id="carNum1a"></span>').append(carInfo.carNum1);
+							var carli2=$('<li></li>').append(carsp3,carsp4);
+							var carsp5=$('<span class="od-bottom-left">车架号</span>');
+							var carsp6=$('<span class="od-bottom-right" id="carNum2a"></span>').append(carInfo.carNum2);
+							var carli3=$('<li></li>').append(carsp5,carsp6);
+							var carsp7=$('<span class="od-bottom-left">发动机号</span>');
+							var carsp8=$('<span class="od-bottom-right" id="carNum3a"></span>').append(carInfo.carNum3);
+							var carli4=$('<li></li>').append(carsp7,carsp8);
+							var carsp9=$('<span class="od-bottom-left">汽车品牌</span>');
+							var carsp10=$('<span class="od-bottom-right" id="carBrank"></span>').append(carInfo.carBrank+"---"+carInfo.yl1);
+							var carli5=$('<li></li>').append(carsp9,carsp10);
+							var carsp11=$('<span class="od-bottom-left">汽车类型</span>');
+							var carsp12=$('<span class="od-bottom-right" id="carType"></span>').append(carInfo.carType);
+							var carli6=$('<li></li>').append(carsp11,carsp12);
+							
+							var carul=$('<ul></ul>').append(carli1,carli2,carli3,carli4,carli5).appendTo($('#carInfo'));
+							
+						}
+						
+						
+//						接车单信息
+			
+						var reception = orderInfo.reception;
+						if(reception!=null){
+//							接车单状态
+							var s=reception.status;
+//							接车单id
+							var receptionIdTitle=$('<span class="od-bottom-left">接车单ID</span>');
+							var receptionId=$('<span class="od-bottom-right" id="receptionId"></span>').append(reception.receptionId);
+							var receptionIdLi=$('<li></li>').append(receptionIdTitle,receptionId);
+//							创建人
+							var createByTitle=$('<span class="od-bottom-left">创建人</span>');
+							var createBy=$('<span class="od-bottom-right" id="createBy2"></span>').append(reception.yl12);
+							var createByLi=$('<li></li>').append(createByTitle,createBy);
+//							入场时间
+							var createTimeTitle=$('<span class="od-bottom-left">入场时间</span>');
+							var createTime=$('<span class="od-bottom-right" id="createTime2"></span>').append(reception.createTime);
+							var createTimeLi=$('<li></li>').append(createTimeTitle,createTime);
+//							审核时间
+							var checkedTimeTitle=$('<span class="od-bottom-left">审核时间</span>');
+							var checkedTime=$('<span class="od-bottom-right" id="checkedTime"></span>').append(reception.checkedTime);
+							var checkedTimeLi=$('<li></li>').append(checkedTimeTitle,checkedTime);
+//							服务顾问
+							var serviceAdvisorTitle=$('<span class="od-bottom-left">服务顾问</span>');
+							var serviceAdvisor=$('<span class="od-bottom-right" id="serviceAdvisor"></span>').append(reception.serviceAdvisor);
+							var serviceAdvisorLi=$('<li></li>').append(serviceAdvisorTitle,serviceAdvisor);
+//							状态
+							var statusTitle=$('<span class="od-bottom-left">状态</span>');
+							var status=$('<span class="od-bottom-right"></span>').append(reception.status);
+							var statusLi=$('<li></li>').append(statusTitle,status);
+//							复核人
+							var checkedByTitle=$('<span class="od-bottom-left">复核人</span>');
+							var checkedBy=$('<span class="od-bottom-right" id="rcheckedBy"></span>').append(reception.yl12);
+							var checkedByLi=$('<li></li>').append(checkedByTitle,checkedBy);
+							//复核内容
+							var checkedByTitlely=$('<span class="od-bottom-left">复核内容</span>');
+							var checkedly=$('<span class="od-bottom-right"></span>').append(reception.yl3);
+							var checkedlyLi=$('<li></li>').append(checkedByTitlely,checkedly);
+//							里程
+							var mileageTitle=$('<span class="od-bottom-left">里程</span>');
+							var mileage=$('<span class="od-bottom-right" id="mileage"></span>').append(reception.mileage);							
+                             //  修改
+							
+							
+//							如果有里程图片数据就插入到里程遮罩层
+							if(reception.mileageImg!=null&&reception.mileageImg!=""){
+//								将图片放入图片遮罩层
+								var mileageImg=$('<img src="">').attr('src',reception.mileageImg);
+								$('#look').append(mileageImg);
+//								查看按钮
+								var mileagePit=$('<span class="look">查看图片</span>');
+							}
+//							插入里程li
+							var mileageLi=$('<li></li>').append(mileageTitle,mileage,mileagePit);
+//							外观图片
+							var yl2Title=$('<span class="od-bottom-left">外观图片</span>');
+							var yl2=$('<span class="od-bottom-right"></span>');
+//							如果有图片链接就插入查看图片按钮
+							if(reception.yl2!=null&&reception.yl2!=""){
+//								查看按钮
+								var yl2Pit=$('<span class="look1">查看图片</span>');
+							}
+							var yl2Li=$('<li></li>').append(yl2Title,yl2,yl2Pit);
+//							是否同意路测
+							var isAgreeTitle=$('<span class="od-bottom-left">是否同意路测</span>');
+							var isAgree=$('<span class="od-bottom-right" id="isAgree"></span>').append(reception.isAgree);
+							var isAgreeLi=$('<li></li>').append(isAgreeTitle,isAgree);
+//							ul
+							var reul=$('<ul></ul>').append(receptionIdLi,serviceAdvisorLi,createByLi,createTimeLi,checkedTimeLi,checkedByLi,checkedlyLi,statusLi,mileageLi,yl2Li,isAgreeLi);
+								$('#receptionBtn').before(reul);
+							
+							
+
+							
+							
+//							点击里程查看图片显示图片 
+							$('.look').on('tap',function(){
+								$('#look').removeClass('mui-hidden');
+							})
+							
+							
+							
+//							里程查看图片的关闭按钮
+							$('#look>span').on('tap',function(){
+								$('#look').addClass('mui-hidden');
+							})
+							
+							
+//							用一个数组来保存外观图片的多张图片
+							var arr= new Array();
+//							分割后台返回的图片链接数据
+							arr=reception.yl2.split("***");
+//							循环数组来插入图片到遮罩层
+							$.each(arr, function(index,item){
+								if(item!=""){
+//										var look="<div><a href="+item+"><img src="+item+"/></a></div>";
+									var img=$('<img src=""/>').attr('src',item);
+									$('#look1').append(img);
+									$('#look1>img').eq(0).removeClass('mui-hidden');
+								}
+							});
+							
+							
+//							点击外观图片查看图片
+							$('.look1').on('tap',function(){
+								$('#look1').removeClass('mui-hidden');
+								$('#look1>img').eq(0).css('display','block');
+							})
+							
+							
+//							点击外观图片的关闭按钮
+							$('.btn').on('tap',function(){
+								$('#look1').addClass('mui-hidden');
+							})
+								
+//							点击外观图片的下一张
+							var btn2Index=0;
+							$('.btn2').on('tap',function(){
+								var y=$('#look1>img').length;
+								if(btn2Index<y-1){
+									$('#look1>img').eq(btn2Index).css('display','none');
+									$('#look1>img').eq(btn2Index+1).css('display','block');
+									btn2Index++;
+								}else{
+									mui.toast('没有下一张');
+								}
+									
+							})
+							
+							
+//							点击外观图片的上一张
+							$('.btn1').on('tap',function(){
+								var y=0;
+								if(btn2Index>0){
+									$('#look1>img').eq(btn2Index).css('display','none');
+									$('#look1>img').eq(btn2Index-1).css('display','block');
+									btn2Index--;
+								}else{
+									mui.toast('没有上一张');
+								}
+									
+							})
+							if(s=='待提交'||s=='复核未通过'){
+		                         
+									
+							}else if(s=='待复核'){
+																
+							}else if(s=='已复核'){
+		
+							}else if(s=="已复核待客户确认"){
+								 var kehuqueren=$('<button id="kehuqueren" onclick="kehuqueren()">是否授权</button>');
+								$('#receptionBtn').append(kehuqueren);
+							}else if(s=="客户已确认"){
+								
+							}
+
+						}
+					
+
+//						信息反馈信息
+						var infoRelays = orderInfo.infoRelays;
+						if(infoRelays!=null){
+							$.each(infoRelays, function(index,item){
+//								保存状态
+								var infoRelaysStatus=item.status;
+//								反馈单号
+								var inforelayIdTitle=$('<span class="od-bottom-left">反馈单号</span>');
+								var inforelayId=$('<span class="od-bottom-right"></span>').append(item.inforelayId);
+								var inforelayIdLi=$('<li></li>').append(inforelayIdTitle,inforelayId);
+								//状态
+								var inforelayIdst=$('<span class="od-bottom-left">状态</span>');
+								var infoRelaystatus=$('<span class="od-bottom-right"></span>').append(item.status);
+								var inforelayzt=$('<li></li>').append(inforelayIdst,infoRelaystatus)
+								
+//								复核人
+								var checkedByTitle=$('<span class="od-bottom-left">复核人</span>');
+								var checkedBy=$('<span class="od-bottom-right"></span>').append(item.yl11);
+								var checkedByLi=$('<li></li>').append(checkedByTitle,checkedBy);
+								//复核内容
+								var checkedlyTitle=$('<span class="od-bottom-left">复核内容</span>');
+								var checkedly=$('<span class="od-bottom-right"></span>').append(item.yl2);
+								var checkedlyLi=$('<li></li>').append(checkedlyTitle,checkedly);
+//								反馈内容
+								var relayContendTitle=$('<span class="od-bottom-left">反馈内容</span>');
+								var relayContend=$('<span class="od-bottom-right"></span>').append(item.relayContend);
+//								录音播放
+								if(item.relayFile!=null&&item.relayFile!=""){
+									var relayFile=$('<span class="fileStart" onclick="fileStart(this)"><img class="imgstart" src="../my-img/Order-details/bofang.png"></span>').attr('id',item.relayFile);
+								}
+								var relayContendLi=$('<li class="feedback"></li>').append(relayContendTitle,relayContend,relayFile);
+//								诊断人
+								var diagnosticByTitle=$('<span class="od-bottom-left">诊断人</span>');
+								var diagnosticBy=$('<span class="od-bottom-right"></span>').append(item.yl12);
+								var diagnosticByLi=$('<li></li>').append(diagnosticByTitle,diagnosticBy);
+//								诊断结果
+								var diagnosticResultTitle=$('<span class="od-bottom-left">诊断结果</span>');
+								var diagnosticResult=$('<span class="od-bottom-right"></span>').append(item.diagnosticResult);
+//								播放录音
+								if(item.yl1!=null&&item.yl1!=""){
+									var relayFile1=$('<span class="fileStart" onclick="fileStart(this)"><img class="imgstart" src="../my-img/Order-details/bofang.png"></span>').attr('id',item.yl1);
+								}
+								var diagnosticResultLi=$('<li class="feedback"></li>').append(diagnosticResultTitle,diagnosticResult,relayFile1);
+//								ul
+								var diagnosticResultUl=$('<ul></ul>').append(inforelayIdLi,inforelayzt,checkedByLi,checkedlyLi,relayContendLi,diagnosticByLi,diagnosticResultLi);
+//								放按钮的div
+								var infoRelaysBtn=$('<div class="push-box infoRelaysBtn"></div>');
+								$('#infoFeedBack').append(diagnosticResultUl).append(infoRelaysBtn);
+								
+								
+//								
+							});
+						}
+						
+						
+//						派工单信息
+						var dispatchings=orderInfo.dispatchings;
+						if(dispatchings!=null){
+							$.each(dispatchings, function(index,item){
+//								保存状态
+								var dispatchingsStatus=item.status;
+//								派工单id
+								var dispatchingIdTitle=$('<span class="od-bottom-left">派工单ID</span>');
+								var dispatchingId=$('<span class="od-bottom-right"></span>').append(item.dispatchingId);
+								var dispatchingIdLi=$('<li></li>').append(dispatchingIdTitle,dispatchingId);
+//								创建人
+								var createByTitle=$('<span class="od-bottom-left">创建人</span>');
+								var createBy=$('<span class="od-bottom-right"></span>').append(item.yl12);
+								var createByLi=$('<li></li>').append(createByTitle,createBy);
+//								创建时间
+								var createTimeTitle=$('<span class="od-bottom-left">创建时间</span>');
+								var createTime=$('<span class="od-bottom-right"></span>').append(item.createTime);
+								var createTimeLi=$('<li></li>').append(createTimeTitle,createTime);
+//								派工状态
+								var statusTitle=$('<span class="od-bottom-left">派工状态</span>');
+								var status=$('<span class="od-bottom-right"></span>').append(item.status);
+								var statusLi=$('<li></li>').append(statusTitle,status);
+//								维修技师
+								var maintenanceTechnicianTitle=$('<span class="od-bottom-left">维修技师</span>');
+								var maintenanceTechnician=$('<span class="od-bottom-right"></span>').append(item.maintenanceTechnician);
+								var maintenanceTechnicianLi=$('<li></li>').append(maintenanceTechnicianTitle,maintenanceTechnician);
+//								复核人
+								var checkedByTitle=$('<span class="od-bottom-left">复核人</span>');
+								var checkedBy=$('<span class="od-bottom-right"></span>').append(item.yl11);
+								var checkedByLi=$('<li></li>').append(checkedByTitle,checkedBy);
+								//复核内容
+								var checkedBynr=$('<span class="od-bottom-left">复核内容</span>');
+								var checkedlynr=$('<span class="od-bottom-right"></span>').append(item.yl1);
+								var checkedlyLi=$('<li></li>').append(checkedBynr,checkedlynr);
+//								预交车日
+								var completionTimeTitle=$('<span class="od-bottom-left">预交车日</span>');
+								var completionTime=$('<span class="od-bottom-right"></span>').append(item.completionTime);
+								var completionTimeLi=$('<li></li>').append(completionTimeTitle,completionTime);
+//								总检查员
+								var inspectTitle=$('<span class="od-bottom-left">总检查员</span>');
+								var inspect=$('<span class="od-bottom-right"></span>').append(item.inspect);
+								var inspectLi=$('<li></li>').append(inspectTitle,inspect);
+//								总检查备注
+								var inspectRemarkTitle=$('<span class="od-bottom-left">总检查备注</span>');
+								var inspectRemark=$('<span class="od-bottom-right"></span>').append(item.inspectRemark);
+								var inspectRemarkLi=$('<li></li>').append(inspectRemarkTitle,inspectRemark);
+//								ul
+								var dispatchingsUl=$('<ul class="dispatchings"></ul>').append(dispatchingIdLi,createByLi,createTimeLi,
+									statusLi,maintenanceTechnicianLi,checkedByLi,checkedlyLi,completionTimeLi,inspectLi,inspectRemarkLi);
+									$('#dispatchings').append(dispatchingsUl);
+									
+									
+//									判断明细存在后循环
+									if(item.dsmxs!=null){
+										var schoolDiv=$('<div class="school"></div>');
+										$.each(item.dsmxs, function(index1,item1){
+//												序号
+											var xuhaoTitle=$('<span class="school-one-left">序号</span>');
+											var xuhao=$('<span class="school-one-right"></span>').append(item1.dispatchingId);
+											var xuhaoLi=$('<li></li>').append(xuhaoTitle,xuhao);
+//												作业名称
+											var workNameTitle=$('<span class="school-one-left">序号</span>');
+											var workName=$('<span class="school-one-right"></span>').append(item1.workName);
+											var workNameLi=$('<li></li>').append(workNameTitle,workName);
+//												ul
+											var workNameUl=$('<ul></ul>').append(xuhaoLi,workNameLi);
+											var workNameDiv=$('<div class="school-one"></div>').append(workNameUl);
+//												插入数据
+											schoolDiv.append(workNameDiv);
+											$('#dispatchings').append(schoolDiv);
+										});
+									}
+									
+									
+//								
+								
+							});
+						}
+							
+
+//						报价单信息
+						var partOffers=orderInfo.partOffers;
+						if(partOffers!=null){
+							$.each(partOffers, function(index,item){
+//								保存状态
+								var partOffersStatus=item.status;
+								//判断是工时报价还是配件报价
+								var title;
+								if( item.pomxs == null || item.pomxs == ""){
+									title=$("<div class='jiuyuan-title'>工时报价详情</div>");
+								}else{
+									title=$("<div class='jiuyuan-title'>配件报价详情</div>");
+								}
+//								复核人
+								var checkedByTitle=$('<span class="od-bottom-left">复核人</span>');
+								var checkedBy=$('<span class="od-bottom-right"></span>').append(item.yl11);
+								var checkedByLi=$('<li></li>').append(checkedByTitle,checkedBy);
+//								复核内容
+								var checkedlyTitle=$('<span class="od-bottom-left">复核内容</span>');
+								var checkedly=$('<span class="od-bottom-right"></span>').append(item.yl1);
+								var checkedlyLi=$('<li></li>').append(checkedlyTitle,checkedly);
+//								报价人
+								var offerByTitle=$('<span class="od-bottom-left">报价人</span>');
+								var offerBy=$('<span class="od-bottom-right"></span>').append(item.offerBy);
+								var offerByLi=$('<li></li>').append(offerByTitle,offerBy);
+//								销售人
+								var createByTitle=$('<span class="od-bottom-left">销售人</span>');
+								var createBy=$('<span class="od-bottom-right"></span>').append(item.yl12);
+								var createByLi=$('<li></li>').append(createByTitle,createBy);
+//								合计
+								var totalTitle=$('<span class="od-bottom-left">合计</span>');
+								var total=$('<span class="od-bottom-right"></span>').append(item.total);
+								var totalLi=$('<li></li>').append(totalTitle,total);
+//								报价状态
+								var statusTitle=$('<span class="od-bottom-left">报价状态</span>');
+								var status=$('<span class="od-bottom-right"></span>').append(item.status);
+								var statusLi=$('<li></li>').append(statusTitle,status);
+//								ul
+								var partOffersUl=$('<ul class="partOffers"></ul>').append(title,checkedByLi,checkedlyLi,offerByLi,createByLi,totalLi,statusLi);
+								
+//								插入数据
+								$('#partOffers').append(partOffersUl);
+								
+								
+//									判断配件明细并循环
+									if(item.pomxs!=null){
+										var schoolDiv=$('<div class="school"></div>');
+										$.each(item.pomxs, function(index1,item1) {
+//											配件名称
+											var partNameTitle=$('<span class="od-bottom-left">配件名称</span>');
+											var partName=$('<span class="od-bottom-right"></span>').append(item1.partName);
+											var partNameLi=$('<li></li>').append(partNameTitle,partName);
+//											配件编号
+											var partNumTitle=$('<span class="od-bottom-left">配件编号</span>');
+											var partNum=$('<span class="od-bottom-right"></span>').append(item1.partNum);
+											var partNumLi=$('<li></li>').append(partNumTitle,partNum);
+//											数量
+											var partCountTitle=$('<span class="od-bottom-left">数量</span>');
+											var partCount=$('<span class="school-one-right"></span>').append(item1.partCount);
+											var partCountLi=$('<li></li>').append(partCountTitle,partCount);
+//											单价
+											var priceTitle=$('<span class="od-bottom-left">单价</span>');
+											var price=$('<span class="school-one-right"></span>').append(item1.price);
+											var priceLi=$('<li></li>').append(priceTitle,price);
+//											小计
+											var totalTitle=$('<span class="od-bottom-left">小计</span>');
+											var total=$('<span class="school-one-right"></span>').append(item1.total);
+											var totalLi=$('<li></li>').append(totalTitle,total);
+//											ul
+											var partUl=$('<ul></ul>').append(partNameLi,partNumLi,partCountLi,priceLi,totalLi);
+//											插入ul
+											var partDiv=$('<div class="school-one"></div>').append(partUl);
+											schoolDiv.append(partDiv);
+											$('#partOffers').append(schoolDiv);
+										});
+											var pushbox=$('<div class="push-box partOffersPush"></div>');
+	//										判断状态并插入按钮
+											if(partOffersStatus=='待提交'){
+																							
+											}else if(partOffersStatus=='待复核'){
+											
+											}else if(partOffersStatus=='待确认'){
+												var OkBtn=$('<button class="machineOk"  onclick="conP(this)">确认</button>').attr('infoid',item.partofferId);
+												pushbox.append(OkBtn);
+												
+											}
+										   $('#partOffers').append(pushbox);
+										
+//										
+									}
+									
+									
+//									判断工时明细并循环
+									if(item.dsmxs!=null){
+										var schoolDiv=$('<div class="school"></div>');
+										$.each(item.dsmxs, function(index2,item2){
+//											项目名称
+											var workNameTitle=$('<span class="od-bottom-left">项目名称</span>');
+											var workName=$('<span class="od-bottom-right"></span>').append(item2.workName);
+											var workNameLi=$('<li></li>').append(workNameTitle,workName);
+//											工时
+											var workHoursTitle=$('<span class="od-bottom-left">工时</span>');
+											var workHours=$('<span class="od-bottom-right"></span>').append(item2.workHours);
+											var workHoursLi=$('<li></li>').append(workHoursTitle,workHours);
+//											金额
+											var totalTitle=$('<span class="od-bottom-left">金额</span>');
+											var total=$('<span class="school-one-right"></span>').append(item2.total);
+											var totalLi=$('<li></li>').append(totalTitle,total);
+//											ul
+											var workUl=$('<ul></ul>').append(workNameLi,workHoursLi,totalLi);
+											var workDiv=$('<div class="school-one"></div>').append(workUl);
+											schoolDiv.append(workDiv);
+											$('#partOffers').append(schoolDiv);
+										});
+										
+										var pushbox=$('<div class="push-box partOffersPush"></div>');
+//										判断状态并插入按钮
+										if(partOffersStatus=='待提交'){
+																						
+										}else if(partOffersStatus=='待复核'){
+										
+										}else if(partOffersStatus=='待确认'){
+											var OkBtn=$('<button class="machineOk"  onclick="conP(this)">确认</button>').attr('infoid',item.partofferId);
+											pushbox.append(OkBtn);
+											
+										}
+									   $('#partOffers').append(pushbox);
+									}
+										
+								
+							});							
+							
+						}
+						
+
+//						结算单信息
+						var settlement=orderInfo.settlement;
+						if(settlement!=null){
+//							保存状态
+							var settlementStatus=settlement.status;
+//							合计
+							var totalTitle=$('<span class="od-bottom-left">合计</span>');
+							var total=$('<span class="od-bottom-right" id="settleTotal"></span>').append(settlement.total);
+							var totalLi=$('<li></li>').append(totalTitle,total);
+//							结算状态
+							var statusTitle=$('<span class="od-bottom-left">结算状态</span>');
+							var status=$('<span class="od-bottom-right" id="settleStatus"></span>').append(settlement.status);
+							var statusLi=$('<li></li>').append(statusTitle,status);
+							//复核人
+							var fuhereb=$('<span class="od-bottom-left">复核人</span>');
+							var fuheren123=$('<span class="od-bottom-right"></span>').append(settlement.yl11);
+							var fuhenr234=$('<li></li>').append(fuhereb,fuheren123);
+							//复核内容
+							var fuheTitle=$('<span class="od-bottom-left">复核内容</span>');
+							var fuheTitlestatus=$('<span class="od-bottom-right"></span>').append(settlement.yl1);
+							var fuhenr=$('<li></li>').append(fuheTitle,fuheTitlestatus);
+//							结算备注
+							var sremarkTitle=$('<span class="od-bottom-left">结算备注</span>');
+							var sremark=$('<span class="od-bottom-right" id="settleRemark"></span>').append(settlement.sremark);
+							var sremarkLi=$('<li></li>').append(sremarkTitle,sremark);
+//							ul
+							var settlementUl=$('<ul></ul>').append(totalLi,statusLi,fuhenr234,fuhenr,sremarkLi);
+//							插入元素
+							$('#settle').append(settlementUl);
+							
+						
+//							判断明细并循环
+							if(settlement.pos!=null){
+								$.each(settlement.pos, function(index,item){
+//									判断配件明细并循环
+									if(item.pomxs!=null){
+										var partDiv=$('<div class="peijian-box" id="settleParts">')
+										$.each(item.pomxs, function(index1,item1) {
+//											配件名称
+											var partNameTitle=$('<span class="school-one-left">配件名称</span>');
+											var partName=$('<span class="school-one-right"></span>').append(item1.partName);
+											var partNameLi=$('<li></li>').append(totalTitle,total);
+//											配件编号
+											var partNumTitle=$('<span class="school-one-left">配件编号</span>');
+											var partNum=$('<span class="school-one-right"></span>').append(item1.partNum);
+											var partNumLi=$('<li></li>').append(partNumTitle,partNum);
+//											数量
+											var partCountTitle=$('<span class="school-one-left">数量</span>');
+											var partCount=$('<span class="school-one-right"></span>').append(item1.partCount);
+											var partCountLi=$('<li></li>').append(partCountTitle,partCount);
+//											单价
+											var priceTitle=$('<span class="school-one-left">单价</span>');
+											var price=$('<span class="school-one-right"></span>').append(item1.price);
+											var priceLi=$('<li></li>').append(priceTitle,price);
+//											小计
+											var totalTitle=$('<span class="school-one-left">小计</span>');
+											var total=$('<span class="school-one-right"></span>').append(item1.total);
+											var totalLi=$('<li></li>').append(totalTitle,total);
+//											ul
+											var partUl=$('<ul></ul>').append(partNameLi,partNumLi,partCountLi,priceLi,totalLi);
+										    var partWrap=$(' <div class="peijian-one"></div>').append(partUl).appendTo(partDiv);
+										});
+										
+//										插入配件明细div
+										$('#settle').append(partDiv);
+									}
+									
+									
+//									判断工时明细并循环
+									if(item.dsmxs!=null){
+										var workDiv=$('<div class="peijian-box" id="settleWork">')
+										$.each(item.dsmxs, function(index2,item2){
+//											作业项目名称
+											var workNameTitle=$('<span class="school-one-left">作业项目名称</span>');
+											var workName=$('<span class="school-one-right"></span>').append(item2.workName);
+											var workNameLi=$('<li></li>').append(workNameTitle,workName);
+//											工时
+											var workHoursTitle=$('<span class="school-one-left">工时</span>');
+											var workHours=$('<span class="school-one-right"></span>').append(item2.workHours);
+											var workHoursLi=$('<li></li>').append(workHoursTitle,workHours);
+//											金额
+											var totalTitle=$('<span class="school-one-left">金额</span>');
+											var total=$('<span class="school-one-right"></span>').append(item2.total);
+											var totalLi=$('<li></li>').append(totalTitle,total);
+//											ul
+											var workUl=$('<ul></ul>').append(workNameLi,workHoursLi,totalLi);
+										    var workWrap=$(' <div class="peijian-one"></div>').append(workUl).appendTo(workDiv);
+										});
+										
+										
+//										创建按钮div并循环
+										var pushBtn=$('<div class="push-box" id="settleBtn"></div>');
+//										插入数据
+										$('#settle').append(workDiv).append(pushBtn);
+									}
+									
+								});
+							}
+//							判断状态并插入按钮
+							/* if(settlementStatus=="待提交"){
+								
+							}else if(settlementStatus=="待复核"){
+								
+							}else if(settlementStatus=="待付款"){
+								var payBtn=$('<button class="pay" onclick="khfk(this)">客户付款</button>').attr("infoid",settlement.settlementId).appendTo($('#settleBtn'));
+							}else if(settlementStatus=="待确认"){
+								
+							} */
+							
+//							
+							
+							
+						}
+					}
+				    
+					
+				}
+			},
+			error: function(e) {
+				 mui.toast(JSON.stringify(e));
+			}
+		})
+	})
+		
+			
+			
+//						以下是按钮方法
+						
+//						所有数据
+						var orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
+//						接车单数据
+
+//							配件报价单信息=>客户确认
+							function conP(conp){
+								var iid = conp.getAttribute("infoid");
+								var btn = ['否', '是'];
+								mui.confirm('确认报价信息？', '配件报价', btn, function(e) {
+//							 			如果点击确定
+									if (e.index == 1) {
+										 $.ajax({
+											url:  urlBase+"memCon",
+											data: {"partofferId":iid,"orderId":orderInfo.orderId},//信息反馈单号无法根据
+											dataType: "json",
+											type: "get",
+											timeout : 5000, //超时时间设置，单位毫秒
+											success: function(result) {
+												/* alert(JSON.stringify(result)) */
+												if(result.code == 100) {
+												  
+	//												提交成功 弹出提示
+													mui.toast('已确认');
+													 setTimeout(function() {
+														 location.reload();
+													 }, 1000);
+	                                              
+	                                            }
+											},
+											error: function(e) {
+												 mui.toast(JSON.stringify(e));
+											}
+										});
+									} 
+								})
+							}
+							/* 客户是否授权 */
+							function kehuqueren(){
+								var btn = ['否', '是'];
+								mui.confirm('客户是否授权？', '授权', btn, function(e) {
+//								 	如果点击确定
+									if (e.index ==0) {
+										$.ajax({
+											url:  urlBase+"noupload",
+											data: {"orderid":orderid},
+											dataType: "json",
+											type: "get",
+											timeout : 5000, //超时时间设置，单位毫秒
+											success: function(result) {
+												 alert(JSON.stringify(result));
+												if(result.code == 100) {
+												   
+													mui.toast('客户拒绝授权成功');
+													 setTimeout(function() {
+														 location.reload();
+													 }, 1000);
+												}
+											},
+											error: function(e) {
+												 mui.toast(JSON.stringify(e));
+											}
+										});
+									}else{
+										sessionStorage.setItem("orderid",orderInfo.orderId);
+										location.href="qianming.html";
+									} 
+								})
+							}	
+								
+
+//							客户付款
+							function khfk(khfk){
+								var iid = khfk.getAttribute("infoid");
+								var btn = ['否', '是'];
+								mui.confirm('客户付款？', '', btn, function(e) {
+//								 	如果点击确定
+									if (e.index == 1) {
+										$.ajax({
+											url:  urlBase+"pay",
+											data: {"settlementId":iid,"orderId":orderInfo.orderId},
+											dataType: "json",
+											type: "get",
+											timeout : 5000, //超时时间设置，单位毫秒
+											success: function(result) {
+												/* alert(JSON.stringify(result)); */
+												if(result.code == 100) {
+												   
+													mui.toast('客户付款成功');
+													 setTimeout(function() {
+														 location.reload();
+													 }, 1000);
+												}
+											},
+											error: function(e) {
+												 mui.toast(JSON.stringify(e));
+											}
+										});
+									} 
+								})
+							}
+							
+							
+//							财务确认
+							function cwqr(cwqr){
+								var iid = cwqr.getAttribute("infoid");
+								var btn = ['否', '是'];
+								mui.confirm('财务确认？', '', btn, function(e) {
+//							 		如果点击确定
+									if (e.index == 1) {
+										$.ajax({
+											url: urlBase+"//ywl/payCon?token="+localStorage.token ,
+											data: {"settlementId":iid,"orderId":orderInfo.orderId},
+											dataType: "json",
+											type: "get",
+											timeout : 5000, //超时时间设置，单位毫秒
+											success: function(result) {
+												if(result.code == 205) {
+												    mui.toast("登录过期，请重新登录！");
+												    setTimeout(function() {
+													  location.href="login.html";
+												    }, 1000);
+											    }else{
+													mui.toast('财务确认');
+													location.reload();
+												}
+											},
+											error: function(e) {
+												 mui.toast(JSON.stringify(e));
+											}
+										});
+									} 
+								})
+							}
+							
+							
+//							反馈内容播放录音
+							function fileStart(sound){
+//								
+								$(sound).find(".imgstart").attr("src","Order-details/zhenzai.png");	
+								$(sound).attr("disabled","disabled");                                
+//								var file=url.getAttribute('id'); 
+								startPlay(sound);
+							}
+//					
+							
+		</script>
+	</body>
+
+</html>
+								

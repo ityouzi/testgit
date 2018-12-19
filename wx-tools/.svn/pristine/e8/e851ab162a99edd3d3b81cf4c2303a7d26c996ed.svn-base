@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>投诉建议</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<script src="../my-js/common.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/ask-for-leave.css" />
+        <link rel="stylesheet" href="../css/common.css" />
+	</head>
+
+	<body>
+		
+		<div class="leave" style="margin-top:0rem;">
+			<form action="" method="get" class="itemForm">
+
+				<!--<span class="my-jq">报销明细</span>-->
+				<div class="leave-one">
+					<span><em>*&nbsp;&nbsp;</em>联系人：</span>
+					<input type="text" name="complaintName" class="isnum" id="" value="" placeholder="请输入" />
+				</div>
+				<div class="leave-one">
+					<span><em>*&nbsp;&nbsp;</em>联系电话：</span>
+					<input type="text" name="complaintTel" class="isnum" id="istel" onchange="IStel()" value="" placeholder="请输入" />
+				</div>
+				<!--付款事由-->
+				<div class="account">
+					<span><em>&nbsp;&nbsp;&nbsp;</em>投诉内容</span>
+					<textarea name="complaintContent" style="width:100%;" class="isnum" rows="" cols="" placeholder="请输入"></textarea>
+				</div>
+
+			</form>
+			<div class="tijiao">
+				提交
+			</div>
+
+		</div>
+
+		<script src="../my-js/mui.min.js"></script>
+		<script type="text/javascript" src="../my-js/public.js"></script>
+		<script src="../my-js/jquery-2.1.0.js"></script>
+		<script type="text/javascript">
+			
+			//			页面初始
+			//			登录保存的信息
+			
+			
+			var openId=localStorage.getItem("openId",openId);
+			$('.tijiao').on("tap", function() {
+				
+				var weikong = document.getElementsByClassName("isnum");
+				var feikong;
+				var kong;
+				//判断是否为空
+				for(var i = 0; i < weikong.length; i++) {
+					feikong = $.trim(weikong[i].value);
+					if(feikong == null || feikong.length == 0) {
+						kong = 0;
+						$('.isnum').attr("placeholder", "参数不能为空");
+						$('.btn-one').addClass("disabled");
+						return false;
+					} else {
+						kong = 1;
+					}
+				}
+				if(kong == 0) {
+					mui.toast("参数不能为空！");
+				} else {
+					$.ajax({
+						url: urlBase + "addAdvice",
+						data: $('.itemForm').serialize()+"&openId="+openId,
+						dataType: "json",
+						type: "get",
+						timeout : 5000, //超时时间设置，单位毫秒
+						success: function(result) {
+							     
+								mui.toast('提交成功');
+								setTimeout(function() {
+									location.href = "Complaint-list.html";
+								}, 1000)
+							
+							
+						},
+						error: function(e) {
+								 mui.toast(JSON.stringify(e));
+						}
+					})
+				}
+			});
+		</script>
+	</body>
+
+</html>

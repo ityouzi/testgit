@@ -1,0 +1,84 @@
+//var urlBase = "http://119.97.180.51:900/sercar-app";
+//var urlBase = "http://192.168.0.250:8080/sercar-app";
+//var urlBase="http://192.168.0.102:8080/sercar-app";
+//var urlBase="http://192.168.0.100:8080/sercar-app";
+//var urlBase = "http://foreover.vicp.cc/sercar-app/wx/";
+var urlBase = "http://192.168.0.208:8081/familyInf/wx/";
+
+//正则表达
+//判断输入内容是否为空 
+function IsNull() {
+	var str = document.getElementById('str').value.trim();
+	if(str.length == 0) {
+		alert('对不起，文本框不能为空或者为空格!'); //请将“文本框”改成你需要验证的属性名称! 
+	}
+}
+//判断是否有特殊字符
+function Isteshu() {
+	var str = document.getElementById('str').value.trim();
+	if(str.length != 0) {
+		reg = /[~#^$@%&!*]/gi;
+		if(!reg.test(str)) {
+			alert("对不起，您输入的英文字母类型格式不正确!");
+		}
+	}
+
+}
+//验证电话号码
+function IStel(obj) {
+	var istel = document.getElementById('istel').value.trim();
+	if(istel.length != 0) {
+		var reg = /^((\(\d{2,3}\))|(\d{3}\-))?(\(0\d{2,3}\)|0\d{2,3}-)?[1-9]\d{6,7}(\-\d{1,4})?/;
+		//	var r = istel.match(reg);
+		if(!reg.test(istel)) {
+			mui.toast('对不起，您输入的电话格式不正确!'); //请将“日期”改成你需要验证的属性名称! 
+			$("#istel").css("color", "#E70E26");
+			$('.tijiao').addClass("disabled");
+		} else {
+			$("#istel").css("color", "#000000");
+			$('.tijiao').removeClass("disabled");
+		}
+
+	}
+}
+//验证金额
+function ISnum(obj) {
+	var sz = obj.value;
+	if(sz.length != 0) {
+		reg = /^[-\+]?\d+(\.\d+)?$/;
+		if(!reg.test(sz)) {
+			mui.toast('对不起，您输入的格式不正确!'); //请将“日期”改成你需要验证的属性名称!
+			obj.setAttribute("style", "color: red;");
+			obj.focus();
+			$('.btn-one').addClass("disabled");
+			$('.tijiao').addClass("disabled");
+			
+		} else {
+			obj.setAttribute("style", "color: #000000;");
+			$('.btn-one').removeClass("disabled");
+			$('.tijiao').removeClass("disabled");
+		}
+	}
+}
+
+//判断中文
+//判断输入的字符是否为中文 
+function IsChinese(obj) {
+	var zw = obj.value;
+	var IsChinese = $.trim(zw);
+	if(IsChinese.length != 0) {
+		reg = /^[\u0391-\uFFE5]+$/;
+		if(!reg.test(IsChinese)) {
+			mui.toast('对不起，您输入的格式不正确!'); //请将“日期”改成你需要验证的属性名称! 
+			$(".IsChinese").css("color", "#E70E26");
+			$('.tijiao').addClass("disabled");
+		} else {
+			$(".IsChinese").css("color", "#000000");
+			$('.tijiao').removeClass("disabled");
+		}
+	}
+}
+
+            
+            
+         

@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>投诉建议列表  </title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<script src="../my-js/common.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/leave-list.css" />
+	</head>
+
+	<body>
+		
+		<div class="leave-list">
+			<div></div>
+			<!--<div class="leave-one">
+				<div class="leave-top">
+					<span class="complaintName">联系人</span>
+					<span class="contactsTel">联系电话</span>
+				</div>
+				<div class="leave-time">
+								
+                    <span class="creationTime">创建时间</span>
+				</div>	
+			</div>-->
+			
+		</div>
+         <div class="tijiao">
+				发起
+		</div>
+		<script src="../my-js/mui.min.js"></script>
+		<script type="text/javascript" src="../my-js/public.js"></script>
+		<script src="../my-js/jquery-2.1.0.js"></script>
+		<script type="text/javascript">
+			//			底部跳转问题
+			
+//			页面初始
+           function getUrlQueryString(names, urls) {
+				urls = urls || window.location.href;
+				urls && urls.indexOf("?") > -1 ? urls = urls
+						.substring(urls.indexOf("?") + 1) : "";
+				var reg = new RegExp("(^|&)" + names + "=([^&]*)(&|$)", "i");
+				var r = urls ? urls.match(reg) : window.location.search.substr(1)
+						.match(reg);
+				if (r != null && r[2] != "")
+					return unescape(r[2]);
+				return null;
+			};
+			$(function() {
+				var code = getUrlQueryString('code');
+				$.ajax({
+					url: urlBase + "listAdvice?code=" + code+"&openId="+localStorage.openId,
+					dataType: "json",
+					type: "get",
+					timeout : 5000, //超时时间设置，单位毫秒
+					success: function(result) {
+					   
+							var data = result.extend.result;
+							console.log(data);
+							var openId=result.extend.openId;
+							
+							//alert(openId);
+							$('.leave-list').empty();
+							if( data != null){
+								$.each(data, function(index, item) {
+									var complaintName = $('<span class="complaintName"></span>').append(item.complaintName);
+									var complaintTel = $('<span class="complaintTel"></span>').append(item.complaintTel);
+									var leave_top = $('<div class="leave-top"></div').append(complaintName, complaintTel);
+									var state=$('<span class="state" style="color:red;"></span>').append(item.state);
+								    var complaintTime=$('<span class="complaintTime"></span>').append(item.complaintTime);
+								    var leave_time=$('<div class="leave-time"></div').append(complaintTime,state);
+									var box=$('<div class="leave-one" onclick="xq(this)"></div>').append(leave_top,leave_time).attr("complaintId",item.complaintId);
+									$('.leave-list').append(box);
+									var complaintId=item.complaintId;
+									
+									
+									
+									
+								})
+								
+								//新增
+									$('.tijiao').on('tap',function(){
+										localStorage.setItem("openId",openId);
+										location.href="Complaint.html";
+									})
+							}
+						
+						
+					},
+					error: function(e) {
+							 mui.toast(JSON.stringify(e));
+					}
+				})
+
+			})
+			
+			function xq(obj){
+				var complaintId=obj.getAttribute("complaintId")
+				localStorage.setItem("complaintId",complaintId);
+				location.href = "Complaint-xiangqing.html";
+				
+			}
+			
+			
+			
+		</script>
+		
+	</body>
+</html>

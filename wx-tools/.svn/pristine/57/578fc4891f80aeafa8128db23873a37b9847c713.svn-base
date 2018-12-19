@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>绑定账号</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="../my-js/common.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/login.css"/>
+		<link rel="stylesheet" href="../css/common.css" />
+		<script src="../my-js/public.js"></script>
+		<style type="text/css">
+			a{
+				text-decoration: none;
+				color:#fff;
+			}
+			.forget{
+ 			    position: fixed;
+			    top: 0%;
+			    right: 0%;
+			    bottom: 0%;
+			    left: 0%;
+			    z-index: 998;
+			    background-color: rgba(221,221,221,0.2);
+			    padding:50% 5% 0;			   
+			    display: none;
+			}
+			.forget>p{
+				 text-indent: 2em;
+			}
+			#box{
+				width:90%;height:50%;
+				margin:0 auto;
+				background-color:#ccc;
+				border-radius: 5%;
+				padding:5%;
+			}
+			#box>p{
+				height:45%;
+				
+			}
+			#box>a{
+				text-align: right;
+				float: right;
+				color:#fff;
+			}
+			.gain{
+ 			    position: fixed;
+			    top: 0%;
+			    right: 0%;
+			    bottom: 0%;
+			    left: 0%;
+			    z-index: 998;
+			    background-color: rgba(221,221,221,0.2);
+			    padding:50% 5% 0;
+			    text-indent: 2em;
+			    display: none;
+			}
+			#box1{
+				width:90%;height:50%;
+				margin:0 auto;
+				background-color:#ccc;
+				border-radius: 5%;
+				padding:5%;
+			}
+			#box1>p{
+				height:90%;
+			}
+			#box1>a{
+				text-align: right;
+				float: right;
+				color:#fff;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="logo"></div>
+		<form action=""> 
+			<input type="text" placeholder="请输入用户名" class="input_account" name="input_account" id="input_account"/>
+			<input type="text" placeholder="请输入密码" class="input_password" name="input_password" id="input_password"/>
+			<div class="login-but" onclick="showWX()">绑定账号</div>
+			
+		</form>
+		
+		
+		<script src= "../my-js/mui.min.js"></script>
+		<script src="../my-js/jquery-2.1.0.js"></script>
+		<script>
+			function showWX(){
+				var code = GetRequest().code;
+				var loginName = $("#input_account").val();
+				var loginPwd = $("#input_password").val();
+				//alert(loginName);
+				//alert(loginPwd);
+				//alert(code);
+				
+				$.ajax({
+					type: "post",
+					/* url: "http://foreover.vicp.cc/wx-tools/wx/getAT?code="+code+"&username=" + loginName + "&phone=" + loginPwd, */
+					url: urlBase+"updateYuanGong?code="+code+"&username=" + loginName + "&password=" + loginPwd,
+					success: function(datas) {
+						alert(JSON.stringify(datas));
+						if(datas.code==100){
+							mui.toast(JSON.stringify(datas.extend.result));
+							setTimeout(function(){
+								window.history.go(-1);
+		                    },1000)
+						}else{
+							mui.toast(JSON.stringify(datas.extend.result));
+							setTimeout(function(){
+								window.history.go(-1);
+		                    },1000)
+						}
+					},
+					error: function(e) {
+						 mui.toast(JSON.stringify(e));
+					}
+				});
+			};
+			
+			function GetRequest() {   
+			   var url = location.search; //获取url中"?"符后的字串   
+			   var theRequest = new Object();   
+			   if (url.indexOf("?") != -1) {   
+			      var str = url.substr(1);   
+			      strs = str.split("&");   
+			      for(var i = 0; i < strs.length; i ++) {   
+			         theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);   
+			      }   
+			   }   
+			   return theRequest;   
+			};
+		</script>
+	</body>
+
+</html>

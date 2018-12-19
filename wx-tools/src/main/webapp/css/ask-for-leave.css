@@ -1,0 +1,272 @@
+.xinjian{
+	box-shadow: 1px 1px 1px 2px #EEEEEE;
+	position: fixed;
+	bottom: 1.2rem;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 1.5rem;
+	height: 0.7rem;
+	border-radius: 0.35rem;
+	display: flex;
+	background-color: #FFFFFF;
+	justify-content: center;
+	align-items: center;
+	font-size: 0.24rem;
+	color: red;
+}
+*{
+	margin:0;
+	padding:0;
+	
+}
+.clear:after{
+    display: block;
+    content: "";
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
+}
+body{
+	background-color: #f8f8f8;
+}
+ul,li{
+	list-style: none;
+}
+header{
+	width: 100%;
+	height:0.96rem;
+	background-color: #000;
+	text-align: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+}
+input[type=datetime-local]{
+	background-color: transparent;
+	width: 50%;
+}
+header>a>img{
+	height:.4rem;
+	vertical-align: middle;
+	
+}
+header>a{
+	height:100%;width:.8rem;
+	position: absolute;
+	left:3%;top:0;
+	text-align: left;
+	line-height: .96rem;
+	display: flex;
+	align-items: center;
+}
+header>span{
+	color:#fff;
+	font-size:.34rem;
+	line-height: .96rem;
+}
+h4{
+	font-size:.3rem;
+	margin:0;
+	padding:.6rem 0 .4rem .38rem;
+	letter-spacing: .01rem;
+}
+.wrap{
+	display: flex;
+	flex-wrap:wrap;
+}
+.wrap>li{
+	width:25%;height:1.5rem;
+	text-align: center;
+	vertical-align: middle;
+}
+.wrap>li>img{
+	width:.8rem;
+}
+.dibu-box{
+	width: 100%;
+	height: 1.05rem;
+	background-color: #181d23;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	z-index: 999;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.dibu-one{
+	width: 0.7rem;
+	height: 0.75rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+.dibu-one img{
+	height: 0.40rem;
+	width: auto;
+}
+.dibu-one span{
+	font-size: 0.22rem;
+	color: #999999;
+}
+.beiwanglu{
+	width: 100%;
+	height: auto;
+   margin-top: 0.96rem;
+}
+.edit{
+	width: 95%;
+	margin:0.96rem auto 1.05rem;
+}
+.edit-top{
+	padding-top: 0.3rem;
+	color: #999999;
+	font-size: 0.28rem;
+	box-sizing: border-box;
+	width: 100%;
+	
+}
+.edit-box{
+	width: 100%;
+	height: auto;
+}
+.edit-box textarea{
+	margin-top: 0.3rem;
+	padding: 0;
+	min-height: 7rem;
+	border: none;
+	font-size: 0.34rem;
+	line-height: 0.5rem;
+}
+.leave{
+	width: 100%;
+	margin-top: 0.96rem;
+	padding-top: 0.3rem;
+	box-sizing: border-box;	
+	margin-bottom: 1.05rem;
+}
+.leave-one{
+	width: 100%;
+	padding: 0 0.2rem;
+	height:0.9rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #FFFFFF;
+	font-size: 0.34rem;
+	
+}
+.leave-one span{
+	display: flex;
+	align-items: center;
+	width: 40%;
+}
+.leave-one em{
+	color: red;
+}
+.leave-one select{
+	padding: 0;
+	margin: 0;
+	width: auto;
+	font-size: 0.34rem;
+	text-align: right;
+	  
+}
+.leave-one input{
+	width: auto;
+	padding: 0;
+	margin: 0;
+	border: none;
+	text-align: right;
+	
+}
+.leave-one>div{
+	width: auto;
+	text-align: right;
+}
+.my-jq{
+	width: 100%;
+	padding: 0 0.3rem;
+	line-height: 0.7rem;
+	font-size: 0.24rem;
+	color: #999999;
+}
+::-webkit-clear-button {    /*控制清除按钮*/
+  visibility: hidden;
+  display: none;
+}
+.account{
+	width: 100%;
+	margin-top: 0.3rem;
+	padding: 0.4rem 0.2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	box-sizing: border-box;
+	background-color: #FFFFFF;
+	font-size: 0.34rem;
+}
+.account em{
+	color: red;
+}
+.account textarea{
+	min-height: 4rem;
+	border: none;
+}
+.account>div{
+	min-height: 4rem;
+	border: none;
+}
+.tijiao{
+	box-shadow: 1px 1px 1px 2px #EEEEEE;
+	position: fixed;
+	bottom: 1.2rem;
+	left: 50%;
+	-webkit-transform: translate(-50%, 0);
+	transform: translate(-50%, 0);
+	width: 2rem;
+	height: 0.8rem;
+	border-radius: 0.35rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 0.24rem;
+	color: red;
+	background-color: #FFFFFF;
+	text-align: center;
+}
+.tongyi{
+	box-shadow: 1px 1px 1px 2px #EEEEEE;
+	position: fixed;
+	bottom: 1.2rem;
+	left: 20%;
+	width: 2rem;
+	height: 0.8rem;
+	border-radius: 0.35rem;
+	display: flex;
+	background-color: #FFFFFF;
+	justify-content: center;
+	align-items: center;
+	font-size: 0.24rem;
+	color: red;
+}
+.butongyi{
+	box-shadow: 1px 1px 1px 2px #EEEEEE;
+	position: fixed;
+	bottom: 1.2rem;
+	right: 20%;
+	width: 2rem;
+	height: 0.8rem;
+	border-radius: 0.35rem;
+	display: flex;
+	background-color: #FFFFFF;
+	justify-content: center;
+	align-items: center;
+	font-size: 0.24rem;
+	color: red;
+}
+.explains{
+	text-indent: 0.2rem;
+}

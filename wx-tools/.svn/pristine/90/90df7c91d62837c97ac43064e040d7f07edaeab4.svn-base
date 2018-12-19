@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>登录页</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="../my-js/common.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/login.css"/>
+		<style type="text/css">
+			a{
+				text-decoration: none;
+				color:#fff;
+			}
+			.forget{
+ 			    position: fixed;
+			    top: 0%;
+			    right: 0%;
+			    bottom: 0%;
+			    left: 0%;
+			    z-index: 998;
+			    background-color: rgba(221,221,221,0.2);
+			    padding:50% 5% 0;			   
+			    display: none;
+			}
+			.forget>p{
+				 text-indent: 2em;
+			}
+			#box{
+				width:90%;height:50%;
+				margin:0 auto;
+				background-color:#ccc;
+				border-radius: 5%;
+				padding:5%;
+			}
+			#box>p{
+				height:45%;
+				
+			}
+			#box>a{
+				text-align: right;
+				float: right;
+				color:#fff;
+			}
+			.gain{
+ 			    position: fixed;
+			    top: 0%;
+			    right: 0%;
+			    bottom: 0%;
+			    left: 0%;
+			    z-index: 998;
+			    background-color: rgba(221,221,221,0.2);
+			    padding:50% 5% 0;
+			    text-indent: 2em;
+			    display: none;
+			}
+			#box1{
+				width:90%;height:50%;
+				margin:0 auto;
+				background-color:#ccc;
+				border-radius: 5%;
+				padding:5%;
+			}
+			#box1>p{
+				height:90%;
+			}
+			#box1>a{
+				text-align: right;
+				float: right;
+				color:#fff;
+			}
+			 
+		</style>
+	</head>
+	<body>
+		<div class="logo"></div>
+		<form action="">
+			<!--<input type="text" placeholder="请输入用户名" class="input_account" />
+			<input type="password" placeholder="请输入密码" class="input_password" />-->
+			<div  style="text-align: center; margin-bottom: 6em;width: 100%; color: #FFFFFF;">
+				你将解除绑定此微信号
+			</div>
+			
+			
+			<div class="login-but" onclick="jiechubangdi()">解除绑定</div>
+			<div class="user">
+				<!--<a id="forget">忘记密码？</a>
+				<a id="shortcut">快捷登录</a>-->
+				<!--<a id="gain">获取账号</a>-->
+			</div>
+		</form>
+		<!--<div class="forget">
+			<div id="box">
+				<p class="mima">此操作将会告知公司管理员，获得管理员授权后，密码将会自动重新设定为<em id="mima">9988</em>。</p>
+				<p><input type="text" class="isnum" id="yonghuming" placeholder="请输入用户名" value=""></p>
+				<div class="butongyicox">
+					<div class="btnQx">取消操作</div>
+				    <div class="btnjx" onclick="btnjx()">继续操作</div>
+				</div>
+				
+			</div>
+		</div>-->
+		<script src= "../my-js/mui.min.js"></script>
+		<script src="../my-js/jquery-2.1.0.js"></script>
+		<script src="../my-js/public.js"></script>
+		<script>
+			function jiechubangdi(){
+				var code = GetRequest().code;
+				
+				$.ajax({
+					type: "post",
+					url: "http://119.97.180.51:51521/car-bid/carbid/jiechugztz?code="+code,
+					success: function(datas) {
+						alert(JSON.stringify(datas));
+						if(datas.code==100){
+							mui.toast(JSON.stringify(datas.extend.result));
+							setTimeout(function(){
+								window.history.go(-1);
+		                    },1000)
+						}else{
+							mui.toast(JSON.stringify(datas.extend.result));
+							setTimeout(function(){
+								window.history.go(-1);
+		                    },1000)
+						}
+					},
+					error: function(e) {
+						 mui.toast(JSON.stringify(e));
+					}
+				});
+			};
+			
+			function GetRequest() {   
+			   var url = location.search; //获取url中"?"符后的字串   
+			   var theRequest = new Object();   
+			   if (url.indexOf("?") != -1) {   
+			      var str = url.substr(1);   
+			      strs = str.split("&");   
+			      for(var i = 0; i < strs.length; i ++) {   
+			         theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);   
+			      }   
+			   }   
+			   return theRequest;   
+			};
+		</script>
+	</body>
+
+</html>

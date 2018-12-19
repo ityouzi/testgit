@@ -1,0 +1,94 @@
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>投诉建议详情</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<script src="../my-js/common.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/ask-for-leave.css" />
+
+	</head>
+
+	<body>
+		
+		<div class="leave" style="margin-top:0rem;">
+			<form action="" method="get" class="itemForm">
+					
+				<div class="leave-one">
+					<span>联系人:</span>
+					<div class="complaintName">
+						
+					</div>
+				</div>
+				<div class="leave-one">
+					<span>联系电话:</span>
+					<div class="complaintTel">
+						
+					</div>
+				</div>
+				
+				<div class="leave-one" style="margin-top: 0.2rem;">
+					<span>状态:</span>
+					<div class="state">
+						
+					</div>
+				</div>
+				<div class="leave-one">
+					<span>投诉时间:</span>
+					<div class="complaintTime">
+						
+					</div>
+				</div>
+				
+				
+				<div class="account">
+					<span><em>&nbsp;&nbsp;</em>投诉内容:</span>
+					<div class="complaintContent"></div>
+				</div>
+			</form>
+			
+
+		</div>
+
+		<script src="../my-js/mui.min.js"></script>
+		<script type="text/javascript" src="../my-js/public.js"></script>
+		<script src="../my-js/jquery-2.1.0.js"></script>
+		<script type="text/javascript">
+		
+			$(function(){
+				
+				
+				 var complaintId= localStorage.getItem("complaintId",complaintId);
+				
+ 					
+					$.ajax({
+					url: urlBase + "getAdvice?complaintId="  + complaintId,
+					dataType: "json",
+					type: "get",
+					timeout : 5000, //超时时间设置，单位毫秒
+					success: function(result) {	
+						 alert(JSON.stringify(result))
+							var data = result.extend.result;
+							console.log(data);	
+							
+							$('.complaintName').text(data.complaintName);
+							$('.complaintTel').text(data.complaintTel);
+							$('.state').text(data.state);
+							$('.complaintTime').text(data.complaintTime.substring(0,10));
+						    $('.complaintContent').text(data.complaintContent);
+						
+						
+						
+					},
+					error: function(e) {
+						 mui.toast(JSON.stringify(e));
+					}
+				})
+				
+				
+			})
+		</script>
+	</body>
+
+</html>

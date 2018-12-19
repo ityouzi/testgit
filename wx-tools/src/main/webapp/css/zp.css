@@ -1,0 +1,128 @@
+
+html{
+	height:100%;width:100%;
+}
+body{
+	width:7.5rem;
+	background: url(../my-img/login/zy-bg.png) no-repeat;
+	background-size: 100%;
+	font-size:.3rem;
+	padding-top:1.4rem;
+}
+form{
+	/*position: fixed;
+	top:54%;
+	left:.4rem;	
+	padding:36% 0 0 .4rem;	*/
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	
+}
+form>input{
+	width:5.3rem;
+	height:0.8rem;
+	background: rgba(105,105,105,0.2);
+	border:.01rem solid #fff; 
+	border-radius: .1rem;
+	color:#fff;
+	padding:0 .2rem;
+	margin-bottom: 0.4rem;
+	font-size:0.3rem;
+}
+.login-but{
+	width:4.54rem;
+	height:0.8rem;
+	background: #ff0036;
+	border:0;
+	border-radius: 1rem;
+	
+	font-size:.3rem;
+	color:#fff;
+	outline: none;
+	text-align: center;
+	line-height: 0.8rem;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+	color: #fff;
+}
+.user{
+	width:5.5rem;
+	margin-left:.6rem;
+}
+.user>a{
+	width:33%;
+	float:left;
+	color:#fff;
+	text-align: center;
+	line-height: 1rem;
+	color:#999999;
+}
+.user>a:nth-child(1){
+	text-align: left;
+}
+.logo{
+	width:2.5rem;
+	height:2.5rem;
+	background: url(../my-img/login/xx.png) no-repeat;
+	background-size:100%;
+	border-radius:50%;
+	margin:1.4rem auto 1.5rem;
+	/*margin-top:1.4rem;*/
+}
+#yonghuming{
+	margin-left: 10%;
+	height: 0.6rem;
+	width: 75%;
+}
+.butongyicox{
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+.btnQx{
+	padding: 0.1rem 0.2rem;
+	border-radius: 0.1rem;
+	background-color: #999999;
+	border:1px solid #EEEEEE;
+	box-sizing: border-box;
+	margin-right: 0.2rem;
+	
+}
+.btnjx{
+	padding: 0.1rem 0.2rem;
+	border-radius: 0.1rem;
+	background-color: #999999;
+	border:1px solid #EEEEEE;
+}
+#mima{
+	color: red;
+	font-style: normal;
+}
+.mui-toast-container {
+	line-height: 17px;
+	position: fixed;
+	z-index: 9999;
+	bottom: 50px;
+	left: 50%;
+	-webkit-transition: opacity .3s;
+	transition: opacity .3s;
+	-webkit-transform: translate(-50%, 0);
+	transform: translate(-50%, 0);
+	opacity: 0
+}
+
+.mui-toast-container.mui-active {
+	opacity: .9
+}
+
+.mui-toast-message {
+	font-size: 14px;
+	padding: 10px 25px;
+	text-align: center;
+	color: #fff;
+	border-radius: 6px;
+	background-color: #323232
+}
